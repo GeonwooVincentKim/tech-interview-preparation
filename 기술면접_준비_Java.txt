@@ -7,17 +7,23 @@ HttpSession.getAttribute("user")
 같은 Key 를 쓰는데 어떻게 A와 B를 구분해서 값을 가져오는가?
 
 - 1. Velog 
+(출처 : https://velog.io/@saint6839/HttpSession%EC%97%90%EC%84%9C-session-key%EB%8A%94-%ED%95%98%EB%82%98%EC%9D%B8%EB%8D%B0-%EC%96%B4%EB%96%BB%EA%B2%8C-%EC%97%AC%EB%9F%AC-%EC%9C%A0%EC%A0%80%EB%A5%BC-%EA%B5%AC%EB%B6%84%ED%95%B4%EC%84%9C-%EA%B0%92%EC%9D%84-%EA%B0%80%EC%A0%B8%EC%98%AC%EA%B9%8C)
   = 1. createdUser 라는 하나의 문자열을 key 로 이용하여 Servlet Container 는
 HttpClient 와 HttpServer 간의 세션을 생성
 
-  = 2. 
+  = 2. 질문 : A, B 유저 모두 세션 값을 저장할 때, createdUser 라는 문자열을 Key 로 이용하여 Session 값 저장
+  = 3. Session 은 각 Client 마다 하나씩 생성되어 제공
+    -> 1. 각 Client 의 요청마다 Session 은 다르게 생성됨
+    -> 2. 같은 문자열 Key 를 이용하여 session.getAttribute("createdUser"); 를 호출 할 때
+       => 각 사용자의 정보가 저장된 다른 Session 값이 보이게 됨
 
-- 2. Youtube
+- 2. Youtube (출처 : https://www.youtube.com/watch?v=3ArYMq5AomI)
   = 1. DB 같은 경우에는 Query Parameter 가 계속 바뀌며 전송되서 다른 값들을 구분해서
 가져옴.
 
   = 2. 세션은 코드가 이미 "user", 혹은 "userName" 형태로 Fix 가 되어있는 상태에서
 무조건 사용자에 따라 다르게 구분 함
+
 
 2. Servlet Container 란?
 - 1. 웹 서버란?
