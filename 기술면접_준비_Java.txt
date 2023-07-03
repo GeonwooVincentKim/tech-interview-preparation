@@ -1,0 +1,35 @@
+1. HttpSession 을 사용하여 Login 구현
+
+HttpSession.getAttribute("user")
+
+사용자 A가 접속해도 "user" 를 Key 로 값을 가져오고,
+사용자 B가 접속해도 "user" 를 Key 로 가져옴.
+같은 Key 를 쓰는데 어떻게 A와 B를 구분해서 값을 가져오는가?
+
+- 1. Velog 
+  = 1. createdUser 라는 하나의 문자열을 key 로 이용하여 Servlet Container 는
+HttpClient 와 HttpServer 간의 세션을 생성
+
+  = 2. 
+
+- 2. Youtube
+  = 1. DB 같은 경우에는 Query Parameter 가 계속 바뀌며 전송되서 다른 값들을 구분해서
+가져옴.
+
+  = 2. 세션은 코드가 이미 "user", 혹은 "userName" 형태로 Fix 가 되어있는 상태에서
+무조건 사용자에 따라 다르게 구분 함
+
+2. Servlet Container 란?
+- 1. 웹 서버란?
+  -> 1. 웹 페이지를 사용자에게 전송하는 서버
+  -> 2. 웹 서버는 데이터를 전송하기 위해 HTTP Protocol 을 사용
+  -> 3. 일반적인 상황에서 사용자는 브라우저에 URL (https://cafe.daum.net/vincentarnold)
+  -> 4. 웹 서버가 하는 일은 웹페이지를 사용자에게 전송하는 것
+
+- 2. 서블릿 컨테이너란?
+  -> 1. 서블릿들이 생성, 실행, 파괴를 담당하며, 서블릿들을 위한 상자 (Container)
+
+- 3. 서블릿이란?
+  -> 1. 동적 웹 페이지를 만들 때 사용되는 자바 기반의 Web Application 프로그래밍 기술
+  -> 2. 웹 요청과 응답의 흐름을 간단한 메서드 호출만으로 체계적으로 다룰 수 있게 해줌
+
