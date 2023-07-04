@@ -1,0 +1,20 @@
+IaaS
+- Application 을 구성하는 각 컴포넌트가 모두 가상 머신에서 독립적으로 동작
+- 이주 과정은 쉽지만 가상 머신의 성능을 완전히 활용하지 못하며 운영비가 비쌈
+
+PaaS
+- Application 을 구성하는 각 컴포넌트가 클라우드 서비스 제공자의 메니지드 서비스에 종속
+- 운영비가 저렴하고 관리가 쉽지만 이주 과정이 복잡함
+
+Cloud
+- PaaS 및 IaaS 장점인 이식성
+- Application 의 각 컴포넌트는 컨테이너에서 동작, 가상 머신처럼 독립적, 경량, PaaS 매니지드 서비스만큼 효율적
+- Azure Kubernetes Service 같은 매니지드 서비스, AWS, Data Center 로도 별도의 수정 없이 이주 가능
+
+Cloud Application 은 각 Component 에서 동작하는 Micro Architecture 로 설계됨
+- 사용자 
+- FE (웹 애플리케이션 사용, NodeJS 로 구현돼 도커 컨테이너에서 동작)
+- 자바/닷넷 코어 (여러 개 MSA 에서 제공하는 API 사용, 자신만의 데이터, 서비스, DS 모두 도커 컨테이너에서 동작)
+- RabbitMQ (서비스가 큐를 통해 메시지를 퍼블리시/구독하는 비동기적인 워크플로, 도커 컨테이너에서 동작)
+
+

@@ -33,9 +33,13 @@ HttpClient 와 HttpServer 간의 세션을 생성
   -> 4. 웹 서버가 하는 일은 웹페이지를 사용자에게 전송하는 것
 
 - 2. 서블릿 컨테이너란?
+  (출처 : https://velog.io/@han_been/%EC%84%9C%EB%B8%94%EB%A6%BF-%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88Servlet-Container-%EB%9E%80)
   -> 1. 서블릿들이 생성, 실행, 파괴를 담당하며, 서블릿들을 위한 상자 (Container)
 
 - 3. 서블릿이란?
+  (출처 : https://velog.io/@falling_star3/Tomcat-%EC%84%9C%EB%B8%94%EB%A6%BFServlet%EC%9D%B4%EB%9E%80)
   -> 1. 동적 웹 페이지를 만들 때 사용되는 자바 기반의 Web Application 프로그래밍 기술
   -> 2. 웹 요청과 응답의 흐름을 간단한 메서드 호출만으로 체계적으로 다룰 수 있게 해줌
 
+3. Index 란?
+(출처 : https://velog.io/@gillog/SQL-Index%EC%9D%B8%EB%8D%B1%EC%8A%A4#:~:text=Index%20%EB%8A%94%20RDBMS%EC%97%90%EC%84%9C%20%EA%B2%80%EC%83%89,%EA%B2%80%EC%83%89%EC%86%8D%EB%8F%84%EB%A5%BC%20%EB%B9%A0%EB%A5%B4%EA%B2%8C%20%ED%95%9C%EB%8B%A4.)
