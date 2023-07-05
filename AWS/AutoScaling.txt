@@ -1,0 +1,6 @@
+AutoScaling
+- Data Processing 을 위해 EC2 Instance 를 생성
+- Instance 에 과부화가 걸려 처리가능한 능력 밖의 수많은 Data 가 밀려올 때
+  = Instance 는 자동으로 VM 을 추가하여 기능을 Upgrade 해주며 Instance 가 Shutdown 되는 문제를 방지
+  = Instance 능력보다 Data 가 터무니없이 적게 들어오면 Instance 기능이 Downgrade
+
