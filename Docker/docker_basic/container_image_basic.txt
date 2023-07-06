@@ -23,3 +23,18 @@ Container 란 무엇인가
   = Computer -> OS -> HyperVisor -> VM
   = VM -> OS + Application (Host 명, IP 주소, Disk Drive)
 
+Docker 가 Container 를 실행하는 원리
+- Docker Engine
+  = Docker 관리 기능을 맡는 Component
+  = Local Image Cache 를 담당, 새로운 Image 가 필요하면 Image 를 내려받음
+  = 기존 Image 가 있다면 전에 내려받은 Image 를 사용
+  = Host OS 와 함께 Container 와 가상 Network 등 Docker Resource 를 만드는 일도 담당
+  = Docker Engine 은 항시 동작하는 Background Process (Linux Demon, Windows Service 와 같음)
+  
+- Docker Engine API
+  = 표준 HTTP 기반 REST API 이며, Docker Engine 의 설정 수정 시, 이 API Network 경유
+  = 외부 Computer 로부터 호출할 수 없도록 차단 (기본 설정) 하거나 허용할 수 없음
+
+- Docker 명령행 Interface (Docker CLI)
+  = Docker API 의 Client, docker 명령을 사용할 때 실제로 Docker API 를 호출하는 것이 바로 Docker CI
+
