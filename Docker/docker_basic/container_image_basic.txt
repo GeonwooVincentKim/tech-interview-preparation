@@ -1,0 +1,25 @@
+docker container run
+- Container 로 Application 을 실행하라는 Docker 명령
+- 미리 Docker 로 실행하도록 Packging 되어 누구나 내려받을 수 있도록 공유된 것
+- Package 를 내려받은 사람이 Container 를 통해 Application 을 실행하는 것 -> 빌드, 공유, 실행
+
+Container 란 무엇인가
+- Docker Container -> 물건을 담는 Container 와 다를 것이 없음
+- Application 과 Application 을 실행할 Computer 가 함께 들어 있음
+  = IP 주소, Computer 이름, Disk Drive, Window Container (Window Registry 도 포함)
+
+- Container 환경 안에 들어 있는 Aplication 의 예시
+  = Computer -> OS -> Docker -> Container
+  = Container -> Application (Host Name, IP Address, Disk Drive)
+
+- 같은 Computer 에서 OS, CPU, Memory 를 공유하는 여러 개의 Container
+  = Container 는 Docker 가 관리하는 독립적인 가상 Resource 를 가짐
+  = Host Computer 는 별도의 Host 명, IP 주소와 Disk 를 가짐
+  = 모든 Container 는 Host Computer 의 OS, CPU, Memory 공유
+
+- 같은 Computer 에서 동작하지만, 각자 별도의 OS 를 갖는 가상 Machine
+  = Host Computer 는 별도의 Host 명, IP 주소와 Disk 를 가짐
+  = 모든 가상 Machine 은 Host Computer 의 OS, CPU, Memory 공유
+  = Computer -> OS -> HyperVisor -> VM
+  = VM -> OS + Application (Host 명, IP 주소, Disk Drive)
+
