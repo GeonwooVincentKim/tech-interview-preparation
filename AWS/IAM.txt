@@ -19,3 +19,23 @@ IAM
 - 3. 쌓인 Data 를 보관 시, RDB 나 AWS RDS 사용 고려 가능
 - 4. Data 전처리
   = Lambda 거쳐 가공된 Data Storage 로 보관 가능
+
+AWS 장점
+1. 사용자 친화적
+- 1. AWS Console, 개발자 아닌 Cloud 경험없는 사람들도 마우스 Click 몇 번, 간단한 Pipeline 을 안전 구축 가능
+- 2. AWS 사용자는 특별한 제약 없이 언제 어디서나 쉽게 Pipeline 수정 가능
+- 3. AWS 관련된 문서 및 정보는 Internet 에 넘쳐나고, 다양한 온라인 강의 제공되어 쉽게 접근 가능
+- 4. GCP 나 Azure 와 달리 수 많은 회사에서 AWS 를 첫 Cloud Platform 으로 채택하여 사용, 사용자 친화적
+
+2. 유연성과 편의성
+- 1. AWS 원하는 OS, 프로그래밍 언어, WebApp 등 Pipeline 구축 시 필요한 요소 각자 입맛대로 골라 사용 가능
+- 2. EC2, Instance 새로 만들 때, 우리가 원하는 OS, Application, 그 밖에 다양한 옵션 선택 가능
+
+3. 뛰어난 보안
+- 1. 외부 해킹 공격과 Data Privacy 를 지키기 위해 겹겹히 쌓여있는 Security Layer 가 Data 감시
+- 2. AWS 보안팀이 철두철미하게 관리 중
+
+4. 확장성
+- 1. AWS 에는 Auto Scaling 이라 불리는 Service 존재
+- 2. Instance 는 자동으로 VM 을 추가하여 기능 Upgrade, Instance Shutdown 문제 방지
+- 3. Instance 능력보다 Data 가 터무니 없이 들어오면 Instance 기능 Downgrade
