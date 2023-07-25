@@ -1,0 +1,14 @@
+Route 53
+-> Global services, no matter where you are you'll get the same view
+
+EC2 
+-> If Users run this console in some particular area
+   = My View is going to be different in terms of the resources that I will see
+
+-> It's important for Users to remain within the same region for the entire duration
+
+AWS Regional Services List
+- It gives User the services list by region
+- Can check here and find the availability of services
+  = If cannot see a service User need to switch a region in the console
+  = Because not all the services from AWS are in every region
