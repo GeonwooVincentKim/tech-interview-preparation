@@ -76,7 +76,7 @@ AWS Points of Presense (Edge Locations)
 Tour of the AWS Console
 - 1. AWS has Global Services
   = 1. Identity and Access Manageemnt (IAM)
-  = 2. Route S3 (DNS Service)
+  = 2. Route 53 (DNS Service)
   = 3. CloudFront (Content Delivery Network)
   = 4. WAF (Web Application Firewall)
 
