@@ -1,0 +1,22 @@
+IAM Users
+- 1. Create new users in IAM section to make Root Account (Account ID)
+- 2. Create Admin Users not to give too much Permissions for User Account
+- 3. Create Admin Users, Regular Users and use them within AWS
+- 4. From an exam perspective, I need to know about IAM users
+  = Select 'I want to create an IAM user'
+
+- 5. Specify a user in Identity Center - Recommended
+  = Complicated to set up User's IAM Account
+
+- 6. Don't need to create a new password at sign-in
+  = If it was another user creating an account for
+
+IAM > User Groups > Admin
+- 1. Users
+  = Entire User List
+
+- 2. Permissions
+  = 1. Policy name attached the group (Administrator access)
+  = 2. Provides full admin access to any users within the group
+
+- 3. Access Advisor

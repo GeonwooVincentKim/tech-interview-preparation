@@ -1,0 +1,29 @@
+IAN Policies Inheritance
+- 1. Developers Policy Group
+  = Member -> Alice, Bob, Charles
+
+- 2. Operations Policy Group
+  = Member -> David, Edward
+
+- 3. Inline Policy
+  = 1. Member -> Fred
+  = 2. It has the possibility not to belong to a group (Developers, Operations)
+  = 3. Only attached to a User
+
+- 4. Audit Team
+  = Member -> Charles, David
+
+IAM Policies Structure
+- 1. Consists of	
+  = 1. Version - Policy language version, always include '2012-10-17'
+  = 2. Id - an Identifer for the policy (optional)
+  = 3. Statement - one or more individual statements (required)
+
+- 2. Statements consists of
+  = 1. Sid: an identifer for the statement (optional)
+  = 2. Effect: whether the statement allwos or denies access (Allow, Deny)
+  = 3. Principal - account/user/role to which this policy applied to
+  = 4. Action - list of actions this policy allows or denies
+  = 5. Resources - list of resources to which the actions applied to
+  = 6. Condition - conditions for when this policy is in effect (optional)
+    -> When this statement should be applied or not
