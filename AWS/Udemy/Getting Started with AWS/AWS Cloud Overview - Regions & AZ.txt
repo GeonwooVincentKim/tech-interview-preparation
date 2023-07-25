@@ -1,0 +1,90 @@
+AWS Cloud History
+- 1. 2002 -> Internally Launched
+- 2. 2003 -> Amazon Infrastructure is one of their core strength. Idea to market
+- 3. 2004 -> Launched publicly with SQS
+- 4. 2006 -> Re-launched publicy with SQS, S3 & EC2
+- 5. 2007 -> Launched in Europe
+- 6. Netflix, Dropbox, AirBnB, NASA
+
+AWS Cloud Number facts
+- 1. In 2019, AWS HAD $35.02 billion in annual revenue
+- 2. AWS Accounts for 47% of the market in 2019 (Microsoft in 2nd with 22%)
+- 3. Pioneer and Leader of the AWS Cloud Market for the 9th consecutive year
+- 4. Over 1,000,000 active users
+
+AWS Cloud Use Cases
+- 1. AWS enables you to build sophisticated, scalable applications
+- 2. Applicable to a diverse set of industries
+- 3. Use cases include
+  = Enterprise IT, Backup & Storage, Big Data Analytics
+  = Website hosting, Mobile & Social Apps
+  = Gaming
+  = McDonalds, 21st Century Fox, Activision, Netflix
+
+AWS Global Infrastructure
+- 1. AWS Regions
+- 2. AWS Availability Zone
+- 3. AWS Data Centers
+- 4. AWS Edge Locations / Points of Presence
+  = https://infrastructure.aws/
+
+AWS Regions
+- 1. AWS has Regions all around the world
+- 2. Names can be us-east-1, eu-west-3...
+  = https://aws.amazon.com/about-aws/global-infrastructure/
+
+- 3. A region is a cluster of data centers
+- 4. Most AWS services are region-scoped
+
+How to choose an AWS Region?
+- If you need to launch a new application, where should you do it?
+  = 1. Compliance with data governance and legal requirements:
+    -> Data never leaves a region without your explicit permission
+
+  = 2. Proximity to customers
+    -> Reduced latency
+
+  = 3. Available services with a Region
+    -> New services and new features aren't available in every Region
+
+  = 4. Pricing
+    -> Pricing varies region to region and is transparent in the service pricing page
+
+AWS Availability Zones
+- 1. Each region has many availability zones
+  = 1. usually 3, min is 3, max is 6
+  = 2. Example (AWS Region Sydney: ap-southeast-2)
+    -> 1. ap-southeast-2a
+    -> 2. ap-southeast-2b
+    -> 3. ap-southeast-2c
+
+- 2. Each availability zone (AZ) is one or more discreate data centers with redundant power
+  = Networking, and connectivity
+
+- 3. They're separate from each other
+  = So that they're isolated from disasters
+
+- 4. They're connected with high bandwidth, ultra-low latency networking
+  = All together being linked together, it will form a region
+
+AWS Points of Presense (Edge Locations)
+- 1. Amazon has 400+ Points of Presense in 90 + cities across 40+ countries
+  = 400+ Edge Locations & I0 + Regional Caches
+
+- 2. Content is delivered to end users with lower latency
+
+Tour of the AWS Console
+- 1. AWS has Global Services
+  = 1. Identity and Access Manageemnt (IAM)
+  = 2. Route S3 (DNS Service)
+  = 3. CloudFront (Content Delivery Network)
+  = 4. WAF (Web Application Firewall)
+
+- 2. Most AWS services are Region-scoped
+  = 1. Amazon EC2 (Infrastructure as a Service)
+  = 2. Elastic Beanstalk (Platform as a Service)
+  = 3. Lambda (Function as a Service)
+  = 4. Rekognition (Software as a Service)
+
+- 3. Region Table
+  = https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services
