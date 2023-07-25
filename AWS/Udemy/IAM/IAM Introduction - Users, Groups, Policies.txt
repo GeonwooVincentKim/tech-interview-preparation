@@ -1,0 +1,23 @@
+IAM Users & Groups
+- 1. IAM = Identity and Access Management, Global service
+- 2. Root account created by default, shouldn't be used or shared
+- 3. Users are people within your organization, and can be grouped
+  = Example
+    -> Group Developers
+       => Alice, Bob, Charles
+
+    -> Group Operations
+       => David, Edward
+
+    -> Group Audit Team (Third Group - Possible Configurations for IAM)
+       => Charles, David
+
+- 4. Groups only contain users, not other groups
+- 5. Users don't have to belong to a group, and user can belong to multiple groups
+
+IAM Permissions
+- 1. Users or Groups can be assigned JSON documents called policies
+- 2. These policies define the permissions of the users
+- 3. In AWS you apply the least privilege principle
+  = 1. Don't give more permissions than a user needs
+  = 2. If a user just needs access to three services, just create a permission for that user
