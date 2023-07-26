@@ -1,0 +1,39 @@
+IAM MFA Hands On
+- 1. Password Policy
+  = 1. Can set between IAM default and Customized password policy
+    -> 1. Can set the minimum length of characters
+    -> 2. Can set the customized Password strength conditions
+       => 1. Require at least one uppercase letter from the Latin Alphabet (A-Z)
+       => 2. Require at least one lowercase letter from the Latin Alphabet (a-z)
+       => 3. Require at least one number
+       => 4. Require at least one non-alphanumeric character (!@#$%^&*()_+-=[]{}|')
+
+    -> 3. Can set the other requirements conditions
+       => 1. Turn on password expiration -> Expire password in Custom days (1 days ~ 1095 days)
+       => 2. Password expiration requires administrator reset
+       => 3. Allow users to change their own password
+       => 4. Prevent password resue -> Remember Custom numbers passwords (1 and 24)
+
+  = 2. Setting multi-factor authentication for root account
+    -> 1. Click Security credentials
+       => 1. My security credentials (root user)
+       => 2. Will not have access to this if you're not logged in with a root user
+
+    -> 2. MFA not activated for root user
+       => 1. Don't do this if you are running the risk of loosing your device or whatever
+       => 2. It can also delete the MFA deveice after activating it
+
+    -> 3. Sort
+       => 1. Authenticator app
+	  --> 1. Compatible applications
+	      ==> 1. Android - Twilio Authy Authenticator, Duo Mobile, LastPass Authenticator, MS Authenticator, Google Authenticator, Symantec VIP
+	      ==> 2. iOS - Twilio Authy Authenciator, Duo Mobile, LastPass Authenticator, MS Authenticator, Google Authenticator, Symantec VIP
+	
+	  --> 2. Show QR Code
+	  --> 3. MFA Code 1 & MFA code 2 -> Input it for two times
+
+       => 2. Security Key
+       => 3. Hardware TOTP token
+
+    -> 4. How do I use MFA
+       => Log-out and Log-in to the AWS, It needs to input Multi-factor authentication (MFA Code)
