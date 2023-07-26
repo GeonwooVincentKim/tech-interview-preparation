@@ -1,0 +1,50 @@
+IAM - Password Policy
+- 1. Strong password = higher security for your account
+- 2. In AWS, you can setup a password policy
+  = 1. Set a minimum password length
+  = 2. Require specific character types
+    -> 1. including uppercase letters
+    -> 2. lowercase letters
+    -> 3. numbers
+    -> 4. non-alphanumeric characters
+
+  = 3. Allow all IAM users to change their own passwords
+  = 4. Require users to change their password after some time (password expiration)
+    -> For example to say every 90 days, users have to change thier passwords
+
+  = 5. Prevent password re-use
+    -> Prevent to change users password to the one they already have or they had before
+
+- 3. Password policy really is helpful, against brute force attacks on your accounts
+
+Multi Factor Authenticaton - MFA
+- 1. Users have acess to your account and can possibly change configurations
+  = Or Delete resources in your AWS Account
+
+- 2. You want to protect your Root Accounts and IAM users
+- 3. MFA = Combination of Password you know + security device you own
+  = Example - Alice knows her password, also has an MFA generating token (Use while logging in)
+
+- 4. Main benefit of MFA
+  = If a password is stolen or hacked, the account is not compromised
+
+MFA devices options in AWS
+- 1. Virtual MFA Device
+  = 1. Google Authenticator (phone only)
+  = 2. Authy (multi-device)
+  = 3. Support for multiple tokens on a single device
+  = 4. Can have own root account, IAM user, and another account, and another IAM user
+
+- 2. Universal 2nd Factor (U2F) Security Key
+  = YubiKey by Yubico (3rd party)
+    -> 1. This is not the AWS that provided
+    -> 2. Use a physical device, super easy, put it your Key Fobs
+    -> 3. Support for multiple root and IAM users using a single security key
+
+MFA devices options in AWS
+- 1. Hardware Key Fob MFA Device
+  = Provided by Gemalto (3rd party)
+
+- 2. Hardware Key Fob MFA Device for AWS GovCloud (US -> Cloud of the government)
+  = Provided by SurePassID (3rd party)
+
