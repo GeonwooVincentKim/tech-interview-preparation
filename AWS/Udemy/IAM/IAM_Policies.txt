@@ -27,3 +27,38 @@ IAM Policies Structure
   = 5. Resources - list of resources to which the actions applied to
   = 6. Condition - conditions for when this policy is in effect (optional)
     -> When this statement should be applied or not
+
+IAM Policies Hands On
+- 1. Only Admin User can create a new group
+- 2. Only Authorized Users who have some specific Permission given by Admin Users can join a group
+- 3. The policies get inherited in different ways through the IAM permissions
+  = Example 
+    -> 1. Administrator access from the group admin
+    -> 2. It was direct connect read only access from the developers
+
+- 4. IAM Policy (See JSON forum in the Permissions tab)
+  = 1. Version
+  = 2. The statement contains one statements
+    -> If no specific Permissions not added to the JSON policy code
+
+  = 3. The effect is allowed so to authorize action is "*"
+    -> 1. Any actions
+    -> 2. Allow all the actions on all the resources
+       => Making this policy an administrator access policy
+
+  = 4. The resource is "*"
+    -> Any resources
+
+  = 5. Example (IAMReadOnlyAccess - Action)
+    -> 1. iam:GenerateCredentialReport
+    -> 2. iam:GenerateServiceLastAccessedDetails
+    -> 3. iam:Get*
+    -> 4. iam:List*
+    -> 5. iam:SimulateCustomPolicy
+    -> 6. iam:SimulatePrincipalPolicy
+
+  = 6. Can create policy (custom) which only select Specify permissions by User
+    -> 1. Can choose service
+    -> 2. Can Specify the actions allowed in service (Service could be IAM)
+    -> 3. Resources specify specific resources or All resources
+    -> 4. Can Specify a request condition
