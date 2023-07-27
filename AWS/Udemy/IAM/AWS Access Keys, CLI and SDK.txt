@@ -53,3 +53,16 @@ What's the AWS SDK
 AWS CLI Setup Install
 - https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
 
+AWS Create Access Key
+- 1. Access Key best practices & alternatives
+- 2. Set description tag
+- 3. Retrieve access keys
+
+Access key best practices
+- 1. Never store your access key in plain text, in a code repository, or in code.
+- 2. Disable or delete access key when no longer needed.
+- 3. Enable least-privilege permissions.
+- 4. Rotate access keys regularly.
+
+Further more information of managing access keys (Best practices for managing AWS access keys)
+-> https://docs.aws.amazon.com/accounts/latest/reference/best-practices.html
