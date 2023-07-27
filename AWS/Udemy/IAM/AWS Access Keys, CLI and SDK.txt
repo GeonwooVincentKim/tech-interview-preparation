@@ -1,0 +1,51 @@
+How can users access AWS?
+- 1. To access AWS, you have three options
+  = 1. AWS Management Console 
+    -> protected by password + MFA
+
+  = 2. AWS Command Line Interface (CLI)
+    -> protected by access keys
+
+  = 3. AWS Software Developer Kit (SDK)
+    -> for code - protected by access keys
+
+- 2. Access Keys are genertaed through the AWS Console
+- 3. Users manage their own acceess keys
+- 4. Access Keys are secret, just like a password, Don't share them
+- 5. Access Keys ID ~= username
+- 6. Secret Access Key ~= password
+
+Example (Fake) Access Keys
+- Access Keys (Example)
+  = 1. Access Key ID -> AKIASK4E37PV4983d6C
+  = 2. Secret Access Key 
+    -> 1. AZPN3zojWozWCndljhB0Unh8239albzbzO5fqqkZq
+    -> 2. Fake Secret Access Key ID , when loaded into its CLI would allow it to access the AWS API
+
+  = 3. Remember, DON'T share your Access Keys
+
+What's the AWS CLI
+- 1. A tool that enables you to interact with AWS services using commands in your command-line shell
+- 2. Direct access to the public APIs of AWS services
+- 3. You can develop scripts to manage your resources
+- 4. It's open-source https://github.com/aws/aws-cli
+- 5. Alternative to using AWS Management Console
+
+What's the AWS SDK
+- 1. AWS Software Development Kit (AWS SDK)
+- 2. Language-specifit APIs (set of libraries)
+  = Going to have an SDK for different programming languages
+
+- 3. Enable you to access and manage AWS services API programmatically
+- 4. Embedded within your application
+  = 1. SDK is not use own's within own's terminal
+  = 2. Your Application > AWS SDK
+
+- 5. Support
+  = 1. Support many different programmign languages
+  = 2. SDKs (JS, Python, PHP, .NET, Ruby, Java, Go, Node.js, C++)
+  = 3. Mobile SDKs (Android, iOS, ...)
+  = 4. IoT Device SDKs (Embedded C, Arduino, ...)
+    -> Thermal sensors or backlogs that are connected, all these kinds of things
+
+- 6. Example - AWS CLI is build on AWS SDK for Python (Boto)
