@@ -49,3 +49,7 @@ What's the AWS SDK
     -> Thermal sensors or backlogs that are connected, all these kinds of things
 
 - 6. Example - AWS CLI is build on AWS SDK for Python (Boto)
+
+AWS CLI Setup Install
+- https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+
