@@ -1,0 +1,46 @@
+IAM Roles Hands Up
+- 1. Trusted Entity Type
+  = 1. AWS Service
+    -> Allow AWS services like EC2, Lambda, or others to perform actions in this account
+
+  = 2. AWS Account
+    -> 1. Allow entities in other AWS accounts belonging to you or a 3rd party
+    -> 2. Perform actions in this account
+
+  = 3. Web identity
+    -> 1. Users federated by the specific external web identity provider
+    -> 2. Assume this role to perform actions in this account
+
+  = 4. SAML 2.0 federation
+    -> Users federated with SAML 2.0 from a corporate directory to perform actions in this account
+
+  = 5. Custom Trust policy
+    -> Create a custom trust policy to enable others to perform actions in this account
+
+- 2. Use Cases
+  = 1. Common use cases
+    -> 1. EC2
+       => Allows EC2 Instances to call AWS Services on your behalf
+
+    -> 2. Lambda
+       => Allows Lambda functions to call AWS Services on your behalf
+
+  = 2. Use cases for other AWS Services
+
+- 3. Permissions Policies
+  = IAMReadOnlyAccess
+
+- 4. Role Details
+  = 1. Role name 
+    -> 1. Enter a meningful name to identify this role
+    -> 2. Maximum 64 characters. Use Alphanumeric and '+=,.@-_' characters
+
+  = 2. Description
+    -> 1. Add a short explanation for this role.
+    -> 2. Maximum 1000 characters. Use alphanumeric and '+=,.@-_' characters
+
+- 5. Step 1: Select trusted entities
+- 6. Step 2: Add permissions -> Permissions policy summary
+- 7. ARN
+  = 1. leveraging this role allowing the EC2 Instance
+  = 2. perform actions against IAM and read data
