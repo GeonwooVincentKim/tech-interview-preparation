@@ -10,8 +10,8 @@ IAM Section - Summary
 - 9. Audit: IAM Credential Reports & IAM Access Advisor
 
 IAM & AWS CLI Quiz
-- 1. 
-  = 
+- 1. What is a proper definition of an IAM Role?
+  = An IAM entity that defines a set of permissions for making requests to AWS services, and will be used by an AWS Service
 
 - 2. Which of the following is an IAM Security Tools?
   = IAM Crendentials Report
@@ -28,4 +28,12 @@ IAM & AWS CLI Quiz
 - 6. Which principle should you apply regariding IAM Permissions?
   = Grant least privilege
 
-- 7. 
+- 7. What should you do to increase your root account security?
+  = Enable Multi-Factor Authentication (MFA)
+
+- 8. IAM User Groups can contain IAM Users and other User Groups
+  = False (IAM User Groups can contain only IAM Users)
+
+- 9. An IAM policy consists of one or more statements. A statement in an IAM Policy consists of the following, EXCEPT:
+
+  = Version
