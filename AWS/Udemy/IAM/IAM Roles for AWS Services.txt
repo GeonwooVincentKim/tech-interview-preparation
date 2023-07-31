@@ -1,0 +1,22 @@
+IAM Roles for Service
+- 1. Some AWS Service will need to perform actions on your self
+- 2. To do so, we will assign permissions to AWS services with IAM Roles
+  = 1. These IAM role will be just like a user
+  = 2. But they are intended to be used not by physical people
+    -> Instead they will be used by AWS Services
+
+  = 3. Example
+    -> 1. EC2 Instance (Virtual Server)
+       => 1. May want to perform some actions on AWS and to do so
+       => 2. Need to give permissions to our EC2 instance
+
+    -> 2. IAM Role
+       => 1. Create IAM role and EC2 Instance together
+       => 2. Make one entity
+       => 3. EC2 Instance is trying to access some information from AWS, then use IAM Role
+       => 4. If the permission assigned to the IAM Role is correct, get access to the call and make
+
+- 3. Common roles:
+  = 1. EC2 Instance Roles
+  = 2. Lambda Function Roles
+  = 3. Roles for CloudFormation

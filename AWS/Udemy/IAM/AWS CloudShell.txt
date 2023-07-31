@@ -1,0 +1,33 @@
+AWS CloudShell
+1. aws iam list-useres
+- 1. Return an API call
+- 2. if the credentials being used, where the credentials of the accounts of using the cloud right now
+
+2. aws iam list-users --region [Region]
+- 1. You can specify any kind of region you want to do
+- 2. The API call using the management is region arguments
+  = 1. But in CloudShell, the default region is going to be the region user currently in
+  = 2. Logged in right now in CloudShell
+
+
+3. 'echo "test" > demo.txt' and 'cat demo.txt'
+- 1. Cloud shell is that user have a full repository
+- 2. If user have zero files within cloud shell
+  = 1. echo tests into demo dot TXT
+    -> This is going to create a text file that contains the word texts tests
+
+  = 2. cat demo.txt
+    -> It turns out that if user happen to restart users cloud shell, then this file will stick
+
+- 3. All the files are creating within users cultural environment
+  = 1. Example
+    -> 1. 'demo.txt' are going to stay
+    -> 2. possibility to download and upload file
+       => 1. To get the full path to my file, 
+
+  = 2. Cloud shell is that the user can configure it
+    -> 1. Customize Font Size
+    -> 2. Customize AWS CloudShell theme
+    -> 3. Customize Enable safe paste
+
+- 4. Can download or upload the file
