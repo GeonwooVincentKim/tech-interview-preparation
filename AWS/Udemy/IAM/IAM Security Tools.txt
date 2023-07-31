@@ -16,3 +16,7 @@ IAM Security Tools
   = 2. See there are any notifications for your accounts
     -> Personal Health Dashboard
 
+- 5. Certificates Manager
+  = 1. Remove permissons from this user
+  = 2. It seems this user is not using these services (Acceess Advisor)
+
