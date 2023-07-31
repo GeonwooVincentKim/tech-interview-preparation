@@ -1,0 +1,18 @@
+IAM Security Tools
+- 1. IAM Credentials Report (account-level)
+  = A report that lists all your account's users and the status of their various credentials
+
+- 2. IAM Access Advisor (user-level)
+  = 1. Access advisor shows the service permissions granted to a user and when those services were last accessed.
+
+  = 2. You can use this information to revise your policies
+
+- 3. Credential Report
+  = 1. Check some users that haven't been changing their password or using it or their account
+  = 2. Great way to find which users deserve your attention from a security standpoint
+
+- 4. Health APIs and Notifications
+  = 1. Little bell on Header side, automatically will be accessed
+  = 2. See there are any notifications for your accounts
+    -> Personal Health Dashboard
+
