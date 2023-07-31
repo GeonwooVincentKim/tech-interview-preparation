@@ -1,0 +1,23 @@
+IAM Guidelines & Best Practices
+- 1. Do not use the root account except for AWS account setup
+  = You should have two accounts, a root account and your own personal accounts
+
+- 2. One physical user = One AWS User
+  = 1. Do not give to your friends who want to use AWS your credentials
+  = 2. Instead, create another user for them
+
+- 3. Assign users to groups and assign permissions to groups
+- 4. Create a strong password policy
+- 5. Use and enforce the use of Multi Factor Authentication (MFA)
+  = Really guarantee that your account is going to be safe or safter from hackers
+
+- 6. Create and use Roles for giving permissions to AWS Services
+  = Includes easy two instances which are virtual servers
+
+- 7. Use Access Keys for Programmatic Access (CLI / SDK)
+  = When user use AWS programmatically or using the CLI
+    -> 1. Must generate access keys
+    -> 2. These access keys are just like passwords, they're very secret
+
+- 8. Audit permissions of your account using IAM Credentials Report & IAM Access Advisor
+- 9. Never share IAM users & Access Keys
