@@ -1,0 +1,31 @@
+IAM Section - Summary
+- 1. Users: mapped to a physical user, has a password for AWS Console
+- 2. Groups: contains users only
+- 3. Policies: JSON document that outlines permissions for users or groups
+- 4. Roles: for EC2 instances or AWS Services
+- 5. Security: MFA + Password Policy
+- 6. AWS CLI: manage your AWS Services using the command-line
+- 7. AWS SDK: manage your AWS Services using a programming language
+- 8. Access Keys: access AWS using the CLI or SDK
+- 9. Audit: IAM Credential Reports & IAM Access Advisor
+
+IAM & AWS CLI Quiz
+- 1. 
+  = 
+
+- 2. Which of the following is an IAM Security Tools?
+  = IAM Crendentials Report
+
+- 3. Which answer is INCOREECT regarding IAM Users?
+  = IAM Users access AWS Services using root account credentials
+
+- 4. Which of the following is an IAM best pratices?
+  = Don't use the root user account
+
+- 5. What are IAM Policies?
+  = JSON documents that define a set of permissions for making requests to AWS Services, and can be used by IAM Users, User Groups, and IAM Roles
+
+- 6. Which principle should you apply regariding IAM Permissions?
+  = Grant least privilege
+
+- 7. 
