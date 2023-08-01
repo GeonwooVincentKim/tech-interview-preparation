@@ -1,0 +1,64 @@
+AWS Budget Setup
+- 1. If you are logged in as an IAM user on your account
+  = 1. Need to change something on the root account before get access with IAM users
+  = 2. Even administrators to the Billing & Cost Management Dashboard
+
+- 2. Activate IAM User and Role Access to Billing Information in AWS EC2
+  = 1. Allow IAM Users who are administrators to access billing data
+  = 2. If you don't want that, you can also set up a billing alarm using the root account
+
+- 3. Bills
+  = 1. AWS bill summary
+  = 2. Highest estimated cost by service provider
+  = 3. Charges by account
+  = 4. Make sure to debug your own costs
+ 
+- 4. Free tier
+  = 1. Service
+  = 2. AWS Free Tier usage limit
+  = 3. Current usage
+  = 4. Forecasted usage
+  = 5. MTD actual usage %
+  = 6. MTD forecasted usage %
+
+- 5. Create an AWS Budget (Budgets)
+  = 1. Get alerts about upcoming costs
+  = 2. Choose budget type
+    -> 1. Budget setup
+       => 1. Use a template (simplified)
+          -- 1. Use the recommended configurations
+	  -- 2. Can change some configurations some options after the budget is created
+
+       => 2. Customize (advanced)
+	  -- 1. Customize a budget to set parameters specific to your use case	
+	  -- 2. You can customize the time period, the start month, and specific accounts
+
+    -> 2. Templates - new
+       => 1. Zero spend budget
+	  -- 1. Create a budget that notifies you
+	  -- 2. once your spending exceeds $0.01 which is above the AWS Free Tier limits
+
+       => 2. Monthly cost budget
+	  -- Create a monthly notifies you if you exceed, forecased to exceed, the budget amount
+
+       => 3. Daily Savings Plans coverage budget
+	  -- 1. Create a coverage budget for your Savings Plans
+	  -- 2. Notifies you when you fall below the defined target
+
+       => 4. Daily reservation utilization budget
+	  -- 1. Create a utilization budget for your reservations
+ 	  -- 2. Notifies you when you fall below the defined target
+
+    -> 3. Zero spend budget - Template
+       => 1. Budget Name
+	  -- Provide a descriptive name for this budget
+
+       => 2. Email recipients
+	  -- Speicify the email recipients you want to notify when the threshold has exceeded
+
+       => 3. Scope
+	  -- All AWS Services are in scope in this budget
+
+- 6. Overview - Exceeded
+  = 1. Already in account that has been some charges
+  = 2. User have an alert and User would receive an email
