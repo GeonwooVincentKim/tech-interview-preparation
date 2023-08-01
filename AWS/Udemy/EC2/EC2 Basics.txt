@@ -35,7 +35,8 @@ EC2 User Data
 
 EC2 Instance types: example
 - 1. Instance -> t2.micro, t2.large, c5d.4xlarge, r5.16xlarge, m5.8xlarge
-- 2. vCPU -> 1, 4, 16, 64, 32
-- 3. Storage -> EBS Only, EBS Only, 1 x 400 NVMe SSD, EBS Only, EBS Only
-- 4. Network Performance -> Low to moderate, Moderate, Up to 10 Gbps, 20 Gbps, 10 Gbps
-- 5. EBS Bandwidth (Mbps) -> X, X, 4750, 13600, 6800
+- 2. vCPU (cores) -> 1, 4, 16, 64, 32
+- 3. Mem (GiB) -> 1, 16, 32, 512, 128
+- 4. Storage -> EBS Only, EBS Only, 1 x 400 NVMe SSD, EBS Only, EBS Only
+- 5. Network Performance -> Low to moderate, Moderate, Up to 10 Gbps, 20 Gbps, 10 Gbps
+- 6. EBS Bandwidth (Mbps) -> X, X, 4750, 13600, 6800
