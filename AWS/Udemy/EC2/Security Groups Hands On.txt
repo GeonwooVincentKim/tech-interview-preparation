@@ -1,0 +1,6 @@
+Security Groups Hands On
+- Inbound rules
+  = 1. Allows connectivity from the outside into the EC2 Instance
+  = 2. 0.0.0.0/0 is anywhere
+  = 3. If I delete my account inbound rules that the Port range is 80
+    -> I cannot access to the page that are currently working on the Web-Server (EC2 Instance)
