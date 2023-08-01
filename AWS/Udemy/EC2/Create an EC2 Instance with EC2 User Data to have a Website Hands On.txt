@@ -48,4 +48,18 @@ EC2 Launch an instance
        => 1. Create security group
        => 2. Select existing security group
 
-- 6. Configure storage
+- 6. Configure Storage (Storage (volumes) - with EBS)
+  = EBS Volumes (In the Storage (volumes) - with EBS)
+    -> Delete on Termination
+       => Once we terminate our EC2 Instance, then that volume is also going to be deleted
+
+- 7. Advanced details
+  = 1. Puschasing option
+  = 2. IAM Instance profile
+  = 3. Hostname type
+  = 4. DNS Hostname
+  = 5. User data (optional)
+    -> 1. When we pass a script (some comments) to our EC2 Instance 
+    -> 2. To execute on the first launch of our EC2 Instance and only the first launch
+
+- 8. Details
