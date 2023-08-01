@@ -40,3 +40,6 @@ EC2 Instance types: example
 - 4. Storage -> EBS Only, EBS Only, 1 x 400 NVMe SSD, EBS Only, EBS Only
 - 5. Network Performance -> Low to moderate, Moderate, Up to 10 Gbps, 20 Gbps, 10 Gbps
 - 6. EBS Bandwidth (Mbps) -> X, X, 4750, 13600, 6800
+
+- 7. t2.micro is part of the AWS free tier (up to 750 hours per month)
+
