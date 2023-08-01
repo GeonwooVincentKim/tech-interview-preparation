@@ -67,3 +67,11 @@ Referencing other security groups Diagram
 
 - 6. Security Group 3 (attached) & EC2 Instance (IP XX.XX.XX.XX)
   = UnAuthroized in the inbound rules, being denied and things don't work
+
+Classic Ports to know
+- 1. 22 = SSH (Secure Shell) - log into a Linxu instance
+- 2. 21 = FTP (File Transfer Protocol) - upload files into a file share
+- 3. 22 = SFTP (Secure File Transfer Protocol) - upload files using SSH
+- 4. 80 = HTTP - access unsecured websites
+- 5. 3389 = RDP (Remote Desktop Protocol) - log into a Windows instance
+
