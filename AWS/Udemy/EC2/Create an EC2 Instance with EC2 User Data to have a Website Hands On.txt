@@ -1,0 +1,51 @@
+Hands-On: Launching an EC2 Instance running Linux
+- 1. We'll be launching our first virual server using the AWS Console
+- 2. We'll get first high-level approach to the various parameters
+- 3. We'll see that our web server is launched using EC2 user data
+- 4. We'll learn how to start / stop / terminate our instance.
+
+EC2 Launch an instance
+- 1. Name and tags
+- 2. Application and OS Images (Amazon Machine Image)
+  = 1. Amazon Machine Image (AMI)
+    -> Choose Free tier eligible instance before you launch instance
+
+  = 2. Architecture
+    -> 64-bit (x86)
+
+- 3. Instance type
+  = t2.micro - Free tier eligible
+
+- 4. Key pair (login)
+  = 1. SSH Utility to access own instance
+  = 2. Key pair name - required
+  = 3. Create Key pair
+    -> 1. Key pair name
+    -> 2. Key pair type
+       => 1. RSA - Encrpyted private and public key pair
+       => 2. ED25519 - Encrypted private and public key pair (Not supported for Windows Instances)
+
+    -> 3. Private Key file format
+       => 1. .pem - For use with OpenSSH, Mac or Linux or Above than Windows 10 (Windows 10, 11)
+       => 2. .ppk - For use with PuTTY, Less than Windows 10 (Windows 8, 7)
+
+- 5. Network Settings
+  = 1. Network
+  = 2. Subnet
+  = 3. Auto-assign public IP
+  = 4. Firewall (security groups)
+    -> 1. Control the traffic from and to our instance, and therefore we can add rules
+    -> 2. First security group called 'launch-wizard-1'
+       => 1. Allow SSH Traffic from - Helps you connect to your instance
+       => 2. Allow HTTPS Traffic from the internet
+          -- To set up an endpoint, for example when creating a web server
+
+       => 3. Allow HTTP Traffic from the internet
+	  -- 1. To set up an endpoint, for example when creating a web server
+	  -- 2. To launch the local web-server, it needs this
+
+    -> 3. Security Group
+       => 1. Create security group
+       => 2. Select existing security group
+
+- 6. Configure storage
