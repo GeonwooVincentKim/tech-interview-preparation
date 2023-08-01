@@ -1,0 +1,71 @@
+EC2 Instance Types - Overviewq
+- 1. You can use different types of EC2 Instances that are optimised for differnt use cases
+  = 1. https://aws.amazon.com/ec2/instance-types/
+  = 2. Kind
+    -> 1. General Purpose
+    -> 2. Compute Optimized
+    -> 3. Memory Optimized
+    -> 4. Accelerated Computing
+    -> 5. Storage Optimized
+    -> 6. Instance Features
+    -> 7. Measuring Instance Performance
+
+- 2. AWS has the following naming convention:  ex) m5.2xlarge
+  = 1. m: instance class, a general purpose type of instance
+  = 2. 5: generatrion of the instance
+    -> 1. AWS improves the hardware over time
+    -> 2. If we release a new generation of hardware
+    -> 3. If they improve the M type of instance class, then we'll go to `m6`
+
+  = 3. 2xlarge: size within the instance class
+    -> small, large, 2x large, 4x large
+
+EC2 Instance types - General Purpose
+- 1. Great for a diversity of workloads such as web servers or code repositories
+- 2. Balance Between:
+  = 1. Compute
+  = 2. Memory
+  = 3. Networking
+
+- 3. Using the t2.micro whicH is a General Purpose EC2 Instance
+
+EC2 Instance types - Compute Optimized
+- 1. Great for compute-intesive tasks that require high performance processors:
+  = 1. Batch processing workloads
+  = 2. Media Transcoding
+  = 3. High performance web servers
+  = 4. High performance computing (HPC)
+  = 5. Scientific modeling & Machine Learning
+  = 6. Dedicated gaming servers
+    -> Compute Optimized (C7, C6, C5, C4,..)
+
+EC2 Instance types - Memory Optimized
+- 1. Fast performances for workloads that process large data sets in memory
+- 2. Use cases:
+  = 1. High performance, relational/non-relational databases
+  = 2. Distributed web scale cache stores
+  = 3. In-memory databases optimized for BI (Business Intelligence)
+  = 4. Applications performing real-time processing of big unstructured data
+
+EC2 Instance types - Storage Optimized
+- 1. Great for storage-intensive tasks that require high, sequential read and write access to large data sets on local storage
+
+- 2. Use cases:
+  = 1. High frequency online transcation processing (OLTP) systems
+  = 2. Relational & NoSQL Databases
+  = 3. Cache for in-memory databases (for example, Redis)
+  = 4. Data warehousing applications
+  = 5. Distributed file systems
+    -> Storage Optimized (I4, I3, D2 D3, H1)
+
+EC2 Instance types: example
+- 1. Instance -> t2.micro, t2.large, c5d.4xlarge, r5.16xlarge, m5.8xlarge
+- 2. vCPU (cores) -> 1, 4, 16, 64, 32
+- 3. Mem (GiB) -> 1, 16, 32, 512, 128
+- 4. Storage -> EBS Only, EBS Only, 1 x 400 NVMe SSD, EBS Only, EBS Only
+- 5. Network Performance -> Low to moderate, Moderate, Up to 10 Gbps, 20 Gbps, 10 Gbps
+- 6. EBS Bandwidth (Mbps) -> X, X, 4750, 13600, 6800
+
+- 7. t2.micro is part of the AWS free tier (up to 750 hours per month)
+- 8. EC2 Insitute Instances together (https://www.ec2instances.info/)
+
