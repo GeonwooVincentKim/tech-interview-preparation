@@ -62,4 +62,47 @@ EC2 Launch an instance
     -> 1. When we pass a script (some comments) to our EC2 Instance 
     -> 2. To execute on the first launch of our EC2 Instance and only the first launch
 
-- 8. Details
+- 8. Summary
+  = Free tier
+    -> 1. first year includes 750 hours of t2.micro
+    -> 2. If you don't have a t2.micro in your region, then it's going to be a t3.micro
+    -> 3. 30 GiB of EBS Storage
+
+Instances
+- 1. Details
+  = 1. Instance ID
+  = 2. Public IPv4 Address
+    -> To access our EC2 Instance
+
+  = 3. Private IPv4 Address
+    -> To access that instance internally on the AWS network, which ir private
+
+  = 4. Instance state
+  = 5. Hostname type
+  = 6. Private IP DNS name (IPv4 only)
+  = 7. Platform
+    -> Amazon Linux (Inferred)
+
+  = 8. Key pair name (EC2 Tutorial)
+
+- 2. Security
+  = 1. Security Groups (created called launch-wizard-1)
+  = 2. Instance Port range
+
+WebSite
+- 1. If you didn't set the program that the HTTPS works, you can't access to the webpage with it
+- 2. IP next to the from is not the public IP
+  = 1. IP that is Starting from 172 actually correspond to the private IPv4 Address
+  = 2. Use the public IP address to access it
+
+- 3. If you decide to stop an instance, then AWS will ot bill you for it
+  = 1. The instance state is kept because you have a volume attached to it
+  = 2. If you stop an instance and then you start it later on
+    -> 1. AWS will maybe change its public IPv4
+    -> 2. You need to copy the new IPv4 make sure to use HTTP and voila
+    -> 3. We have access back to our EC2 Instance
+
+  = 3. Private IP will always stay the same
+
+- 4. Get rid of the instance
+  = Terminate instance
