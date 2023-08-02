@@ -1,0 +1,16 @@
+How to SSH into your EC2 Instance (Windows 10)
+- 1. Open Powershell
+- 2. Move to the .ppm file path
+- 3. Type ssh -i .\EC2Tutorial.pem ec2-user@Public Ipv4 Address
+  = 1. Please enter this IP using EC2 User which is the one we have because we use Amazon
+  = 2. `.pem` key
+
+- 4. Type "yes" when `Are you sure you want to continue connecting` message displayed
+- 5. Permission issue
+  = 1. Check 'properties' of 'EC2Tutorial.pem'
+  = 2. Go to "Security" tab and click 'Advanced' button
+  = 3. Change the "owner" of this file, click 'Change' text buton
+  = 4. Set the name -> Example: kgw
+  = 5. Click the name you set and click 'Add' button
+  = 6. Click 'Select a principal' and re-enter the name you set -> Example: kgw
+  = 7. Check 'Full control' and click 'OK' button
