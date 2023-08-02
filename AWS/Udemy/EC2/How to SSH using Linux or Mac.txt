@@ -1,0 +1,8 @@
+How to SSH into your EC2 Instance Linux / MacOS X
+- 1. We'll learn how to SSH into your EC2 Instance using Linux / Mac.
+- 2. SSH is one of the most important function.
+- 3. It allows you to control a remote machine, all using the command line.
+  = 1. EC2 Machine Linux (Amazon Linux 2) Public IP
+  = 2. Security group and on it we allowed the Port 22 of SSH
+  = 3. Access the web throught Port 22
+  = 4. Command Interface is going to be just as if we were inside that machine
