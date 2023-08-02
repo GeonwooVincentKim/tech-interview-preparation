@@ -1,0 +1,34 @@
+How to SSH into your EC2 Instance (Windows)
+- 1. We'll learn how to SSH into your EC2 Instance using Windows
+- 2. SSH is one of the most important function.
+- 3. It allows you to control a remote machine, all using command line
+  = 1. SSH Port number covers EC2 Machine Linux Public IP
+  = 2. Can connect the internet.
+
+PuTTY
+- 1. PuTTY is used by programs below Windows 10.
+- 2. Initiate PuTTY Key Generator
+- 3. Load `EC2Tutorial.ppm` key
+- 4. Save `EC2Tutorial.ppk` key as a private
+- 5. Open PuTTY Configuration
+- 6. Copy EC2 Instances `Public I[Pv4 Address` to the "Host Name (or IP address)"
+- 7. Save `EC2 Instance` in "Saved Sessions" and click 'Save' button
+- 8. Double Click `EC2 Instance` and click 'Accept' button
+
+PuTTY Authentication
+- 1. Click `EC2 Instance` and click 'load' button
+- 2. Add `ec2-user@` before the IP address (which are in "Host Name (or IP address)")
+- 3. Click `EC2 Instance` and click 'Save' button again
+- 4. Click "SSH" and click "Credentials"
+- 5. Find "Private key file for authentication" and click 'browse' button
+- 6. Copy and paste the `EC2Tutorial.ppk` file path
+- 7. Don't click on open, go back to "Session" tab and then click 'save' button
+
+Execute PuTTY
+- 1. Refer to SSH, just that means you should PuTTY into the instance at least once
+  = 1. whoami
+  = 2. ping google.com
+    -> Just start running some commands, and make sure stop this with press `Ctrl + C`
+
+- 2. Exit from PuTTY Command Lines
+  = Press `Close` button above the command lines
