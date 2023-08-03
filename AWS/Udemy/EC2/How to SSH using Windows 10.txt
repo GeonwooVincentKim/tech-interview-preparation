@@ -14,3 +14,4 @@ How to SSH into your EC2 Instance (Windows 10)
   = 5. Click the name you set and click 'Add' button
   = 6. Click 'Select a principal' and re-enter the name you set -> Example: kgw
   = 7. Check 'Full control' and click 'OK' button
+
