@@ -21,4 +21,40 @@ EC2 Instance Connect
   = 2. Edit Inbound rules
     -> 1. If you delete SSH rule with Port 22, The Connected instance does not working
     -> 2. Add SSH with Anyware IPv4, and then save the rule
-    -> 3. In case, it could user could using IPv6, Do Anywhere IPv6 as well (Add two entries)
+    -> 3. In case, it could user could using IPv6, Do Anywhere IPv6 as well 
+       => Add two entries for your EC2 Instance Connect to work sometimes, depends on your setup
+
+EC2 Instance Roles Demo
+- 1. Regardless if you're using EC2 Instance Connects or SSH through terminal, or PuTTY
+  = Then it's in the same stage (User name@Private IPv4 Address)
+
+- 2. Issue any kind of Linux commands you want
+- 3. Amazon Linux AMI
+  = 1. Comes with the aid of a CLI, and installed
+  = 2. Unable to locate credentials
+    -> 1. type `aws configure` to configure the credentials
+    -> 2. Specify an Access ID, a Secret Access Key, and a region name
+    -> 3. If runs `aws configure` and enter our personal details onto this EC2 Instance
+       => 1. Anyone else in our accounts could again connect to your EC2 Instance
+       => 2. EC2 Instance Connect and retrieve the value of these credentials in our instance
+       => 3. If we run aws configure and enter our personal details onto this EC2 Instance
+	  -- 1. Anyone else in our account could again connect to our EC2 Instance
+	  -- 2. Retrieve the value of these credentials in our instance - Bad Idea
+
+  = 3. Don't enter your IAM API Key 
+    -> The Access Key ID and the Secret Access Key into an EC2 Instance
+
+- 4. IAM Roles
+  = 1. IAMReadOnlyAccess - attach this role onto our EC2 Instance to provide it with credentials
+  = 2. Action - Security - Modify IAM Role
+    -> Modify IAM Role
+       => Choose IAM Role and click on Update IAM role to attah this IAM role into our instance
+
+  = 3. Check that my IAM users connect to my EC2 Instance well
+    -> 1. aws iam list-users
+    -> 2. Get a response around the users from IAM
+    -> 3. Detach perimission 
+       => 1. Getting access denied
+       => 2. Role is really linked now to the EC2 Instance
+
+  = 4. Provide AWS Credentials to our EC2 Instances only, only through IAM roles
