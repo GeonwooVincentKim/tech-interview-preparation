@@ -51,6 +51,68 @@ EC2 Savings Plan
 - 5. Flexible across:
   = 1. Instance Size (e.g., m5.xlarge, m5.2xlarge)
   = 2. OS (e.g., Linux, Windows)
+  = 3. Tenancy (Host, Dedicated, Default)
 
+EC2 Spot Instances
+- 1. Can get a discount of up to 90% compared to On-demand
+- 2. Instances that you ca "lost" at any point of time if you max price is less than the current spot price
 
- 
+- 3. The MOST cost-efficient instances in AWS
+- 4. Useful for workloads that are resilient to failure
+  = 1. Batch jobs
+  = 2. Data analysis
+  = 3. Image processing
+  = 4. Any distributed workloads
+  = 5. Workloads with a flexible start and end time
+
+- 5. Not suitable for critical jobs or database
+
+EC2 Dedicate Hosts
+- 1. A physical server with EC2 Instance capacity fully dedicated to your use
+- 2. Allows you address complianc requirements and use your existing server-bound software licenses
+  = per-socket, per-core, per-VM software licenses
+
+- 3. Purchasing Options:
+  = 1. On-demand - pay per second for active Dediicated Host
+  = 2. Reserved - 1 or 3 years (No Upfront, Partial Upfront, All Upfront)
+
+- 4. The most expensive option
+- 5. Useful for software that have complicated licensing model
+  = BYOL - Bring Your Own License
+
+- 6. Or for companies that have strong regulatory or compliance needs
+
+EC2 Dedicated Instances
+- 1. Instances run on hardware that's dedicated to you
+- 2. May share hardware with other instacnes in same account
+- 3. No control over instance placement (Can move hardware after Stop / Start)
+
+EC2 Capacity Reservations
+- 1. Reserve On-Demand instances capacity in a specific AZ for any duration
+- 2. You always have access to EC2 capacity when you need it
+- 3. No time commitment (create / cancel anytime), no biling discounts
+- 4. Combine with Regional Reserved Instances and Savings Plans to benefit from biling discounts
+- 5. You're charged at On-Demand rate whether you run instances or not
+- 6. Suitable for short-term, uninterrupted workloads that needs to be in a specific AZ
+
+Which purchasing option is right for me?
+- 1. On demand: coming and staying in resort whenever we like, we pay the full price
+- 2. Reserved: like planning ahead and if we plan to stay for a long time, we may get a good discount
+
+- 3. Savings Plans: pay a certain amount per hour for certain perfiod and stay in any room type (e.g.,King, Suite, Sea View,...)
+
+- 4. Spot instances: the hotel allows people to bid for the empty rooms and the highest bidder keeps the rooms. You can get kicked out at any time
+
+- 5. Dedicated Hosts: We book an entire building of the resort
+- 6. Capacity Reservations: You book a room for a period with full prive even you don't stay in it
+
+Price Comparsion Example - m4.large - us-east-1
+- 1. On-Demand = $0.10
+- 2. Spot Instance (Spot Price) = $0.038 ~ $0.039 (up to 61% off)
+- 3. Reserved Instance (1 year) = $0.062 (No Upfront) ~ $0.058 (All Upfront)
+- 4. Reserved Instance (3 year) = $0.043 (No Upfront) ~ $0.037 (All Upfront)
+- 5. EC2 Savings Plan (1 year) = $0.062 (No Upfront) ~ $0.058 (All Upfront)
+- 6. Resrved Convertible Instance (1 year) = $0.071 (No Upfront) ~ $0.066 (All Upfront)
+- 7. Dedicated Host = On-Demand Price
+- 8. Dedicated Host Reservation = Up to 70% off
+- 9. Capacity Reservations = On-Demand Price
