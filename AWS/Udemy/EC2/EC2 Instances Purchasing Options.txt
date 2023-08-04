@@ -1,0 +1,56 @@
+EC2 Instances Purchasing Options
+- 1. On-Demand Instances
+  = 1. Short workload
+  = 2. Predictable pricing
+  = 3. Pay by second
+
+- 2. Reserved (1 & 3 Years)
+  = 1. Reserved Instances - long workloads
+  = 2. Conventible Reserved Instances - long workloads with flexible instances
+
+- 3. Savings Plan (1 & 3 Years)
+  = commitment to an amount of usage, long workload
+
+- 4. Spot Instances
+  = 1. Short workloads
+  = 2. Cheap, can lose instances (less reliable)
+
+- 5. Dedicated Hosts
+  = Book an entire physical server, control instance placement
+
+- 6. Capacity Reservations
+  = Reserve capacity in a specific AZ for any duration
+
+EC2 On Demend
+- 1. Pay for what you use:
+  = 1. Linxu or Window - Biling per second, after the first minute
+  = 2. All other operating systems - biling per hour
+
+- 2. Has the highest cost but no upfront payment
+- 3. No long-term commitment
+- 4. Recommended for short-term and un-interrupted workloads, where you can't predict how the application will behave
+
+EC2 Reserved Instances
+- 1. Up to 72% discount compared to On-demand
+- 2. You reserve a specific instance attributes (Instance Type, Region, Tenancy, OS)
+- 3. Reservaton Period - 1 year (+discount) or 3 years (+++discount)
+- 4. Payment Options - No Upfront (+), Partial Upfront (++), All upfront (+++)
+- 5. Reserved Instance's Scope - Region or Zonal (reserve capacity in an AZ)
+- 6. Recommended for steady-state usage applications (think database)
+- 7. You can buy and sell in the Reserved Instance Marketplace
+
+- 8. Convertible Reserved Instance
+  = 1. Can change the EC2 Instance type, instance family, OS, scope and tenancy
+  = 2. Up to 66% discount
+
+EC2 Savings Plan
+- 1. Get a discound based on long-term usage (up to 72% - same as RIs(Reserved Instances))
+- 2. Commit to a certain type of usage ($10/hour for 1 for 3 years)
+- 3. Usage beyong EC2 Savings Plans is billed at the On-Demand price
+- 4. Locked to a specific instance family & AWS region (e.g., M5 in us-east-1)
+- 5. Flexible across:
+  = 1. Instance Size (e.g., m5.xlarge, m5.2xlarge)
+  = 2. OS (e.g., Linux, Windows)
+
+
+ 
