@@ -1,0 +1,24 @@
+EC2 Instance Connect
+- 1. Click Connect with selected instance
+- 2. Connect to instance
+  = 1. EC2 Instance Connect
+    -> 1. Allow us to do a browser based SSH Session into our EC2 Instance
+    -> 2. Instance ID
+    -> 3. Connection Type
+    -> 4. Public IP Address
+       => Verified the public IP Address
+
+    -> 5. User name
+       => 1. Provided by default, which is EC2 User
+       => 2. because it get guessed by AWS that we are using Amazon and X2
+       => 3. Therefote EC2 User is the right username
+
+    -> 6. SSH Utility beforehand
+       => 1. Either the option to use your own terminal mssh
+       => 2. To use PuTTY, or to use the SSH Command
+       => 3. Regardless of you here on windows, Linux, or Mac, the EC2 Instance Connect
+
+  = 2. Edit Inbound rules
+    -> 1. If you delete SSH rule with Port 22, The Connected instance does not working
+    -> 2. Add SSH with Anyware IPv4, and then save the rule
+    -> 3. In case, it could user could using IPv6, Do Anywhere IPv6 as well (Add two entries)
