@@ -1,1 +1,16 @@
+EC2 Placement Groups - Hands On
+- 1. Create a placement group
+  = 1. Name
+  = 2. Placement Strategy
+    -> 1. Cluster
+    -> 2. Spread
+    -> 3. Partition
 
+  = 3. (If selected Spread) Spread Level
+    -> 1. Rack (No restrictions)
+    -> 2. Host (Outposts only)
+
+  = 4. (If selected Partition) Number of partitions
+    -> 1, 2, 3, 4, 5, 6, 7
+
+- 2. Placement groups
