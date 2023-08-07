@@ -30,7 +30,7 @@ EC2 Instances Launch Types Hands On
     -> 3. Target capacity
        => 1. Set as 10 vCPUs
        => 2. instances - vCPUs - Memory (MiB - RAM)
-       => 3. Check `Maintain Target Capacity`
+       => 3. Check `Maintain Target Capacity`.
           -- 1. Set `Interruption behavior` as 'Terminate'
              (Can select Terminate, Stop, or Hibernate)
           -- 2. You can also check `Capacity rebalance`
@@ -54,10 +54,10 @@ EC2 Instances Launch Types Hands On
 
     -> 2. Request type (One-time, Persistent)
        => 1. One-time - in case it gets reclaimed, it will automatically be terminated
-          -- Choose 'Valid to' as `No request expiry date`
+          -- Choose 'Valid to' as `No request expiry date`.
 
        => 2. Persistent - Spot instance will keep on coming back when the price requirements are set
-          -- Choose 'Valid to' as `Set your request expiry date`
+          -- Choose 'Valid to' as `Set your request expiry date`.
 
     -> 3. Interruption behavior (Hibernate, Stop, Terminate)
 
@@ -65,4 +65,23 @@ EC2 Instances Launch Types Hands On
 - 3. Reserved Instances
   = Purchase Reserved Instances
     -> 1. Platform, Tenancy, Offering Class, Instance Type, Term, Payment option
-    -> 2. Click the `Search` button and check the `Standard` and `Convertible` status (optional)
+    -> 2. Click the `Search` button and check the `Standard` and `Convertible` statuses (optional)
+
+- 4. Savings Plans
+  = 1. Allows you to dedicate a specific amount of $/hour you spend for a 1 or 3-year term.
+  = 2. Gives you flexibility in how you want to launch your instance.
+    -> It gives you flexibility in terms of instance type AZs, and so on.
+
+- 5. Dedicated Hosts
+  = 1. To launch a host you get access to a lower-level kind of hardware
+    -> It gives you better licensing pricing
+
+  = 2. Allocate Dedicated Hosts
+    -> 1. Name tag
+    -> 2. Instance family
+    -> 3. Support multiple instance types
+    -> 4. Availability Zone
+    -> 5. Outpost ARN - optional
+    -> 6. Instance auto-placement
+    -> 7. Host recovery & Host maintenance
+    -> 8. Quantity
