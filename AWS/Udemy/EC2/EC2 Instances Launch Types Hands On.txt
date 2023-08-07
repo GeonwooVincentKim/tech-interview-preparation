@@ -45,4 +45,24 @@ EC2 Instances Launch Types Hands On
        => Spot allocation strategy
           -> 1. Price capacity-optimized (recommended)
           -> 2. Capacity optimized
-          
+
+- 2. Launch an Instance
+  = Advanced Details
+    -> 1. Purchasing option 
+       => 1. Request Spot Instances
+       => 2. Maximum price - Can set your maximum price per instance/hour or not
+
+    -> 2. Request type (One-time, Persistent)
+       => 1. One-time - in case it gets reclaimed, it will automatically be terminated
+          -- Choose 'Valid to' as `No request expiry date`
+
+       => 2. Persistent - Spot instance will keep on coming back when the price requirements are set
+          -- Choose 'Valid to' as `Set your request expiry date`
+
+    -> 3. Interruption behavior (Hibernate, Stop, Terminate)
+
+
+- 3. Reserved Instances
+  = Purchase Reserved Instances
+    -> 1. Platform, Tenancy, Offering Class, Instance Type, Term, Payment option
+    -> 2. Click the `Search` button and check the `Standard` and `Convertible` status (optional)
