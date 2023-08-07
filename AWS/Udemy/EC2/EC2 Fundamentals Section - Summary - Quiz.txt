@@ -43,3 +43,9 @@ EC2 Fundamentals Quiz
 
 = Dedicated Hosts
 
+11.
+- 1. Deploy a DB technology on an EC2 Instance
+- 2. vendor license bills you based on the physical cores and underlying network socket visibility
+- 3. Which EC2 Purchasing Options allow you to get visibility into them
+
+= Dedicated Hosts
