@@ -1,8 +1,8 @@
 EC2 Spot Instance Requests
-- 1. Can get a discount of up to 90% compared to On-Demand
-- 2. Define max spot price and get the instance while current spot price < max
-  = 1. The horuly spot price varies based on offer and capacity
-  = 2. If the current spot price > your max price you can choose to stop or terminate your instance with a 2 minutes grace period.
+- 1. You can get a discount of up to 90% compared to On-Demand
+- 2. Define the max spot price and get the instance while the current spot price < max
+  = 1. The hourly spot price varies based on offer and capacity
+  = 2. If the current spot price is> your max price, you can stop or terminate your instance with a 2-minute grace period.
 
 - 3. Oher strategy: Spot Block
   = 1. "Block" spot instance during a specific time frame (1 to 6 years) without interruptions
@@ -10,20 +10,20 @@ EC2 Spot Instance Requests
 
   = 2. In rare situations, the instance may be reclaimed
 
-- 4. Used for batch jobs, data analysis, or workloads that are resilient to failures.
+- 4. Used for batch jobs, data analysis, or workloads resilient to failures.
 - 5. Not great for critical jobs or databases
 
 EC2 Spot Instances Pricing
 - 1. User-defined max price
 - 2. Spot Instance Pricing History
 
-How to terminate Sport Instances?
+How do terminate Sport Instances?
 <Diagram A>
 - 1. Create Request
 - 2. Spot Request
   = 1. Maixum price
   = 2. Desired number of instances
-  = 3. Launh specification
+  = 3. Launch specification
   = 4. Request type: one-time | persistent
   = 5. Valid from, Valid until
 
@@ -40,18 +40,23 @@ How to terminate Sport Instances?
 - 2-A. Failed
 - 2-B. Active
 - 2-B-A. Persistent - that goes to `Open`
-- 2-B-B. Cancelled - that goes to `Cancelled`
+- 2-B-B. Canceled - that goes to `Canceled`
 - 2-B-C-1. Persistent - that goes to `Disabled`
 - 2-B-C-2. Disabled
 - 2-B-C-2-A. Persistent - that goes to `Open`
-- 2-B-C-2-B. Persistent - that goest to `Cancelled`
+- 2-B-C-2-B. Persistent - that goes to `Canceled`
 - 2-B-D-1. One-time - that goes to `Closed`
-- 2-C. Cancelled
+- 2-C. Canceled
 
 <Summary>
 - 1. You can only cancel Spot Instance requests that are open, active, or disabled
-- 2. Cancelling a Spot Request does not terminate instances
-- 3. You much first cancel a Spot Request, and then terminate the associate Spot Instances
+- 2. Canceling a Spot Request does not terminate instances
+- 3. You much first cancel a Spot Request and then terminate the associate Spot Instances
 
 Spot Fleets
+- 1. Spot Fleets = set of Spot Instances + (Optional) On-Demand Instances
+- 2. The Spot Fleet will try to meet the target capacity with price constraints
+  = 1. Define Possible launch pools: Instance type (m5.large), OS, Availability Zone
+  = 2. Can have multiple launch pools, so that the fleet can choose
+  = 3. Spot Fleet spots launching instances when reaching capacity or max cost
 
