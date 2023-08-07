@@ -1,0 +1,48 @@
+EC2 Instances Launch Types Hands On
+- 1. Spot Requests
+  = 1. EC2 - INSTANCES - Spot Requests
+  = 2. Create Spot Instances
+    -> 1. Click 'Request Spot Instances' button
+    -> 2. Go to `Create Spot Fleet Request` page
+       => 1. Manually configure launch parameters
+          -- Select an AMI and configure optionsl parameters
+
+       => 2. Use a launch template
+          -- Use a launch template to quickly set instance launch parameters
+
+       => 3. AMI
+       => 4. Key pair name
+
+    -> 3. Additional Request Details
+       => 1. IAM Fleet role
+       => 2. Maximum price
+          -- 1. Use Default (Recommended)
+          -- 2. Set your max price (per instance/hour)
+
+       => 3. Request Valid from
+       => 4. Request Valid until
+       => 5. Terminate the instances when the request expires
+       => 6. Load balancing
+          -- 1. Receive traffic from one or more load balancers
+          -- 2. Classic load balancers
+          -- 3. Target Groups
+
+    -> 3. Target capacity
+       => 1. Set as 10 vCPUs
+       => 2. instanes - vCPUs - Memory (MiB - RAM)
+       => 3. Check `Maintain Target Capacity`
+          -- 1. Set `Interruption behavior` as 'Terminate'
+             (Can select Terminate, Stop, Hibernate)
+          -- 2. You can also check `Capacity rebalance`
+
+    -> 4. Instance type requirements
+       => 1. Specify instances attributes that match your compute requirements
+          -- Required instance attributes (vCPUs, Memory (GiB), Additional Instance attribute)
+       
+       => 2. Manually select instance types
+       
+    -> 5. Allocation strategy
+       => Spot allocation strategy
+          -> 1. Price capacity optimized (recommended)
+          -> 2. Capacity optimized
+          
