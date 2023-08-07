@@ -70,5 +70,5 @@ Spot Fleets
        => Best choice for most workloads
 
 - 4. Spot Fleets allow us to automatically request Spot Instances with the lowest price
-  = Spot fleets give us an extra saving based on spot instances
+  = Spot fleets give us an extra saving based on spot instances (Benefits of Spot Fleets)
     -> It's smart enough to choose the right spot instance pool to allow us to get the maximum amount of savings
