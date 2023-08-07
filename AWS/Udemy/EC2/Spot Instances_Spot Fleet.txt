@@ -17,7 +17,7 @@ EC2 Spot Instances Pricing
 - 1. User-defined max price
 - 2. Spot Instance Pricing History
 
-How do terminate Sport Instances?
+How do terminate Spot Instances?
 <Diagram A>
 - 1. Create Request
 - 2. Spot Request
