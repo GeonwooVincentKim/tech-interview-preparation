@@ -14,3 +14,7 @@ EC2 Placement Groups - Hands On
     -> 1, 2, 3, 4, 5, 6, 7
 
 - 2. Placement groups
+- 3. Launch an instance
+  = Advanced details
+    -> Placement Group
+       => Select `my-critical-group` or `my-distributed-group` or `my-high-performance-group`
