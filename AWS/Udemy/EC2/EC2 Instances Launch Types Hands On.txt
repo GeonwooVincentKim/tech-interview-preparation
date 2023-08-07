@@ -85,3 +85,10 @@ EC2 Instances Launch Types Hands On
     -> 6. Instance auto-placement
     -> 7. Host recovery & Host maintenance
     -> 8. Quantity
+
+- 6. Capacity Reservations
+  = 1. Ensure that capacity is available within your EC2 Instance launch
+  = 2. Create a Capacity Reservation
+    -> 1. Instance Type, Platform, Availability Zone, Tenenacy, Quantity
+    -> 2. Reservation Details
+       = Reservations Ends, Instance eligibility
