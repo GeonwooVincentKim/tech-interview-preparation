@@ -60,3 +60,13 @@ Spot Fleets
   = 2. Can have multiple launch pools, so that the fleet can choose
   = 3. Spot Fleet spots launching instances when reaching capacity or max cost
 
+- 3. Strategies to allocate Spot Instances:
+  = 1. Lowest price: from the pool with the lowest price (cost optimization, short workload)
+  = 2. Diversified: distributed across all pools (great for availability, long workloads)
+  = 3. Capacity Optimized: pool with the optimal capacity for the number of instances
+  = 4. Price Capacity Optimized (recommend): 
+    -> 1. Pools with the highest capacity available
+    -> 2. Then select the pool with the lowest price
+       => Best choice for most workloads
+
+- 4. Spot Fleets allow us to automatically request Spot Instances with the lowest price
