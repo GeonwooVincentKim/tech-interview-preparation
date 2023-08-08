@@ -1,0 +1,67 @@
+Placement Groups
+- 1. Sometimes you want control over the EC2 Instance placement strategy
+- 2. That strategy can be defined using placement groups
+- 3. When you create a placement group, you specify one of the following strategies for the group:
+  = 1. Clusters instances into a low-latency group in a single Availability Zone
+    -> Cluster
+
+  = 2. Spread
+    -> Spread instances across underlying HW (max 7 instances group per AZ) - critical applications
+ 
+  = 3. Partition
+    -> 1. Spreads instance across may differnt partitions (which rely on different sets of racks)
+       = 1. Not isolated one from another failure
+       = 2. but a partition should be isolated from another partition of failure
+
+    -> 2. AZ Scales to 100s EC2 Instances per group (Hadoop, Cassandra, Kafka)
+
+Placement Groups Cluster
+- 1. All our EC2 instances are on the same rack 
+  = 1. same hardware, same availability zone
+  = 2. Placement group Cluster Low latency 10 Gbps network
+
+- 2. Pros: Great network (10 Gbps (Gigabits) bandwidth between instances)
+- 3. Cons: If the rack fails, all instances fails at the same time
+- 4. Use case:
+  = 1. Big Data job that needs to complete fast
+  = 2. Application that needs extremely low latency and high network throughput
+
+Placement Groups Spread
+- 1. In spread we want to minimize the failure risk
+- 2. Asked for a spread placement group
+  = All the EC2 Instances are going to be located on differentr hardware
+
+- 3. us-east-1a (2 hardware), us-east-1b (2 hardware), us-east-1c (2 hardware)
+  = On a Different Hardware
+
+- 4. Pros:
+  = 1. Can span across Abilability Zones (AZ)
+  = 2. Reduced risk is simulateneous failure
+  = 3. EC2 Instances are on differenct physical hardware
+
+- 5. Cons:
+  = Limited to 7 instances per AZ per placement group
+
+- 6. Use case:
+  = 1. Application that needs to maximize high availability
+  = 2. Critical Applications where each instance must be isolated from failure from each other
+
+Placements Groups Partition
+- 1. Instance spread across partitions
+  = 1. Part 1 & 2 (with 4 + 4 EC2 Instances) - us-east-1a
+  = 2. Part 3 (with 4 EC2 Instances) - us-east-1b
+
+- 2. Up to 7 partitions per AZ
+  = Therefore, they're safe from a rack failure from one another
+
+- 3. Can span across multiple AZs in the same region
+- 4. Up to 100s of EC2 Instances
+- 5. The instances in a partition do not share racks with the instances in the other partitions
+  = Each partition is isolated from failure
+
+- 6. A partition failure can affect many EC2 but won't affect other partitions
+- 7. EC2 instances get access to the partition information as metadata
+- 8. When you use a partition placement group?
+  = Application, can be partition aware to distribute the data, your servers across partitions
+
+- 9. Use cases: HDFS, HBase, Cassandra, Kafka
