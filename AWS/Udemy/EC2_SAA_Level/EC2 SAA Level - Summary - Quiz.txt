@@ -1,0 +1,27 @@
+1. 
+- 1. launched an EC2 Instance that will host a NodeJS application.
+- 2. EC2 instance public IPv4, so you can access it
+- 3. complete the application configuration.
+- 4. EC2 Instance public IPv4 has been changed
+- 5. What should you do to assign a fixed public IPv4 to your EC2 Instance?
+
+= Allocate an Elastic IP and assign it to your EC2 Instance
+
+2. Spot Fleet is a set of Spot Instances and optionally .....
+- On-Demand Instances
+
+3. 
+- 1. Big data analysis hosted on a fleet of EC2 Instaces.
+- 2. EC2 Instances have the highest networking performance while communicating with each other.
+- 3. Which EC2 Placement Group should you choose?
+
+= Cluster Placement Group
+
+4. Critical Application hosted on a fleet of EC2 Instance, AZ failure
+- Spread Placement Group
+
+5. Elastic Network Interface can be attached to EC2 Instances in another AZ.
+- False
+
+6. The following are true regarding EC2 Hibernate, EXCEPT:
+- EC2 Instance Root Volume must be an Instance Store Volume
