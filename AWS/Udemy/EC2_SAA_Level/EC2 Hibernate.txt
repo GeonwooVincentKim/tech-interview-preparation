@@ -31,3 +31,8 @@ ECS Hibernate - Good to know
 - 3. Instance Size - not supported for bare metal instances.
 - 4. AMI - Amazon Linux 2, Linux AMI, Ubuntu, RHEL, CentOS & Windows...
 - 5. Root Volume - must be EBS, encrpyted, not instance store, and large
+- 6. Available for On-Demand, Reserved and Spot Instances
+
+- 7. An instance can NOT be hibernated more than 60 days
+
+
