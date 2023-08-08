@@ -1,1 +1,33 @@
+Private vs Public vs Elastic IP Hands On
+- 1. Private IPv4 addresses are belong to a private network, so it cannot connected
+- 2. Public IP allows you to access AWS from a public network
+  = Therefore the public network being the internet
+
+- 3. Check Public IPv4 addresses change
+  = Stop and Start the instance to observe the behavior of the public IPv4 changing
+
+- 4. Don't want to public IPv4 change
+  = Use an Elastic IP
+
+Elastic IP addresses
+- 1. Allocate Elastic IP address
+  = Elastic IP address settings
+    -> Public IPv4 address pool - Amazon's pool of IPv4 addresses
+
+- 2. Allocated IPv4 address
+  = 1. Can be allocated to a specific EC2 Instance
+  = 2. Keep the Elastic IP as long as it's attached
+  = 3. Elastic IP addresses, are charged as long as you don't use them
+
+- 3. Associate Elastic IP address
+  = 1. Actions -> Associate Elastic IP address
+  = 2. Resource type
+    -> Instance, Network interface
+
+  = 3. Instance
+  = 4. Private IP address
+    -> To associate the Elastic IP address
+
+  = 5. Reassociation (Option)
+    -> Allow this Elastic IP address to be reassociated
 
