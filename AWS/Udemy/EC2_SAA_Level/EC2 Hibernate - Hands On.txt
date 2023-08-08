@@ -1,0 +1,33 @@
+EC2 Hibernate - Hands On
+- 1. Launch an instance
+  = 1. Advanced details
+    -> 1. Find `Stop - Hibernate behavior`
+    -> 2. Set as `Enable` - allow us to enable hibernation on our EC2 Instance
+   
+  = 2. Enable Hibernation
+    -> 1. Make sure that the root volume has enough storage to fit the RAM of our EC2 Instance
+    -> 2. EBS volume must be encrypted
+
+  = 3. Change Configure Storage to Storage (volumes)
+    -> Choose my EBS volume, Encrypted = Yes, let KMS key default
+
+- 2. Connect to instance
+  = 1. Select hibernated instance
+  = 2. Tap EC2 Instance Connect and Click Connect button
+  = 3. uptime 
+    -> 1. Allows you to know for how long the instance has been turned on
+    -> 2. How long has the instance been on since its last restart
+
+  = 4. Disconnect the AWS Console
+
+- 3. Instance summary for `Instance-ID`
+  = 1. Click Instance state button and click 'Hibernate instance'
+  = 2. Hibernate Instance -> and click Hibernate button
+  = 3. The instance going to stop, but make sure to start it again
+
+- 4. If we did not the hibernation and then we stopped the instance and then we start it again
+  = 1. Expect the uptime command to return again zero minutes and then one minute
+  = 2. Because we have effectively stopped and started the instance
+
+- 5. Gives more time because it has never quote unquote been stopped from an operating system perspecitve which is the whole idea behind hibernation
+
