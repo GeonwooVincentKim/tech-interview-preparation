@@ -14,7 +14,29 @@ Network Interfaces
     -> 1. Check "Instances" `Security Groups` in 'Instances' page
     -> 2. Select the 'Security Groups' in your instance and apply to this field (Checkbox)
 
-- 3. Solving "The network interface at device index 0 and networkCard index 0 cannot be detached."
+- 3. Attach and Detach Network interfaces
+  <Attach>
+  = 1. Select the Network interfaces which instance Status equals to 'Available'
+  = 2. Click 'Actions' and 'Attach'
+    -> Attach network interface
+
+  = 3. Go to 'Instances' page and select the Running instance
+  = 4. Click 'Networking' tab and go to Network Interfaces, then check `Interface ID`
+    -> 1. DemoENI gives us a secondary, but the other one gives us a Public IPv4 address
+       => 1. ENI we have control over, so we could take it
+       => 2. Move it from one EC2 Instance to another imagining that the two EC2 Instance
+
+    -> 2. Can do a very quick and easy network failover between the two instances by moving an ENI
+
+  <Detach>
+  = 1. Select the Network interface which instance Description named `DemoENI`
+  = 2. Click 'Actions' and 'Detach'
+    -> Detach network interface
+
+  = 3. Check in the Network Interfaces page
+    -> Check the `Status` Available and `Public IPv4 address` not exist in the DemoENI instance
+
+- 4. Solving "The network interface at device index 0 and networkCard index 0 cannot be detached."
   = 1. Network Interfaces
     -> 1. Set each 'Network interface ID' and move to it
     -> 2. Click 'Actions' and 'Change termination behavior'
@@ -23,6 +45,8 @@ Network Interfaces
   = 2. Instances
     -> 1. Stop Instances
     -> 2. Terminate Instances
-       => If Instances are terminate, all of Network Interfaces also delete in the same time
+       => 1. If Instances are terminate, all of Network interfaces also delete in the same time
+       => 2. Create manually ENI is going to stay
+       => 3. Created alongside the instances are going to be automatically deleted
 
 
