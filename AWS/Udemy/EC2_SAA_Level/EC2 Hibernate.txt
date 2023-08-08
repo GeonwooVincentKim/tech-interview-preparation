@@ -1,0 +1,33 @@
+EC2 Hibernate
+- 1. We know we can stop, terminate instances
+  = 1. Stop - The data on disk (EBS) is kept intact in the next start
+  = 2. Terminate - any EBS volumes (root) also set-up to be destroyed is lost
+
+- 2. On start, the following happens:
+  = 1. First start: the OS boots & the EC2 User Data script is run
+  = 2. Following starts: the OS boots up
+  = 3. Then your application sarts, caches get warmed up, and that can take time
+
+- 3. Introducting EC2 Hibernate:
+  = 1. The in-memory (RAM) state is preserved
+  = 2. The instance boot is mush faster (the OS is not stopped / restarted)
+  = 3. Under the hood:
+    -> The RAM state is written to a file in the root EBS volume
+
+  = 4. The root EBS volume must be encrypted (Running)
+    -> Must have enough space to contain the RAM
+       => 1. EC2 Instance with Running state and Root EBS Volume (Encrypted)
+       => 2. Start Hibernation process - Instance will go in the stopping state
+	  -- 1. RAM is going to be dumped into your EBS Volume
+	  -- 2. Stopping RAM - (Shutdown) - Stopped RAM (Start) - (Start) - Running RAM
+
+  = 5. Use cases:
+    -> 1. Long-running processing
+    -> 2. Saving the RAM state
+
+ECS Hibernate - Good to know
+- 1. Supported Instance Families - C3, C4, C5, I3, M3, M4, R3, R4, T2, T3,...
+- 2. Instance RAM Size - must be less than 150 GB
+- 3. Instance Size - not supported for bare metal instances.
+- 4. AMI - Amazon Linux 2, Linux AMI, Ubuntu, RHEL, CentOS & Windows...
+- 5. Root Volume - must be EBS, encrpyted, not instance store, and large
