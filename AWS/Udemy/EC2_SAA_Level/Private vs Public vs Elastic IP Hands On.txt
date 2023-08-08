@@ -11,8 +11,12 @@ Private vs Public vs Elastic IP Hands On
 
 Elastic IP addresses
 - 1. Allocate Elastic IP address
-  = Elastic IP address settings
+  = 1. Elastic IP address settings
     -> Public IPv4 address pool - Amazon's pool of IPv4 addresses
+
+  = 2. Disassociate Elastic IP address
+    -> 1. Elastic IP addresses - Disassociate Elastic IP address
+    -> 2. Make sure to `Release Elastic IP addresses`
 
 - 2. Allocated IPv4 address
   = 1. Can be allocated to a specific EC2 Instance
@@ -31,3 +35,6 @@ Elastic IP addresses
   = 5. Reassociation (Option)
     -> Allow this Elastic IP address to be reassociated
 
+- 4. Elastic IP addresses
+  = 1. Elastic IP console from EC2
+  = 2. Even the instance is in stopped state, but it still has a public IPv4
