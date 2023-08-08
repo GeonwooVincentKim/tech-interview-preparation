@@ -1,0 +1,28 @@
+Network Interfaces
+- 1. Instance ID (Scroll to the right side)
+- 2. Create network interface
+  = 1. Description - optional
+  = 2. Subnet
+    -> 1. Check "Instances" `Avilability Zone` in 'Instances' page
+    -> 2. Select the 'Subnet' what you've check in 'Instances' page and apply to this field
+       => ex) Avilability Zone: ap-northeast-2c = Create network interface subnet = Avilability Zone
+
+  = 3. private IPv4 address
+    -> Auto-assign, Custom (Input customized IPv4 address)
+
+  = 4. Security groups
+    -> 1. Check "Instances" `Security Groups` in 'Instances' page
+    -> 2. Select the 'Security Groups' in your instance and apply to this field (Checkbox)
+
+- 3. Solving "The network interface at device index 0 and networkCard index 0 cannot be detached."
+  = 1. Network Interfaces
+    -> 1. Set each 'Network interface ID' and move to it
+    -> 2. Click 'Actions' and 'Change termination behavior'
+    -> 3. Check 'Enable' button and save it
+
+  = 2. Instances
+    -> 1. Stop Instances
+    -> 2. Terminate Instances
+       => If Instances are terminate, all of Network Interfaces also delete in the same time
+
+
