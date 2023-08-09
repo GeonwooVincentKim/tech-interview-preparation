@@ -1,0 +1,16 @@
+EBS Hands On
+- 1. Create second volume
+  = 1. Volume type - General Purpose SSD (gp2)
+  = 2. Size (GiB) - 2
+  = 3. Avilability Zone - Same one where my EC2 instance is
+
+- 2. Attach Available Volumes to the EC2 instance
+  = 1. Instance
+  = 2. Device name
+
+- 3. Check Volume successfully connected
+  = Instance - Storage - Block devices
+
+- 4. Create a volume that which the `Availability Zone` is different between EC2 instances
+  = 1. Cannot attach it to my EC2 instance because my EC2 instance is in different Availability zone
+  = 2. EBS volume indeed or bound by a specific availability zone
