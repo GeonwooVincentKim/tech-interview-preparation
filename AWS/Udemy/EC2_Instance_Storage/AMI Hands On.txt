@@ -1,0 +1,16 @@
+AMI Hands On
+- 1. Get User data to `User data` field when you launch a new instance
+- 2. Copy 'ec2-user-data.sh' file and paste into User-data field
+- 3. Going to install 'httpd'
+- 4. Create image
+  = 1. Image and templates - Create image
+  = 2. Go to Images - AMIs page and check the AMI what you've make is exist
+  = 3. Click 'Launch instance from AMI' when it status is Available
+    -> Or click 'Launch an instance'
+
+  = 3. Application and OS Images (Amazon Machine Image)
+    -> 1. Go 'My AMIs' tap and select 'Owned by me' + Key pair + Network settings (existing)
+    -> 2. Copy 'ec2-user-data.sh' file and paste into User-data field
+    -> 3. Make sure copy only 1 ~ 3rd line and the last line (starting from echo)
+       => 1. Don't need to reinstall HTTPD because AMI already contains HTTPD
+       => 2. We will speed up in the boot up time
