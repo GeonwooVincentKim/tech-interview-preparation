@@ -67,9 +67,9 @@ EC2 Spot Instances
 
 - 5. Not suitable for critical jobs or database
 
-EC2 Dedicate Hosts
+EC2 Dedicated Hosts
 - 1. A physical server with EC2 Instance capacity fully dedicated to your use
-- 2. Allows you address complianc requirements and use your existing server-bound software licenses
+- 2. Allows you address compliance requirements and use your existing server-bound software licenses
   = per-socket, per-core, per-VM software licenses
 
 - 3. Purchasing Options:

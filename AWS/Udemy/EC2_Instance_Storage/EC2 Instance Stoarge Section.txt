@@ -1,0 +1,78 @@
+What's an EBS Volume?
+- 1. An EBS (Elastic Block Store) Volume is a network drive you can attach to your instances while they run
+
+  = We've been using then without even knowing in this EC2 Class
+
+- 2. It allows you instances to persist data, even after the instance is terminated
+  = Recreate an instance and mount to the same EBS Volume from before and we'll get back our data
+
+- 3. They can only be mounted to one instance at a time (at the CCP level)
+  = CCP (Certified Cloud Parcitioner)
+    -> 1. one EBS can be only mounted to one EC2 instance Associate Level
+       => Solutions Architect, Developers, SysOps)
+
+    -> 2. "multi-attach" feature for some EBS
+
+- 4. They are bound to a specific availability zone
+  = Cannot have an EBS Volume in created
+
+- 5. How do you might think of EBS Volume?
+  = 1. Analogy: Think of them as a "network USB stick"
+  = 2. USB Stick that you can take from a computer and put it in another computer
+    (attached through the network)
+
+- 6. Free tier: 30 GB of free EBS Storage of type General Purpose (SSD) or Magnetic per month
+
+EBS Volume
+- 1. It's a network drive (i.e. not a physical drive)
+  = 1. It uses the network to communicate the instance
+  = 2. There might be a bit of latency from one computer to reach to annother server
+  = 3. It can be detached from an EC2 Instance and attached to another one quickly
+
+- 2. It's locked to an Availability Zone (AZ)
+  = 1. An EBS Volume in us-east-1a cannot be attached to us-east-1b
+  = 2. To move a volume across, you first need to snapshot it
+
+- 3. Have a provisioned capacity (size in GBs, and IOPS)
+  = 1. How many GBs you want in advance and the IOPS
+    -> I/O operations per seconds, your EBS Volume to perform
+
+  = 2. You get billed for all the provisioned capacity
+  = 3. You can increase the capacity of the drive over time
+    -> To have better performance or more size
+
+EBS Volume - Example
+- 1. US-EAST-1A
+  = 1. One EC2 Instance
+  = 2. One EBS Volume (10 GB) attached to the EC2 Instance
+    -> If Created new EC2 instnace, EBS Volume (100 GB) cannot be attached to two instances
+       => New EC2 Instance needs to have its own EBS Volume (50 GB) attached to it
+  
+  = 3. Possible for having two EBS Volumes (100GB, 50GB) attached to one EC2 instance
+    -> 1. Certified Cloud Practitioner Level
+    -> 2. EBS Volumes are linked to an availability zone
+
+- 2. US-EAST-1B
+  = 1. To have other EBS Volumes (50 GB) in an other AZ
+    -> Need to create this separately in the other availability zone
+
+  = 2. Possible to create EBS Volumes (10 GB), and leave them unattached
+  = 3. ECG instance, they can be attached on demand, makes it very powerful
+
+EBS - Delete on Termination attribute
+- 1. Delete on Termination
+  = 1. Ticked for the Root Volume
+  = 2. Not ticked for a new EBS Volume
+
+- 2. Controls the EBS behaviour when an EC2 instance terminates
+  = 1. By default, the root EBS volume is deleted (attribute enabled)
+    (Alongside the instance being terminated)
+
+  = 2. By default, any other attached EBS volume is not deleted (attribute disabled)
+    -> Disabled by default
+
+- 3. This can be controlled by the AWS console / AWS CLI
+  = Can control it if you want to enable or disabled delete on termination
+
+- 4. Use case: preserve root volume when instance is terminated
+
