@@ -14,3 +14,6 @@ EBS Hands On
 - 4. Create a volume that which the `Availability Zone` is different between EC2 instances
   = 1. Cannot attach it to my EC2 instance because my EC2 instance is in different Availability zone
   = 2. EBS volume indeed or bound by a specific availability zone
+
+- 5. Why Block devices of EC2 instance's volume Delete on termination are yes
+  = Delete on termination (EBS volumes - Storage (volumes)) should be Yes
