@@ -1,0 +1,27 @@
+EC2 Instance Store
+- 1. EBS Volumes are network drives with good but "limited" performance
+- 2. If you need a high-performance hardware disk, use EC2 Instance Store
+  = 1. EC2 Instance is a virtual machine, but is obviously attached to a real hardware server
+  = 2. Some of these servers do have disk space that is attached directly to the Physical connection
+  = 3. Special type of EC2 Instance can leverage something called an EC2 Instance Store
+    -> Hard drive attached to the physical server
+
+- 3. Better I/O Performance
+- 4. EC2 Instance Store lose their storage if they're stopped (ephemeral)
+  -> 1. Caveat is that if you stop or you terminate your EC2 instance, that has an Instance Store
+     => Then the storage will be lost
+
+  -> 2. Ephemeral Storage
+     => EC2 Instance Store can now be used as a durable long term place to store your data
+
+- 5. Good for buffer / cache / scratch data / temporary content
+- 6. Risk of data loss if hardware fails
+- 7. Backups and Replication are your responsibility
+
+Local EC2 Instance Store
+- 1. Instance Store attached to these kind of instances
+- 2. Read IOPS and the Write IOPS which correspond to how many I/O operations, we can do per second.
+- 3. Check 100% Random Read IOPS and Write IOPS in Local EC2 Instance Store page
+  = Ex) With an EBS volume of type BP2 for example, Can reach 32,000 IOPS
+
+- 4. Think local EC2 Instance Store
