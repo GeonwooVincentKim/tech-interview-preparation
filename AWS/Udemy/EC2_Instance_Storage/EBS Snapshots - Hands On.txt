@@ -1,0 +1,11 @@
+EBS Snapshots - Hands On
+- 1. Create snapshot
+  = Description
+
+- 2. Snapshots
+  = 1. Can copy snapshot into other region
+  = 2. Copy snapshot
+    -> Destination Region
+       => To make sure data is backed up in another region of AWS
+
+

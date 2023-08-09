@@ -1,0 +1,25 @@
+AMI Overview
+- 1. AMI = Amazon Machine Image
+- 2. AMI are a customization of an EC2 instance
+  = 1. You add your own software, configuration, operating system, monitoring...
+  = 2. Faster boot / configuration time because all your software is pre-packaged
+
+- 3. AMI are built for a specific region (and can be copied across regions)
+- 4. You can launch EC2 instances from:
+  = 1. A Public AMI: AWS Provided
+  = 2. Your own AMI: you make and maintain them yourself
+  = 3. An AWS Marketplace AMI: an AMI someone else made (and potentially sells)
+    -> Made by someone else, potentially sold by someone else
+
+  = 4. Quite common to have vendoers on AWS to create their own AMIs on their own Software
+
+AMI Process (from an EC2 Instance)
+- 1. Start an EC2 Instance and customize it
+- 2. Stop the instance (for data integrity)
+- 3. Build an AMI - this will also create EBS snapshots
+- 4. Launch instances from other AMIs
+  = 1. Instance US-EAST-1A and launching EC2 instance
+    -> 1. Create AMI (Custom AMI) from US-EAST-1A
+    -> 2. Launch from AMI to US-EAST-1B
+
+  = 2. Instance US-EAST-1B
