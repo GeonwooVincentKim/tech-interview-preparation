@@ -1,0 +1,6 @@
+EBS & EFS - Section Cleanup
+- 1. Delete File Systems
+- 2. Terminate Instacnes
+- 3. Delete Volumes
+- 4. Delete Snapshots
+- 5. Delete Security Groups
