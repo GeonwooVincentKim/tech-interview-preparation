@@ -1,1 +1,33 @@
 Amazon EFS - Hands On
+- 1. Create file system
+  = 1. Customize
+  = 2. File system settings
+    -> 1. Regional (Standard) NFS file system
+       => Stored data redundantly (replicated) across multiple AZs 
+
+    -> 2. One Zone NFS file system
+       => 1. Stored data redundantly within a single AZ
+          -- You need to have for production, just testing EFS out
+
+       => 2. AZ down, EFS file system is down, choose the AZ
+
+    -> 3. Check Enable automatic backups
+    -> 4. Lifecycle management
+       => 1. Cost savings
+       => 2. Object aren't being used very often, then transition them into different access tier
+	  -- Standard-Infrequent Access Storage class
+
+       => 3. File hasn't been accessed for 30 days, then Transition it into IA
+       => 4. Transition it out of IA on first access or never as you want
+  
+  = 3. Performance settings
+    -> 1. performance mode
+       => 1. General Purpose (Recommended) - Helpful for latency-sensitive applications
+       => 2. Max I/O - Highly paralleized workloads can tolerate higher latencies
+
+    -> 2. Throughput mode
+       => 1. Enhanced - Throughput levels for workloads with a range of performance requirements
+	  -- 1. Elastic (Recommended) - Mode for workloads with unpredictable I/O
+	  -- 2. Provisioned - Mode if you can estimate your workload's throughput requirements
+
+       => 2. Bursting - Allows you select Max I/O, scales with the amount of storage for workloads
