@@ -1,0 +1,70 @@
+Amazon EFS - Elatsic File System
+- 1. Managed NFS (network file system) that can be mounted on many EC2
+- 2. EFS works with EC2 instances in multi-AZ
+- 3. Highly available, scalable, expensive (3x gp2), pay per use
+  = 1. You don't have to provision capacity in advance
+  = 2. Example
+    -> 1. EFS File System that surround it with a security group
+    -> 2. EC2 instances, many of them in ap-northeast-2a (or 2b, 2c) availability zone
+       => They can all connect at the same time to the same network file system through EFS
+
+Amazon EFS - Elastic File System
+- 1. Use cases: content management, web serving, data sharing, Wordpress
+- 2. Uses NFSv4.1 protocol
+- 3. Uses security group to control access to EFS
+- 4. Compatible with Linux based AMI (not Windows)
+- 5. Encryption at rest using KMS
+  = Can enable encryption at rest in your EFS drive using KMS, and it's standard file system on Linux.
+
+- 6. POSIX file system (~Linux) that has a standard file API
+- 7. File system scales automatically, pay-per-use, no capacity planning!
+  = Pay-per-use for each GiB of data you use in EFS
+
+EFS - Performance & Storage Class
+- 1. EFS Scale
+  = 1. 1000s of concurrent NFS clients, 10 GB + /s throughput
+  = 2. Grow to Petebyte-scale network file system, automatically
+
+- 2. Performance Mode (set as EFS creation time)
+  = 1. Can set the Performance Mode at the EFS Network file system creation time
+  = 2. General Purpose (default) - latency-sensitive use cases (web server; CMS, etc...)
+  = 3. Max I/O - higher latency, throughput, highly parallel (big data, media processing)
+    -> Maximize throughput
+
+- 3. Throughput Mode
+  = 1. Bursting - 1 TB = 50 MiB/s + burst of up to 100 MiB/s
+  = 2. Provisioned - set your throughput regardless of storage size, ex: 1 GiB/s for 1 TB storage
+    -> You have de-correlated your throughput from your storage
+
+  = 3. Elastic - automatically scales throughput up or down based on your workloads
+    -> 1. Up to 3 GiB/s for reads and 1 GiB/s for writes
+    -> 2. Used for unpredictable workloads
+
+EFS - Storage Classes
+- 1. Storage Tiers (lifecycle management feature - move file after N (or few) days)
+  = 1. Standard: for frequently accessed files
+  = 2. Infrequent access (EFS-IA)
+    -> 1. Cost to retreive files, lower price to store.
+    -> 2. Enable EFS-IA with a Lifecycle Policy
+
+  = 3. Example
+    -> 1. Some frequently used files on EFS standard
+    -> 2. One of these files is not access for more than 60 days
+       => Lifecycle policy we set up together
+
+    -> 3. The file is going to be moved to EFS-IA in a differetn tier
+       => Going to give us a lower cost
+
+- 2. Availability and durability
+  = 1. Standard: Multi-AZ, great for production
+    -> AZ is down then it will not affect your EFS file system
+
+  = 2. One Zone: One AZ, great for dev, backup enabled by default, compatible with IA
+    -> 1. EFS One Zone-IA
+    -> 2. Backup are enabled by default, and it's still compatible
+       => With the infrequent access storage tier
+
+- 3. Over 90% in cost savings
+  = 1. The example will ask what should you use EFS
+  = 2. Then what options should you set on your EFS network file system
+    -> To ensure that you validate and comply with the requirements
