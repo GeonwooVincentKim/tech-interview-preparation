@@ -1,0 +1,46 @@
+EBS Encryption
+- 1. When you create an encrypted EBS volume, you get the following:
+  = 1. Data at rest is encrypted inside the volume
+  = 2. All the data in flight moving between the instance and the volume is encrypted
+  = 3. All snapshots are encrypted
+  = 4. All volumes created from the snapshot
+
+- 2. Encryption and decryption are handled transparently (you have nothing to do)
+- 3. Encryption has a minimal impact on Latency
+  = It's all handled by EC2 and EB2 behind the scenes
+
+- 4. EBS Encryption leverages keys from KMS (AES-256)
+- 5. Copying an unencrypted snapshot allows encryption
+
+Encryption: encrypt an unencrypted EBS volume
+- 1. Create an EBS snapshot of the volume
+- 2. Encrypt the EBS snapshot (using copy)
+- 3. Create new EBS volume from the snapshot (the volume will also be encrypted)
+- 4. Now you can attach the encrypted volume to the original instance
+
+EBS Encryption with Volumes
+- 1. Create Volume (Not encrypted)
+  = Size (GiB) -> 1, Don't checkl Encrypt this volume
+
+- 2. Create snapshot
+  = 1. Select current Volumes not encrypted, and Click 'Actions' button, then click Create snapshot
+  = 2. Check Create snapshot Encryption set to Not encrypted
+  = 3. Check created snapshot Encryption Not encrypted
+
+- 3. Create an encrypted snapshot
+  = 1. Select Not encrypted snapshot, and click Actions button, and then Copy snapshot
+  = 2. Copy snapshot
+    -> 1. Copying snapshot, have the option to enable encryption into the same destination region
+    -> 2. KMS key - select (default) aws/ebs
+
+<Can encrypt one EBS volume this way, by going through a snapshot copying and so on>
+- 4. From encrypted snapshots, that is now completed can create a volume
+  = 1. Snapshots Page - Actions - Create volume from snapshot
+  = 2. Encrypt this volume -> Underlying snapshot is encrypted
+  = 3. Check KMS Key descripton, KMS key owner, KMS key ID, KMS key ARN fields
+
+EBS Encryption shortcut
+- 1. If you take your unencrypted snapshot, then Actions -> Create volume from snapshot
+- 2. Encryption -> Check Encrypt this volume
+- 3. KMS key -> (default) aws/ebs
+
