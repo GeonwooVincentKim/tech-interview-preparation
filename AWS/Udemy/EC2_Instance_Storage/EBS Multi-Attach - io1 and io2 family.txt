@@ -1,0 +1,22 @@
+EBS Multi-Attach - io1/io2 family
+- 1. Attach the same EBS volume to multiple EC2 instances in the same AZ (Availability Zone)
+  = Availability Zone 1
+    -> 1. Multiple EC2 instances and an io2 volume with Multi-Attach feature enabled
+    -> 2. Then io2 volume can be attached to multiple EC2 instances at a time
+       => Something that is only available for the io1 and io2 family of EBS volumes
+
+- 2. Each instance has full read & write permissions to the high-performance volume
+  = Each instance can all Write and Read at the same time
+
+- 3. Use case:
+  = 1. Achieve higher application availability in clustered Linux applications (ex: Teradata)
+  = 2. Applications must manage concurrent write operations
+    -> 1. Multi-Attach feature is only available from within a specified availability zone
+    -> 2. It doesn't allow you to attach an EBS volume from one AZ to another AZ
+
+- 4. Another limitation of Multi-Attach
+  = Up to 16 EC2 Instances at a time
+    -> Can be attaching the same volume
+
+- 5. Must use a file system that's cluster-aware (not XFS, EXT4, etc...)
+  = It's a different file system than XFS or EX4

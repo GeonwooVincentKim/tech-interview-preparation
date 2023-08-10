@@ -7,7 +7,7 @@ What's an EBS Volume?
   = Recreate an instance and mount to the same EBS Volume from before and we'll get back our data
 
 - 3. They can only be mounted to one instance at a time (at the CCP level)
-  = CCP (Certified Cloud Parcitioner)
+  = CCP (Certified Cloud Practitioner)
     -> 1. one EBS can be only mounted to one EC2 instance Associate Level
        => Solutions Architect, Developers, SysOps)
 
