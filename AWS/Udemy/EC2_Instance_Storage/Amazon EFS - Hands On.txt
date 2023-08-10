@@ -96,4 +96,30 @@ Instances
   = 1. ED2 Instance Connect
     -> Connect using EC2 Instance Connect
 
-  = 2. 
+  = 2. Instance A
+    -> 1. To verify the fact, type ls /mnt/efs/fs1/
+    -> 2. There is an EFS file system, and now we need to create files in it
+    -> 3. To elevate my right to make it simple, type sudo su
+    -> 4. Then type echo "hello world" > /mnt/efs/fs1/hello.txt
+    -> 5. If I do cat and then this entire file name right here, and it says "hello world"
+
+  = 3. Instance C
+    -> 1. Type ls /mnt/efs/fs1/ (same file system of Instance A) to look for files in it
+       => If you can see, you also can see "hello.txt" file in it    
+
+    -> 2. Type cat /mnt/eft/fs1/hello.txt
+       => It says "hello world" as well
+
+Summary
+- 1. The EFS file system is indeed mounted as a network drive onth both my EC2 instances
+- 2. They are different AZs and they share the same EFS
+- 3. That's a different kind of storage that you had the demo of it right now
+  = EFS Demo
+
+Terminate All
+- 1. Terminate Instance
+- 2. Delete File Systems
+- 3. Delete the extra security groups
+  = launch-wizard-3, Description starting from Created by the LIW
+
+
