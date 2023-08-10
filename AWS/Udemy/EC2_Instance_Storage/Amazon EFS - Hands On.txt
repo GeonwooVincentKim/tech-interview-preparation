@@ -19,6 +19,7 @@ Amazon EFS - Hands On
 
        => 3. File hasn't been accessed for 30 days, then Transition it into IA
        => 4. Transition it out of IA on first access or never as you want
+       => 5. Encryption -> Check Enable encryption of data at rest
   
   = 3. Performance settings
     -> 1. performance mode
@@ -31,3 +32,41 @@ Amazon EFS - Hands On
 	  -- 2. Provisioned - Mode if you can estimate your workload's throughput requirements
 
        => 2. Bursting - Allows you select Max I/O, scales with the amount of storage for workloads
+
+  = 4. Network access
+    -> 1. Network
+       => Virtual Private Cloud (VPC) - choose the default VPC
+
+    -> 2. Mount targets
+       => 1. Chosen a regional type of EFS file system with three AZs available to us
+       => 2. Each AZ is going to be assigned to a subnet
+
+- 2. Create new Security Groups
+  = efs-demo, EFS Demo SG, existed VPC ID
+
+- 3. Refresh the page Network access and do File system settings part again
+- 4. Choose the efs-demo in the Security Group field
+- 5. File system policy (Not touch it right now)
+- 6. Review and create 
+
+Elastic File Systems
+- 1. When you have a EFS file system, you only pay for the storage you use
+- 2. Mark cost are zero
+
+Mount EFS on EC2 instances
+- 1. Launch an EC2 instante
+  = 1. Name - Instance A
+  = 2. Disable Key pair (Proceed without a key pair)
+  = 3. Create security group and Allow SSH traffic from (Name = launch-wizard-3)
+  = 4. Configure storage
+    -> 1. To configure the storage of the EC2 instance into Amazon EFS
+    -> 2. Actually now do it from within the EC2 Console
+    -> 3. Click Show details
+       => Check EFS and must select a subnet before you can add an EFS file system
+
+  = 5. Network settings
+    -> Subnet - choose that the Az finish as 'a'
+
+  = 6. Storage (volumes)
+    -> 1. Add shared file system
+    -> 2. 
