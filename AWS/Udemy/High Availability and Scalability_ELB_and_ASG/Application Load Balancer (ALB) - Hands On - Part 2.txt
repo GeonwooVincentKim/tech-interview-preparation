@@ -44,6 +44,10 @@ Add rule
   = 1. Click Add condition button
   = 2. Choose Path, Add into 'Path is' /error, then click Confirm button
 
+  <After go back from Review and create page> - <If you wish to>
+  = 1. Check Path (1) and Click Edit button
+  = 2. Add into 'Path or' /other-service, then click Confirm button
+
 - 3. Define rule actions
   = 1. Action types -> Return fixed response
   = 2. Response code -> 404
@@ -51,7 +55,29 @@ Add rule
   = 4. Response body - optional -> Not found, custom error!
   = 5. Click next button
 
+  <After go back from Review and create page, then Add rule> - <If you wish to>
+  = 1. Action types -> Redirect to URL
+  = 2. Redirect to URL -> URI Parts
+  = 3. Protocol: Port -> HTTPS, 80
+  = 4. Not to check Custom host, path, query
+  = 5. Status code -> 301 - Permanently moved
+
 - 4. Set rule priority
   = 1. Set priority number as 1
   = 2. Click next button
+
+- 5. Review and create
+  <To add more rule conditions>
+  = 1. Click Edit button and choose Edit conditions
+  = 2. It moves to Define rule conditions
+
+  <Create not to add more rule conditions, or rule actions>
+  = Click Create button
+
+Testing Load Balancing with custom rules
+- 1. EC2 -> Load balancers -> DemoALB
+- 2. Copy DNS name and retreive on Web page
+- 3. Put /error right side of the '.com'
+- 4. You can check 'Not found, custom error!' visualized
+
 
