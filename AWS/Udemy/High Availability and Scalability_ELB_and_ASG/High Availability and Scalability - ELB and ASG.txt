@@ -1,0 +1,52 @@
+Scalability & High Availability
+- 1. Scalability means that an application / system can handle greater loads by adapting.
+- 2. There are two kinds of scalability:
+  = 1. Vertical Scalability
+  = 2. Horizontal Scalability (=elasticity)
+
+- 3. Scalability is linked but different to High Availbility
+- 4. Let's deep dive into the distinction, using a call center as an example
+
+Vertical Scalability
+= 1. Vertically scalability means increasing the size of the instance
+  -> Ex) Phone operator of Junior and Senior cases, Senior is better and faster than Junior
+
+= 2. For example, your application runs on a t2.micro
+= 3. Scaling that application vertically means running it on a t2.large
+= 4. Vertical scalability is very common for non distributed systems, such as a database.
+= 5. RDS, ElastiCache are services that can scale vertically.
+= 6. There's usually a limit to how much you can vertically scale (hardware limit)
+
+Horizontal Scalability
+= 1. Horizontal Scalability means increasing the number of instances / systems for your application
+  -> Ex) Call center one operator and he overloaded, so hire more operator
+
+= 2. Horizontal scaling implies distributed systems.
+= 3. This is very common for web applications / modern applications
+= 4. It's easy to horizontally scale thanks the cloud offerings such as Amazon EC2
+
+High Availability
+= 1. High Availability usually goes hand in hand with horizontal scaling
+= 2. High Availability means running your application / systems in at least 2 data centers
+  -> Availability Zones
+
+= 3. The goal of high availability is to service a data center loss
+  -> Ex) 1. Three Phone operator man in first building in New York
+  -> Ex) 2. Three Phone operator man in second building in San Francisco
+
+= 4. The High availability can be passive (for RDS Multi AZ for example)
+= 5. The high availability can be active (for horizontal scaling)
+
+High Availability & Scability for EC2
+= 1. Vertical Scaling: Increase instance size (= scale up / down)
+  -> 1. From: t2.nano - 0.5G of RAM, 1 vGPU
+  -> 2. To: u-12tb1.metal - 12.t TB of RAM, 448 of vCPUs
+
+= 2. Horizontal Scaling: Increase number of instances (= scale out / in)
+  -> 1. scale out: increase number, scale in: decrease number
+  -> 2. Auto Scaling Group
+  -> 3. Load Balancer
+
+= 3. High Availability: Run instances for the same application across multi AZ
+  -> 1. Auto Scaling Group multi AZ
+  -> 2. Load Balancer multi AZ
