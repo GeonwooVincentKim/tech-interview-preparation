@@ -74,4 +74,19 @@ Only one URL and 2 EC2 instances (Balance the load between them)
 
   = 8. Check Target groups
 
+- 4. Test Load balancers
+  = 1. Copy DNS name and paste it in a new tab
+  = 2. If I keep on refresh this page, the target (IP) is changing
+    -> My application load balancer is actually redirecting between both my EC2 instances
+
+  = 3. How do I know that the Load balancing is actually happening
+    -> 1. Go to TargCet groups and select demo-tg-alb target-group
+    -> 2. Tab Targets and check both of Registered targets Health Status are healthy
+    -> 3. Application load balancer through the target group is sending traffic to both of them
+       => One after the other
+
+  = 4. If I take my first instance, and stop it
+  = 5. Therefore it's going to be unhealthy, it can't response anymore to the traffic coming in
+  = 6. The first instnace is unused because it's in stopped states
+    -> You still can use Load Balancers because they know when the targets are healthy or not
 
