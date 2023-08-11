@@ -76,3 +76,7 @@ Load Balancer Security Groups
 - 3. Link the Security Group of the EC2 instance to the security group of the load balancer
 - 4. EC2 instance is only allowing traffic if the traffic originates from the load balancer
   = Enhanced security mechanism
+
+Classic Load Balancer (CLB)
+- 1. Deprecated at AWS and will soon not be available in the AWS Console
+- 2. The exam also has removed any references to it
