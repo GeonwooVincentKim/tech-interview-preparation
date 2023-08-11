@@ -1,0 +1,55 @@
+Application Load Balancer (ALB) - Hands On - Part 1
+- 1. Launch Instance
+  = 1. Key pair (login) -> Proceed without a key pair
+  = 2. Network settings -> Set Common security groups as `launch-wizard-2` group
+    -> Which allowed us to do HTTP traffic and SSH traffic into our EC2 instance
+
+  = 3. Advanced details User data - optional
+    -> Copy and paste the ec2-user-data.sh code
+
+  = 4. Summary number of instance => 2
+
+- 2. Rename the second instance
+  = 1. Check the instance you want to change and hover on the Name Attribute field
+  = 2. Rename as My 3-2nd Instance
+
+Only one URL and 2 EC2 instances (Balance the load between them)
+- 1. Load balancers
+  = 1. Click the Create load balancer button
+  = 2. Can choose different types
+    -> 1. Application Load Balancer (ALB)
+    -> 2. Network Load Balancer (NLB)
+    -> 3. Gateway Load Balancer (GLB)
+    -> 4. Classic Load Balancer (CLB)
+
+  = 3. Create Application Load Balancer
+    -> 1. Basic configuration
+       => 1. Load balancer name - DemoALB
+       => 2. Scheme = Internet-facing
+       => 3. IP address type = IPv4
+
+    -> 2. Network mapping
+       => 1. Decide where to deploy the load balancer and how many availability zones
+       => 2. Deploy all of AZ in the mappings
+
+    -> 3. Security groups
+       => 1. Create new security group
+       => 2. Choose my demo-sg-load-balancer
+
+    -> 4. Listeners and routing
+       => 1. 
+
+- 2. Create new security group
+  = 1. Basic details
+    -> 1. Name: demo-sg-load-balancer
+    -> 2. Description: Allow HTTP into ALB
+    -> 3. VPC: Don't edit anything
+
+  = 2. Inbound rules
+    -> 1. Add rule
+    -> 2. Type = HTTP
+    -> 3. Source = Anywhere (0.0.0.0/0)
+
+  = 3. Outbound rules (Don't need to create a new one)
+    -> 1. Type = All traffic
+    -> 2. Destination = Custom (0.0.0.0/0)
