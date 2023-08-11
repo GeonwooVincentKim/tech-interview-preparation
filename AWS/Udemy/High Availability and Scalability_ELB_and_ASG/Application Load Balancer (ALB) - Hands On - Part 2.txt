@@ -1,0 +1,57 @@
+Application Load Balancer (ALB) - Hands On - Part 2
+- 1. Load balancers -> DemoALB
+- 2. Tap Security, then check Security groups
+- 3. Access our EC2 Instances and open the Public IPv4 address on new empty webpage
+- 4. In the same time, open Load balancer DNS name on the new empty webpage
+
+How to access my EC2 instance through my load balancer only?
+- 1. Click My 3rd Instance and check my Security groups
+- 2. Open Security groups through EC2 Instances (My 3rd Instance)
+  = Or you can go to Security Groups page directly
+
+- 3. Check launch-wizard-2 and tab Inbound rules
+- 4. Edit inbound rules (all)
+
+Edit inbound rules
+- 1. Edit the Inbound rules that the Type is HTTP 
+  = 1. The only traffic allowed in to our EC2 instance should be traffic from the load balancer
+  = 2. Delete it that the Type is HTTP
+
+- 2. Add rule
+  = 1. Type is HTTP
+  = 2. CIDR blocks scroll down, and find Security Group
+  = 3. The security group we want to allow in is the security group of my load balancer
+    -> Type demo-sg-load and select it
+
+  = 4. Click Save rules
+
+- 3. If we have a look at our EC2 instance directly, refresh, it's timing out
+  = 1. It's not being able to access the instance
+  = 2. I'm not allowed to access directly, the instance
+  = 3. If you refresh the load balancer (low) can still access my instances
+    -> 1. The rule that we haved created in our security group
+    -> 2. We allow inbounds coming from the security groupo of the application load balancer
+
+Load Balancer rules
+- 1. Load balancers -> DemoALB
+- 2. Tab Listeners and rules and access to HTTP:80
+- 3. Tab Rules and check my Listener rules
+- 4. Check you send everything to my demo-tg-alb (demo-target-group-ALB)
+
+Add rule
+- 1. Name and tags -> DemoALBHttpRules
+- 2. Define rule conditions
+  = 1. Click Add condition button
+  = 2. Choose Path, Add into 'Path is' /error, then click Confirm button
+
+- 3. Define rule actions
+  = 1. Action types -> Return fixed response
+  = 2. Response code -> 404
+  = 3. Content-Type -> text/plain
+  = 4. Response body - optional -> Not found, custom error!
+  = 5. Click next button
+
+- 4. Set rule priority
+  = 1. Set priority number as 1
+  = 2. Click next button
+
