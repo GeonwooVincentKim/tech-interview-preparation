@@ -1,0 +1,69 @@
+Application Load Balancer (v2)
+- 1. Application load balancers is Layer 7 (HTTP)
+- 2. Load balancing to multiple HTTP applications across machines (target groups)
+- 3. Load balancing to multiple applications on the same machine (ex: containers)
+- 4. Support for HTTP/2 and WebSocket
+- 5. Support redirects (from HTTP to HTTPS for example)
+
+Application Load Balancer (v2)
+- 1. Routing tables to different target groups:
+  = 1. Routing based on path in URL (example.com/users & example.com/posts)
+  = 2. Routing based on hostname in URL (one.example.com & other.example.com)
+  = 3. Routing based on Quesy String, Headers (example.com/users?id=123&order=false)
+
+- 2. ALB are a great fit for micro services & container-based application
+  -> Ex) Docker & Amazon ECS
+
+- 3. Has a port mapping feature to redirect to a dynamic port in EC2
+- 4. In comparsion, we'd need multiple Class Load Balancer per application
+
+Application Load Balancer (v2) HTTP Based Traffic
+- 1. www
+  |
+  |- Route/user (Duplex Transmission) = First www
+  |- Route/search (Duplex Transmisson) = Second www
+  |
+- 2. External Application Load Balancer (v2 - public facing)
+  |
+  |- HTTP (Duplex Transmission)
+  |
+|- 2. First Target Group for Users applications (2 EC2 inst + Health Check - Microservices)---|
+|- 3. Second Target Group for Search applications (2 EC2 inst + Health Check - Microservices)-|
+
+Application Load Balancer (2) Target Groups
+- 1. EC2 instances (can be managed by an Auto Scaling Group) - HTTP
+- 2. EC2 tasks (managed by EC2 itself) - HTTP
+- 3. Lambda functions - HTTP request is translated into a JSON event
+- 4. IP Addresses - must be private IPs
+- 5. ALB can route to multiple target groups
+- 6. Health checks are at the target group level
+
+Application Load Balancer (v2) Query Strings/Parameters Routing
+- 1. www
+  |
+  |- Requests (Duplex Transmission)
+  |
+- 2. External Application Load Balancer (v2)
+  |
+  |- ?Platform=Mobile (Can write a rule in the ALB redirection rules) = Target Group 1
+  |- ?Platform=Desktop (Just redirect to the Target Group 2) = Target Group 2
+  |
+- 3. Target Group 1 (AWS - EC2 based, 2 EC2 Inst)
+- 4. Target Group 2 (On-premises - Private IP routing servers)
+
+Application Load Balancer (v2) Good to know
+- 1. Fixed hostname (XXX.region.elb.amazonaws.com)
+- 2. The application servers don't see the IP or the client directly
+  = 1. The true IP of the client is insetred in the header X-Forwarded-For
+  = 2. We can also get Port (X-Forwarded-Port) and proto (X-Forwarded-Proto)
+
+- 3. X-Forwarded-Port stands for
+  <Client IP - Load Balancer>
+  = 1. Our Client IP whic is 12.34.56.78 is directly talking to our load-balancer
+  = 2. Performs something called a connection termination.
+
+  <Load Balancer - EC2 Instance>
+  = 1. When your load-balancer talks to your EC2 instance, it's going to use the Load-Balancer IP
+  = 2. Private IP into your EC2 instance
+  = 3. EC2 inst to know the Client IP, it will have to look these extra headers in your HTTP request
+    <X-Forwared-Port and Proto>
