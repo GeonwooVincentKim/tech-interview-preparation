@@ -1,0 +1,78 @@
+What is load balancing?
+- 1. Load Balancers are serevers that forward traffic to multiple servers downstream
+  = 1. e.g., EC2 instances
+  = 2. 3 EC2 Instance, fronted by Elastic Load Balancer, load being send it to 3 Users
+    -> Elastic Load Balancer = set of servers behind the scenes
+
+  = 3. If 3rd user is connecting to your elastic load balancer
+    -> That user will again be load balance and sense to the 3rd EC2 instance
+
+  = 4. Your users don't know which backend instances they're connected to
+    -> Just know that they have to connect to your elastic load labander
+
+Why use a load balancer?
+- 1. Spread load accros mulitiple downstream instances
+- 2. Expose a single point of access (DNS) to your applicaion
+- 3. Seamlesstly handle failure to downstream instances
+  = Load balancer - Wlll help some health check mechanisms
+
+- 4. Do regular health checks to your instances
+- 5. Provide SSL termination (HTTPS) for your websites:
+  = 1. Enforce stickness with cookies
+  = 2. High availability across zones
+  = 3. Separate public traffic from private traffic
+
+Why use an Elastic Load Balancer?
+- 1. An Elastic Load Balancer is a managed load balacncer
+  = 1. AWS guarantess that it will be working
+  = 2. AWS takes care of upgrades, maintenance, high availabilit
+  = 3. AWS provides only a few dconfiguration knobs
+
+- 2. It costs less to setup your own load balancer but it will be a lot more effort on your end
+- 3. It is integrated with many AWS offereing / sevices
+  -> 1. EC2, EC2 Auto Scaling Groups, Amazon ECS
+  -> 2. AWS Certificate Manager (ACM), CloudWatch
+
+- 4. Load balancer = No brainer, when it comes to load balaning in AWS
+
+Health Checks
+- 1. It's a way for youre elastic load balancer
+- 2. They enable to load balancer to know it instances
+  = It forwards traffic to are available to reply to requests
+ 
+- 3. The health check is done on a port and a route (health is common)
+  = 1. Elastic Load Blancer - Health Check - EC2 Instance
+  = 2. Protoco HDP, port number is not same with EC2 Instace that could be easyway
+    -> Ex) EC2 Instance: Protocol (HTTP), Port (4567), EndPoint (/health)
+
+- 4. If the response is not 200 (OK), then the instance is unhealthy
+
+Types of load balancer on AWS
+- 1. AWS has 4 kinds of managed Load Balancers
+- 2. Classic Load Balancer (v1 - old generating) - 2009 - CLB
+  = HTTP, HTTPS, TCP, SSL (secure TCP)
+
+- 3. Application Load Balancer (v2 - new generation) - 2016 - ALB
+  = HTTP, HTTPS, WebSocket
+
+- 4. Network Load Balancer (v2 - new generation) - 2017 - ALB
+  = TCP, TLS (secure TCP), UDP
+
+- 5. Gateway Load Balancer - 2020 - GWLB
+  = Operates at layer 3 (Network layer) - IP Protocol
+
+- 6. Overall, Recommended to use the newer generation load balancers as they provide more features
+- 7. Some load balancers can be setup as internal (private) or external (public) ELBs
+
+Load Balancer Security Groups
+- 1. User can access to your Load-Balancers from anywhere using HTTPS/HTTP
+  = Check Load Balancer Security Group
+
+- 2. EC2 instances should only allow traffic coming directly from the Load-Balancer
+  = 1. Check Application Security Group: Allow traffic only from Load Balancer
+  = 2. Allow HTTP traffic on port 80
+  = 3. The Source of it is not going to be an IP range, is going to be a security group
+
+- 3. Link the Security Group of the EC2 instance to the security group of the load balancer
+- 4. EC2 instance is only allowing traffic if the traffic originates from the load balancer
+  = Enhanced security mechanism
