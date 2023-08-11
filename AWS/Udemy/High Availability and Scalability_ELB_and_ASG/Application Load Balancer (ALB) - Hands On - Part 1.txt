@@ -37,9 +37,14 @@ Only one URL and 2 EC2 instances (Balance the load between them)
        => 2. Choose my demo-sg-load-balancer
 
     -> 4. Listeners and routing
-       => 1. 
+       => 1. Default action - target group
+	  -- Target group is nothing more than a group of my EC2 instance that were created
 
-- 2. Create new security group
+       => 2. Create target group
+       => 3. Refresh the Default action field and Choose demo-tg-alb
+       => 4. Create load balancer
+
+- 2. Create new security group <Extra>
   = 1. Basic details
     -> 1. Name: demo-sg-load-balancer
     -> 2. Description: Allow HTTP into ALB
@@ -53,3 +58,20 @@ Only one URL and 2 EC2 instances (Balance the load between them)
   = 3. Outbound rules (Don't need to create a new one)
     -> 1. Type = All traffic
     -> 2. Destination = Custom (0.0.0.0/0)
+
+- 3. Create target group (Specify group details) <Extra>
+  = 1. target type -> Instances
+  = 2. Target group name -> demo-tg-alb
+  = 3. Protocol & Port -> HTTP, 80
+  = 4. VPC -> Don't change anything
+  = 5. Protocol version -> Keep HTTP1
+  = 6. Health checks & Health check path -> HTTP, /
+  = 7. Register targets
+    -> 1. Check both instances
+    -> 2. Check Ports for the selected instances is 80
+    -> 3. Press Include as pending below
+    -> 4. Create target group
+
+  = 8. Check Target groups
+
+
