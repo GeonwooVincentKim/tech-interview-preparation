@@ -1,0 +1,28 @@
+Connection Draining
+- 1. Feature naming
+  = 1. Connection Draining - for CLB
+  = 2. Deregistration Delay - for ALB & NLB
+
+- 2. Time to complete "in-flight requests" while the instance is de-registering or unhealthy
+- 3. Stops sending new requests to the EC2 instance which is de-registering
+  -> 1. Users
+     => 1. Waiting (Users <-> ELB)
+     => 2. Shut-down the connections (Users <-> ELB)
+     => 3. New Connections (Users <-> ELB)
+
+  -> 2. ELB
+     => 1. Waiting for existing conections to complete (ELB <-> EC2 Instance DRAINING)
+     => 2. Draining Period (ELB <-> EC2 Instance)
+     => 3. New connections established to all other instances
+
+  -> 3. EC2 Instance DRAINING
+  -> 4. EC2 Instance
+  -> 5. EC2 Instance
+
+- 4. Between 1 to 3,600 seconds (default: 300 seconds)
+- 5. Can be disabled (set value to 0)
+  = 1. Draining connection parameter to maybe 30 seconds
+  = 2. This will allow your EC2 instance to be drained really fast and then be taken offline
+    -> Maybe to be replaced
+
+- 6. Set to a low value if your requests are short
