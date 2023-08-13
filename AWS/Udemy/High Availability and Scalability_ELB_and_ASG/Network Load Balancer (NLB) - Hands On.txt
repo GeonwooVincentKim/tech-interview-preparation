@@ -1,3 +1,6 @@
+<This Chapter continues from Application Load Balancer (ALB) - Hands On Part 1 and Part 2>
+<Please follow two chapter before do this part>
+
 Network Load Balancer (NLB) - Hands On
 - 1. Load Balancer
 - 2. Network Load Balancer
@@ -19,8 +22,8 @@ Network Load Balancer (NLB) - Hands On
 	  -- 2. Elastic IP exist = Can select 'Use an Elastic IP address', Replace using NLB
 
    = 3. Listeners and routing
-     -> 1. Create target group
-     -> 2. 
+     -> 1. Create target group        
+
 
 
 Create target group
@@ -42,7 +45,6 @@ Create target group
 
     -> 2. Health check path - Type "/"
 
-
   = 3. Advanced health check settings
     -> 1. Port - Traffic port
     -> 2. Healthy threshold - 2
@@ -50,3 +52,15 @@ Create target group
     -> 4. Timeout - 2
     -> 5. Interval - 5
     -> 6. Success codes - 200-399
+
+- 2. Register targets
+  = 1. Check two Available instances
+  = 2. Ports for the selected instances -> 80
+  = 3. Click 'Include as pending below' button
+  = 4. Click 'Create target group' button
+
+- 3. Target groups
+  = Check our Target groups created
+
+Register targets
+-> Check Application Load Balancer (ALB) - Hands On - Part 1 and Part 2 Text File
