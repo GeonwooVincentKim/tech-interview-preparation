@@ -1,0 +1,46 @@
+Network Load Balancer (v2)
+- 1. Network load balancers (Layer 4) allow to:
+  = 1. ForwardTCP & UDP traffic to your instances
+  = 2. Handle millions of request per seconds
+  = 3. Less latency ~ 100 ms (vs 400 ms for ALB)
+
+- 2. NLB ahs one stastic Ip per A, and supports assigning Elastic IP
+  = 1. Helpful for whitelisting specific IP
+  = 2. Expost your application with a set of static IPs and this can be Elastic IPs
+
+- 3. NLB are used for extreme performance, TCP or UDP traffic
+- 4. Not included in the AWS free tier
+
+Network Load Balancer (v2) - TCP (Layer 4) Based Traffic
+- 1. www
+  |
+  |- TCP + Rules
+  |- TCP + Rules
+  |
+- 2. External Application Load Balancer (v2 - public facing)
+  |
+  |- TCP
+  |- HTTP (Duplex Transmission)
+  |
+|- 2. First Target Group for Users applications (2 EC2 inst + Health Check - Microservices)---|
+|- 3. Second Target Group for Search applications (2 EC2 inst + Health Check - Microservices)-|
+
+Network Load Balancer - Target Groups
+- 1. EC2 Instances
+  = Target Group (EC2 Instances)
+    -> Network Load Balancer
+       => 1. i-1234567890abcdef0
+       => 2. i-1234567890abcdef0
+
+- 2. IP Addresses - must be private IPs
+  = Target Group (IP Addresses)
+    -> Network Load Balancer
+       => 1. 192.168.1.118 (EC2 instance)
+       => 2. 10.0.4.21 (Private IP of a server)
+
+- 3. Application Load Balancer
+  = Network Load Balancer
+    -> Target Group
+       => Target Group (Application Load Balancer)
+
+- 4. Health Checks support the TCP, HTTP and HTTPS Protocols
