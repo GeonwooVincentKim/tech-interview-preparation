@@ -1,0 +1,52 @@
+Network Load Balancer (NLB) - Hands On
+- 1. Load Balancer
+- 2. Network Load Balancer
+- 3. Create Network Load Balancer
+  = 1. Basic Configuration
+    -> 1. Load Balancer name - Demo
+    -> 2. Scheme - Internet-facing
+    -> 3. IP address type - IPv4
+
+  = 2. Network mapping
+    -> 1. VPC - Choose the default selected value
+    -> 2. Mappings
+       => 1. ap-northeast-2a (apne2-az1)
+       => 2. ap-northeast-2b (apne2-az2)
+       => 3. ap-northeast-2c (apne2-az3)
+       => 4. ap-northeast-2d (apne2-az4)
+       => 5. Can either choose a IP address assigned by AWS, going to be public
+          -- 1. Chose Scheme = Internet-facing
+	  -- 2. Elastic IP exist = Can select 'Use an Elastic IP address', Replace using NLB
+
+   = 3. Listeners and routing
+     -> 1. Create target group
+     -> 2. 
+
+
+Create target group
+- 1. Specifiy group details
+  = 1. Basic configuration
+    -> 1. Choose a target type = Instances
+    -> 2. Target group name = demo-tg-nlb
+    -> 3. Protocol & Port = TCP & 80
+    -> 4. VPC = Do not change anything, just choose the default ont that already selected
+
+  = 2. Health checks
+    -> 1. Health check protocol (choose HTTP)
+       => 1. TCP
+       => 2. HTTP
+          -- 1. If we know have an HTTP application, it's ok to use
+          -- 2. HTTP type of protoocl for the health check
+
+       => 3. HTTPS
+
+    -> 2. Health check path - Type "/"
+
+
+  = 3. Advanced health check settings
+    -> 1. Port - Traffic port
+    -> 2. Healthy threshold - 2
+    -> 3. Unhealthy threshold - 2
+    -> 4. Timeout - 2
+    -> 5. Interval - 5
+    -> 6. Success codes - 200-399

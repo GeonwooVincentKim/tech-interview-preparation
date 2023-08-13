@@ -1,0 +1,43 @@
+Gateway Load Balancer
+- 1. Deploy, scale, and manage a fleet of 3rd party network virtual appliances in AWS
+- 2. Example: Firewalls, Intrusion Detection and Prevention Systems
+  -> 1. Deep Packet Inspection Systems, payload manipulation,...
+  -> 2. Users (source)   Application (destination)
+     |
+     |- Route Table, Analysis Traffic (Users -> Gateway Load Balancer)
+     |- Forward Traffic (Gateway Load Balancer -> Application)
+     |
+  -> 4. Gateway Load Balancer
+     |
+     |- All the trafic will reach these appliances (Analyze traffic) (GLB -> Target Group)
+     |- Send it back to the GLB (Firewall) (Target Group -> GLB)
+     |
+  -> 5. Target Group (3rd Party Security Virtual Appliances)
+
+- 3. Operates at Layer 3 (Network Layer) - IP Packets
+- 4. Combines the following functions:
+  = 1. Transparent Network Gateway - single entry / exit for all traffic
+  = 2. Load Balancer - distributes traffic to your virtual appliances
+
+- 5. Uses the GENEVE protocl on port 6081
+
+Gateway Load Balancer - Traget Groups
+- 1. EC2 instances
+  = 1. Gateway Load Balancer
+  = 2. Target Group (EC2 Instances)
+    -> 1. i-1234567890abcdef0
+    -> 2. i-1234567890abcdef0
+  
+  = 3. They can either be EC2 instances, and you register them by instance ID
+
+- 2. IP Addresses - must be private IPs
+  = 1. Gateway Load Balancer
+  = 2. Target Group (IP Addresses)
+    -> 1. 192.168.1.118 (EC2 instance)
+    -> 2. 10.0.4.21 (Private IP of a server)
+  
+  = 3. If you are running these virtual appliances on your network, on your data center
+    -> You can register them by IP manually
+
+- 3. Most important thing that you have to remember
+  = One diagram on the right-hand side, and then Make sure to understand GLB
