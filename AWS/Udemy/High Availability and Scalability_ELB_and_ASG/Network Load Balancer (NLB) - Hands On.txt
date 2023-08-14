@@ -21,10 +21,14 @@ Network Load Balancer (NLB) - Hands On
           -- 1. Chose Scheme = Internet-facing
 	  -- 2. Elastic IP exist = Can select 'Use an Elastic IP address', Replace using NLB
 
-   = 3. Listeners and routing
-     -> 1. Create target group        
+  = 3. Listeners and routing
+    -> Create target group        
+       => Reload Default action, and then selecte demo-tb-nlb
 
-
+- 4. Click 'Create load balancer' button
+- 5. Check DemoNLB load balancer created and State is Active on the 'Load balancers' page
+- 6. Click DemoNLB, and then open the DNS name
+  = It would be not working
 
 Create target group
 - 1. Specifiy group details
@@ -64,3 +68,22 @@ Create target group
 
 Register targets
 -> Check Application Load Balancer (ALB) - Hands On - Part 1 and Part 2 Text File
+
+NLB Load balancer does not work
+- 1. Go to Target groups page and check out demo-tg-nlb
+- 2. Reasons 
+  -> 1. The instances are healthy on my other load-balancer
+  -> 2. It turns out that when you use a NLB, you don't define a security group for it
+     => All traffic goes through the NLB and goes straght into the EC2 instances
+
+- 3. Go to Security Groups and check launch-wizard-2
+- 4. Tap Inbound rules and click 'Edit inbound rules'
+  -> 1. Edit inbound rules
+     => 1. Allowed HTTP port 80 only that comes from the application load-balancer
+     => 2. Traffic doesn't work for public traffic
+
+  -> 2. Click 'Add rule' button to have a NLB to allow HTTP on port 80 from anywhere "0.0.0.0/0"
+  -> 3. Make sure to click 'Save rules'
+
+- 5. Go to Target groups and access to demo-tb-nlb
+  = Click refresh button to go to DNS page
