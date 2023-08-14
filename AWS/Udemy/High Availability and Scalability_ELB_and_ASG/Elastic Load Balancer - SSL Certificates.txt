@@ -1,0 +1,84 @@
+SSL / TLS - Basics
+- 1 An SSL Certficate allow traffic between your clients and your load balancer
+  = 1. To be encrypted in transit (in-flight encryption)
+  = 2. The data as it goes through a network is going to be encrypted
+  = 3. Only going to be able to be decrypted by the sender and the receiver
+
+- 2. SSL refers to Secure Sockets Layer, used to encrypt connections
+- 3. TSL refers to Transport Layer Security, which is a newer version	
+- 4. Nowadays, TLS certificates are mainly used, but people still refer as SSL
+- 5. Public SSL certificates are issued by Certificate Authorities (CA)
+- 6. Comodo, Symantec, GoDaddy, GlobalSign, Digicert, Letcencrypt, etc...
+  = 1. google, any other website, a lock or a green lock -> traffic is encrypted
+  = 2. If traffic is not encrypted, you'll have a red sign saying
+    -> Traffic is not encrypted, don't put your credit card details, don't put your login info..
+
+- 7. SSL certificates have an expiration date (you set) and must be renewed
+
+Load Balancer - SSL Certificates
+- 1. How it's work
+  = 1. Users
+    -> HTTPS (encrypted) over www (Users -> Load Balancer)
+
+  = 2. Load Balancer
+    -> HTTP Over private VPC (Load Balancer -> EC2 instance)
+
+  = 3. EC2 instance
+
+- 2. The load balancer uses an X.509 certificate (SSL/TLS server certificate)
+- 3. You can manage certificates using ACM (AWS Certificate Manager)
+- 4. You can create upload your own certificates alternatively
+- 5. HTTPS listener:
+  = 1. You must specify a default certificate
+  = 2. You can add an optional list of certs to support multiple domains
+  = 3. Clients can use SNI (Server Name Indication) to specify the hostname they reach
+  = 4. Ability to specify a security policy to support older versions of SSL / TLS (legacy clients)
+    -> Set a specific security policy if you wanted to support all their versions of SSL and TLS
+       => Called also Legacy clients
+
+SSL - Server Name Indication
+- 1. SNI solves the problem of loading multiple SSL certificates onto one web server
+  = To serve multiple websites
+
+- 2. It's a "newer" protocol, and requires the client to indicate the hostname of the target server
+  = 1. In the initial SSL handshake
+  = 2. The server will know what certificate to load
+
+- 3. The server will then find the correct certificate, or return the default ne
+- 4. Note:
+  = 1. Only works for ALB & NLB (newer generation), CloudFront
+  = 2. Does not work for CLB (older generation)
+
+- 5. Example
+  = 1. ALB
+    -> 1. Target group for www.mycorp.com
+       => 1. Going to take the right SSL certificates, encrypt the traffic
+       => 2. Going to know to redirect to the correct target group, mycorp.com
+
+    -> 2. Target group for Domain1.example.com
+       => 1. Another client connecting to your ALB for Domain1.example.com
+       => 2. You will be able to pull the right SSL certificate again
+       => 3. And connect to the right target group
+
+    -> 3. SSL Cert: Domain1.example.com
+       => Use the correct SSL cert (SSL Cert -> ALB)
+
+    -> 4. SSL Cert: www.mycorp.com
+       => Use the correct SSL cert (SSL Cert -> ALB)
+
+  = 2. Client - Connects to our ALB and says "I would like www.mycorp.com"
+  = 3. Using SNI or server name indication, you are able to have multiple target groups
+    -> For different websites using different SSL certificates
+
+Elastic Load Balancers - SSL Certificates (Supported for SSL certificates)
+- 1. Classic Load Balancer (v1)
+  = 1. Support only one SSL certificate
+  = 2. Must use multiple CLB for multiple hostname with multiple SSL certificates
+
+- 2. Application Load Balancer (v2)
+  = 1. Supports multiple listeners with multiple SSL certificates
+  = 2. Uses Server Name Indication (SNI) to make it work
+
+- 3. Network Load Balancer (v2)
+  = 1. Supports multiple listeners with multiple SSL certificates
+  = 2. Uses Server Name Indication (SNI) to make it work

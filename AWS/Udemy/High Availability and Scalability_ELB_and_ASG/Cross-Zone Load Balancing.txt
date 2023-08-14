@@ -46,7 +46,10 @@ Cross-Zone Load Balancing
   = 2. No charges for inter AZ data if enabled
 
 - 4. Edit Load Balancer Attributes
-  = 1. Click DemoNLB from Load balancers page
+  = 1. Click DemoNLB (DemoALB, DemoGWLB,...) from Load balancers page
   = 2. Click Attributes Tab and Click 'Edit' Button
   = 3. Enable Cross-zone load balancing
     -> Reply Regional data transfer charges may apply when cross-zone load balancing is turned on
+
+  = 4. Click Save changes button (If you're not going to change, don't click it)
+
