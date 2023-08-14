@@ -27,4 +27,26 @@ Cross-Zone Load Balancing
        => Each Availability Zone is going to get 6.25% of the traffic overall
 
   = 3. Without Cross Zone Load Balancing
-    -> Requests are distributed in the instances of the node of the Elastic Load Balancer
+    -> 1. Requests are distributed in the instances of the node of the Elastic Load Balancer
+    -> 2. The traffic is contained within each AZ
+       => 1. Imbalanced number of EC2 instances in each AZ, then some EC2 instances of a specific AZ
+       => 2. Receive more traffic than others
+
+Cross-Zone Load Balancing
+- 1. Application Load Balancer
+  = 1. Enabled by default (can be disabled at the Target Group level)
+  = 2. No charges for inter AZ data
+
+- 2. Network Load Balancer & Gateway Load Balancer
+  = 1. Disabled by default
+  = 2. You pay charges ($) for inter AZ data if enabled
+
+- 3. Classic Load Balancer
+  = 1. Disabled by default
+  = 2. No charges for inter AZ data if enabled
+
+- 4. Edit Load Balancer Attributes
+  = 1. Click DemoNLB from Load balancers page
+  = 2. Click Attributes Tab and Click 'Edit' Button
+  = 3. Enable Cross-zone load balancing
+    -> Reply Regional data transfer charges may apply when cross-zone load balancing is turned on
