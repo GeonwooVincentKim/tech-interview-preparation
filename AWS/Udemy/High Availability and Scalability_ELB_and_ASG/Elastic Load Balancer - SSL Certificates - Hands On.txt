@@ -1,0 +1,30 @@
+Elastic Load Balancers - SSL Certificates - Hands On
+- 1. Go to Load balancers page and access to DemoALB page
+- 2. Listenerts and rules -> Add listener
+- 3. Add listener (DemoALB - You can do this by optional)
+  = 1. Listener details
+    -> 1. Protocol & Port = HTTPS, 443
+    -> 2. Default actions
+       => 1. Action types -> Forward to target groups
+       => 2. Forward to target group -> demo-tb-alb
+
+  = 2. Secure listener settings
+    -> 1. Security Policy -> ELBSecurityPolicy-TLS13-1-2-2021-06 (recommended)
+    -> 2. Default SSL/TLS certificate
+       => Import, To ACM
+
+  = 3. To add, make sure to click Add button
+
+- 4. Add listener (DemoNLB - You can do this by optional)
+  = 1. Listener details
+    -> 1. Protocol & Port - TLS, 443
+    -> 2. Default action - demo-tg-nlb
+
+  = 2. Secure listener settings
+    -> 1. Security policy - ELBSecurityPolicy-TLS13-1-2-2021-06 (recommended)
+    -> 2. Default SSL/TLS certificate
+       => From ACM, From IAM, Import
+
+    -> 3. ALAN (Applicaion Layer Protocol Negotiation) policy - None
+
+  = 3. To add, make sure to click Add button
