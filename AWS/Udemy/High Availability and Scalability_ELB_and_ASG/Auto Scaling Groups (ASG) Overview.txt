@@ -1,0 +1,59 @@
+What's an Auto Scaling Group?
+- 1. In real-life, the load on your websites and application can change
+- 2. In the cloud, you can create and get rid of servers very quickly
+- 3. The goal of an Auto Scaling Group (ASG) is to:
+  = 1. Scale out (add EC2 instances) to match an increased load
+  = 2. Scale in (remove EC2 instances) to match an decreased load
+  = 3. Ensure we have a minimum and a maximum number of EC2 instances running
+  = 4. Automatically register new instances to a load balancer
+  = 5. Recreate an EC2 instance in case a previous one is terminated (ex: if unhealthy)
+
+- 4. ASG are free (you only pay for the underlying EC2 instances)
+
+Auto Scaling Group in AWS
+- 1. Auto Scaling Group
+  = 1. Minimum Capacity (2 EC2 instances)
+  = 2. Desired Capacity (4 EC2 instances = Mininum Capacity + 2 EC2 instances)
+  = 3. Maximum Capacity (8 EC2 instances = Desired Capacity + 4 EC2 instances)
+  = 4. Scale out as Needed
+    -> Adding EC2 instances more and more as you want
+
+- 2. Auto Scaling Group in AWS With Load Balancer
+  = 1. Users
+    -> Can access a load balanced website
+
+  = 2. Elastic Load Balancer
+    -> 1. ELB is going to distribute traffic to all these instances (EC2 instances) right away
+    -> 2. ELB can check the health of your EC2 instances!
+
+  = 3. Auto Scaling Group
+    -> 1. 4 EC2 instances
+    -> 2. ASG can terminate EC2 instances
+    -> 3. Scale out, if you add EC2 instances, then of course the ELB is going to send traffic
+    -> 4. ELB is going to send traffic to them as well and spread the load
+
+Auto Scaling Groupo Attributes
+- 1. A Launch Template (older "Launch Configurations" are deprecated)
+  = 1. AMI + Instance Type
+  = 2. EC2 User Data
+  = 3. EBS Volumes
+  = 4. Security Groups
+  = 5. SSH Key Pair
+  = 6. IAM Roles for your EC2 instances
+  = 7. Network + Subnets Information
+  = 8. Load Balancer Information
+
+- 2. Min Size / Max Size / Initial Capacity
+- 3. Scaling Policies
+
+Auto Scaling - Cloud Watch Alarms & Scaling
+- 1. It's possible to scale an ASG based on CloudWatch alarms
+- 2. An alarm monitors a metric (such as Average CPU, or a custom metric)
+- 3. Detail
+  = 1. ASG (3 EC2 Instances + 2 EC2 Instances that trigger Scaling from CloudWatch Alarm)
+  = 2. Cloud Watch Alarm
+
+- 4. Metrics such as Average CPU are computed for the overall ASG instances
+- 5. Based on the alarm:
+  = 1. We can create scale-out policies (increase the number of instances)
+  = 2. We can create scale-in policies (decrease the number of instances)
