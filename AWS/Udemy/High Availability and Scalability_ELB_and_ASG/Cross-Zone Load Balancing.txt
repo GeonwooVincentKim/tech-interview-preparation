@@ -1,0 +1,30 @@
+Cross-Zone Load Balancing
+- 1. Example (With Cross Zone Load Balancing)
+  = 1. Availability Zone 1
+    -> 1. Load Balancer with 2 EC2 instances
+    -> 2. Client is accessing AZ1, sending 50% of the traffic to the first ALB instance
+    -> 3. Each ELB is going to redirect the traffic across all 10 EC2 instances
+
+  = 2. Availability Zone 2
+    -> 1. Load Balancer with 8 EC2 instances
+    -> 2. Client is accessing AZ2, sending 50% of the traffic to the other ALB instance
+    -> 3. Each ELB is going to redirect the traffic across all 10 EC2 instances
+
+  = 3. With Cross Zone Load Balancing:
+    -> Each Load balancer instance distributes enenly across all registered instances in all AZ
+
+- 2. Example (Without Cross Zone Load Balancing)
+  = 1. Availability Zone 1
+    -> 1. Load Balancer with 2 EC2 instances
+    -> 2. Client sends 50% of the traffic to the 1st Availability Zone
+    -> 3. 1st ALB instance is going to send the traffic to only the EC2 instances in its region
+       => Each Availability Zone is going to get 25% of the traffic overall
+
+  = 2. Availability Zone 2
+    -> 1. Load Balancer with 8 EC2 instances
+    -> 2. Client sends 50% of the traffic to the 2nd Availability Zone
+    -> 3. 2nd ALB instance is going to send the traffic to only the EC2 instance in its region
+       => Each Availability Zone is going to get 6.25% of the traffic overall
+
+  = 3. Without Cross Zone Load Balancing
+    -> Requests are distributed in the instances of the node of the Elastic Load Balancer
