@@ -1,0 +1,35 @@
+Auto Scaling Groups Hands On
+- 1. Auto Scaling groups
+- 2. Create Auto Scaling group
+  = 1. Choose launch template
+    -> 1. Name (Auto Scaling group name) - DemoASG
+    -> 2. Launch template
+       => Create a launch template
+
+Create launch template
+- 1. Launch template name and description
+  = 1. Launch template name - required
+    -> MyDemoTemplate
+
+  = 2. Template version description - Template
+  = 3. Auto Scaling guidance - Checkbox should be checked
+
+- 2. Launch template contents
+  = Application and OS Images (Amazon Machine Image) - required
+    -> 1. Amazon Linux (AWS)
+    -> 2. Amazon Linux 2023 AMI
+    -> 3. Architecture - 64-bit (x86)
+
+- 3. Instance type - t2.micro (Free tier eligible)
+- 4. Key pair (login) - EC2TutorialWindows
+- 5. Network settings
+  = 1. Subnet - Don't incloude in launch template
+  = 2. Firewall (security groups) - Select existing security group
+  = 3. Security groups - launch-wizard-2
+
+- 6. Storage (volumes) (This one should be show Configure storage as a default, but it isn't here)
+  = EBS Volumes (Volume 1, AMI Root, 8 GiB, EBS, General purpose SSD, gp3)
+
+- 7. Advanced details
+  = 1. Copy & paste into User data
+  = 2. Create launch template
