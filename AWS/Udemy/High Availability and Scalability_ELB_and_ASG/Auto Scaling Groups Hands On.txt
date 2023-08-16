@@ -6,6 +6,56 @@ Auto Scaling Groups Hands On
     -> 2. Launch template
        => Create a launch template
 
+  = 2. Choose instance launch options
+    -> 1. Network
+       => 1. VPC -> choose the Default VPC one
+       => 2. Availability Zones and subnets -> choose all of AZs
+
+    -> 2. Instance type requirements
+       => 1. You can override Instance Type through the Override launch template button
+       => 2. Click 'Next' button not to Override launch template
+
+- 3. Configgure advanced options - optional
+  = 1. Load balancing -> Attach to an existing load balancer
+  = 2. Attach to an existing load balancer
+    -> 1. Choose from your load balancer target groups
+    -> 2. Existing load balancer target groups
+       => 1. Check Application Load Balancer (ALB) - Hands On - Part 1
+       => 2. Make EC2 instance and Load balancer, Target groups
+
+    -> 3. Health checks
+       => 1. EC2 health checks - Always enabled
+       => 2. Additional health check types - optional = Turn on ELB health checks
+       => 3. Health check grace period = 300 seconds
+
+  = 3. Additional settings
+    -> 1. Monitoring
+    -> 2. Default instance warmup
+
+- 4. Configure group size and scaling policies - optional
+  = 1. Group size - optional
+    -> Desired capacity, Minimum capacity, Maximum capacity set all as 1
+
+  = 2. Scaling policies - optional
+    -> 1. Target tracking scaling policy	
+       => 1. Scaling policy name
+       => 2. Metric type
+       => 3. Target value
+       => 4. Instance warmup
+       => 5. Checkbox for Disable scale in to create only a scale-out policy
+
+    -> 2. None
+  
+  = 3. Instance scale-in protection - optional
+    -> Instance scale-in protection = Checkbox for Enable instance scale-in protection
+
+- 5. Add notifications - optional
+- 6. Add tags - optional (No tags)
+- 7. Review
+  = Click Creating Auto Scaling group button
+
+
+
 Create launch template
 - 1. Launch template name and description
   = 1. Launch template name - required
@@ -33,3 +83,51 @@ Create launch template
 - 7. Advanced details
   = 1. Copy & paste into User data
   = 2. Create launch template
+
+Launch template button
+- 1. Specify instance attributes
+  -> 1. Required instance attributes
+  -> 2. vCPUs
+  -> 3. Memory (GiB)
+  -> 4. Additional instance attributes - optional
+     => Preview matching instance types (0)
+
+- 2. Manually add instance types
+  -> 1. Primary instance type, Weight
+  -> 2. Additional instance types
+
+DemoASG
+- 1. Tab Activity
+  = Check Activity history and the new EC2 instance launched successful
+
+- 2. Instance management
+  = 1. Check Instances created successful, andgo to Instances Page
+  = 2. Go to Target Groups page
+
+- 3. Experience the scaling
+  = 1. Group details -> Edit
+  = 2. Set Desired capacity and Maximum capacity as 2 (Mininum capacity = 1)
+    -> If this is not work, set Desired capacity = 2, Minimum = 1, Maximum = 3
+
+- 4. Instance management
+  = Check your new EC2 instance created
+
+- 4. Downgrade the scaling
+  = 1. Group details -> Edit
+  = 2. Set Desired capacity, Maximum, Minimum as 1
+
+Target groups
+- 1. Check demo-tg-alb
+- 2. Check my Registered targets healthy
+  = 1. If is not unhealthy, wait for register into my ALB
+  = 2. Still unhealthy
+    -> 1. You might can see the instance is going to be terminated
+    -> 2. A ne wone will be created
+    -> 3. Check Activity history work fine => EC2 instance could be misconfigured
+
+- 3. Check your newly added EC2 instances works
+  = The number of healthy should be increase
+
+- 3. Access to my registered targets
+  = 1. Click Instance ID
+  = 2. Copy Public IPv4 DNS and paste any web-browser to test
