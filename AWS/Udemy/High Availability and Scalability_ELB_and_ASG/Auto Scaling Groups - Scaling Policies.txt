@@ -1,0 +1,45 @@
+Auto Scaling Groups - Dynamic Scaling Policies
+- 1. Target Tracking Scaling
+  = 1. Most simple and easy to set-up
+  = 2. Example: I want the average ASG CPU to stay at around 40%
+
+- 2. Simple / Step Scaling
+  = 1. When a CloudWatch alarm is triggered (example CPU > 70%), then add 2 units
+  = 2. When a CloudWatch alarm is triggered (example CPU < 30%), then remove 1 unit
+
+- 3. Scheduled Actions
+  = 1. Anticipate a scalign based on known usage patterns
+  = 2. Example: increase the min capacity to 10 at 5pm on Fridays
+
+Auto Scaling Groups - Predictive Scaling
+- 1. Predictive scaling: continuously forecase load and schedule scaling ahead
+- 2. Analyze historical load
+- 3. Generate forecast
+  -> Forecast is going to be created
+
+- 4. Schedule scaling actions
+  -> Scaling actions being scheduled ahead of time
+
+Good metrics to scale one
+- 1. CPUUtilization: Average CPU utilization across your instances
+- 2. RequestCountPerTarget: to make sure the number of requests per EC2 instances is stable
+  = 1. Users
+  = 2. Application Load Balancer
+    -> RequestCountPerTarget - Target Value: 3
+
+  = 3. Auto Scaling Group (With 3 EC2 instances)
+
+- 3. Average Network In / Out (if you're application is network bound)
+  = 1. You may want to scale on the average network in or out
+  = 2. To make sure that if you reach some certain threshold
+
+- 4. Any custom metric (that you push using CloudWatch)
+
+Auto Scaling Groups - Scaling Cooldowns
+- 1. After a scaling activity happens, you are in the cooldown period (default 300 seconds)
+- 2. During the cooldown period, the ASG will not launch or terminate additional instances
+  = 1. To allow for metric to stablize
+  = 2. Scaling Action Occurs
+    -> 1. Default Cooldown in effect?
+    -> 2. No: Launch or Terminate Instance
+    -> 3. Yes: Ignore Action
