@@ -83,3 +83,23 @@ Install Stress Amazon linux 2023 (Or install stress amazon linux 2)
 To see scaling action on Activity Tab
 - 1. Pause the video until enough metric are being captured
 - 2. You might can check at the Activity history that your status captured (Monitor alarm)
+
+Cloud Watch
+- 1. Click All alarms
+- 2. Check two alarms are created directly by the target tracking policy
+- 3. Could check AlarmHigh and AlarmLow
+  = 1. In Alarm -> Alarm High, CPUUtilization > 40 for 3 datapoints within 3 minutes
+  = 2. OK -> Alarm Low, CPUUtilization < 28 for 15 datapoints within 15 minutes
+
+- 4. Check Alarms Graph
+  = 1. Alarms -> TargetTracking (Checking for Graph)
+  = 2. Check CPUUtilization Graph
+  = 3. Going over that limit right side, made a scaling activity happen from my autoscaling group
+    -> Turn made a new instance being in service
+
+Terminate and Reboot
+- 1. Leave from Connected instance CLI area
+- 2. And then Reboot the instances
+- 3. Check DemoASG -> Instance management
+- 4. Terminating Phase -> Your target tracking policy is working
+- 5. Check CloudWatch Alarm
