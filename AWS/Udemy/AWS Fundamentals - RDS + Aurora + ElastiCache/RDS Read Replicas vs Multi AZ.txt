@@ -1,0 +1,61 @@
+RDS Read Replicas for read scalability
+- 1. Read Replicas as the name indicates help you to scale your reads
+  = Application, RDS DB instance (Master)
+    -> Application performs reads (RDS -> App) and writes (App -> RDS) to our DB instances
+  
+- 2. Up to 15 Read Replicas
+- 3. Within AZ, Cross Az or Cross Region
+  = Application, RDS DB instance read replica
+    -> 1. RDS DB instance (Master) ASYNC replication to the each RDS DB instance read replica
+    -> 2. Application reads from the RDS DB instance read replica
+       -> Before they had the chance to replicate the data, then you get all data
+
+- 4. Replication in ASYNC, so reads are eventually consistent
+- 5. Replicas can be promoted to their own DB
+- 6. Applications must update the connection string to leverage read replicas
+
+RDS Read Replicas - Use Cases
+- 1. You have a production DB that is taking on normal load
+  = 1. Production Application, RDS DB instance (Master)
+    -> 1. Production DB is having read and writes to our main RDS DB instance (Same Region, Free)
+    -> 2. RDS is a managed service, and they give you that traffic for free
+
+  = 2. Region/AZ us-east-1a, Region/AZ eu-west-1b
+    -> 1. us-east-1a -> RDS DB instance (Master)
+    -> 2. eu-west-1b -> RDS DB instance read replica
+    -> 3. us-east-1b => eu-wesb-1b
+       => ASYNC Replication, Cross-Region, Money
+
+- 2. You want to run a reporting application to run some analytics
+  = 1. Create a Read Replica to run the new workload there
+  = 2. Asynchronous, a replication that happens between your main RDS DB instance
+    -> RDS DB instance (Master) => RDS DB instance read replicas <ASYNC replication>
+
+- 3. You create a Read Replica to run the new workload there
+- 4. The production application is unaffected
+- 5. Read replicas are used for SELECT (=read) only kind of statements
+  -> Not INSERT, UPDATE, DELETE
+
+RDS Read Replicas - Network Cost
+- 1. In AWS there's a network cost when data goes from one AZ to another
+- 2. For RDS Read Replicas within the same region, you don't pay that fee
+  = 1. Same Region, Different A, us-east-1a, us-east-1b
+  = 2. RDS DB instance in us-east-1a, and then a Read Replication
+  = 3. RDS DB instande read replicat in us-east-1b
+
+RDS Multi Az (Disaster Recovery)
+- 1. Application, RDS Master DB instance (AZ A), RDS DB instance standbyh (AZ B)
+  = 1. Application performs the reads (RDS Master DB -> App) and write (App -> RDS Master DB)
+  = 2. SYNC replication from RDS Master DB instance (AZ A) to the RDS Master DB instance (AZ B)
+
+- 2. SYNC replication
+- 3. One DNS name - automatic app failover to standby
+  = 1. Your application talks to one DNS name
+  = 2. In case there is a problem with the Master, there will be an automatic failover, one DNS name
+
+- 4. Increase availability
+- 5. Failover in case of loss of AZ, loss of network, instance or storage failure
+- 6. No manual intervention in apps
+- 7. Not used for scaling
+- 8. Note: The Read Replicas be setup as Multi AZ for Disaster Recovery (DR)
+
