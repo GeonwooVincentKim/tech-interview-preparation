@@ -122,7 +122,8 @@
 - 1. ASG and NLB, ASG supports the HTTP protocol, integrated with the LB health checks
 - 2. TCP Health checks, you'd like to migrate to using HTTP health checks, what do you do?
 
-= Migrate the TCP Health checks
+= Migrate the helath check to HTTP
+  -> NLB supports HTTP health checks as well as TCP and HTTPS
 
 21.
 - 1. Website hosted in EC2 instance in an ASG fronted by an ALB
