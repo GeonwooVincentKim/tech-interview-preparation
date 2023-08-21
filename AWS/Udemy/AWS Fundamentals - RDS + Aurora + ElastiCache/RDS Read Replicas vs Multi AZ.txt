@@ -44,9 +44,9 @@ RDS Read Replicas - Network Cost
   = 3. RDS DB instande read replicat in us-east-1b
 
 RDS Multi Az (Disaster Recovery)
-- 1. Application, RDS Master DB instance (AZ A), RDS DB instance standbyh (AZ B)
+- 1. Application, RDS Master DB instance (AZ A), RDS DB instance standby (AZ B)
   = 1. Application performs the reads (RDS Master DB -> App) and write (App -> RDS Master DB)
-  = 2. SYNC replication from RDS Master DB instance (AZ A) to the RDS Master DB instance (AZ B)
+  = 2. SYNC replication from RDS Master DB instance (AZ A) -> RDS Master DB instance standby (AZ B)
 
 - 2. SYNC replication
 - 3. One DNS name - automatic app failover to standby
@@ -57,5 +57,7 @@ RDS Multi Az (Disaster Recovery)
 - 5. Failover in case of loss of AZ, loss of network, instance or storage failure
 - 6. No manual intervention in apps
 - 7. Not used for scaling
+  = Standby DB is just for standby, No one cannot read, or write to it, just here as a failover
+
 - 8. Note: The Read Replicas be setup as Multi AZ for Disaster Recovery (DR)
 
