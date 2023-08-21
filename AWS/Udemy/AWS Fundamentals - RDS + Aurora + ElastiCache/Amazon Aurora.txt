@@ -1,0 +1,68 @@
+Amazon Aurora
+- 1. Aurora is a proprietary technology from AWS (not open sourced)
+- 2. Postgres and MySQL are both supported as Aurora DB
+  = That means your drivers will work as if Aurora was a Postgres of MySQL DB
+
+- 3. Aurora is "AWS Cloud optimized" and claims 5x performance improvement over MySQL on RDS
+  = Over 3x the performance of Postgres on RDS
+
+- 4. Aurora storage automatically grows in increments of 10 GB, up to 128 TB
+- 5. Aurora can have up to 15 replicas and the replication process is faster than MySQL
+  = Sub 10 ms replica lag
+
+- 6. Failover in Aurora is instantaneous. It's HA (High Availability) native.
+- 7. Aurora costs more than RDS (20% more) - But is more efficient
+
+Aurora High Availability and Read Scaling
+- 1. 6 copies of your data across 3 AZ:
+  = 1. 4 copies out of 6 needed for writes
+  = 2. 3 copies out of 6 need for reads
+  = 3. Self healing with peer-to-peer replication
+  = 4. Storage is striped across 100s of volumes
+    -> 1. AZ 1, AZ 2, AZ 3 - Shared storage Volume Replication + Self Healing + Auto Expanding
+    -> 2. Read 6 copy of it in 3 different AZ (Blue Data)
+    -> 3. Write 6 copy in different AZ (Orange Data)
+    -> 4. Adds more and more data, basically going to go again 6 copy of it in 3 different AZ
+       => Randomized Color
+
+- 2. One Aurora Instance takes writes (master)
+  = 1. 1 Instance (Master Aurora) writes
+  = 2. A lot of Instances (Read Aurora) reads
+    -> Any of these read replicas can become the master in case the master fails
+       => Like a Kingdom
+
+- 3. Automated failover for master in less than 30 seconds
+- 4. Master + up to 15 Aurora Read Replicas serve reads
+- 5. Support for Cross Region Replication
+
+Aurora DB Cluster
+- 1. Client
+  = 1. Even if the master fails over, your client still talks to the writer endpoint
+  = 2. Automatically redirected to the right instance
+    -> Writer Endpoint => Pointing to the master
+
+  = 3. Client connects to the reader endpoints
+    -> 1. It will get connected to one of the read replicas
+    -> 2. There will be load balancing done this way
+    -> 3. Load balancing happens => Connection Level (Not the statement level)
+
+- 2. Master is the only thing that will write to your storage
+  = Aurora provides you is what's called a writer endpoint (DNS name)
+
+- 3. Reader Endpoint
+  = 1. Connection Load Balancing
+  = 2. It connects automatically to all the Read replicas
+
+- 4. Auto Scaling, 1 ~ 15 Read replicas
+- 5. Shared Storage Volume - Auto Expanding from 10 GB to 128 TB
+
+Features of Aurora
+- 1. Automatic fail-over
+- 2. Backup and Recovery
+- 3. Isolation and security
+- 4. Industry compliance
+- 5. Push-button scaling
+- 6. Automated Patching with Zero Downtime
+- 7. Advanced Monitoring
+- 8. Routine Maintenance
+- 9. Backtrack: restore data at any point of time without using backups
