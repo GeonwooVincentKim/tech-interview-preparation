@@ -1,0 +1,107 @@
+Aurora Replicas - Auto Scaling
+- 1. Client
+- 2. Writer Endpoint (Write)
+  = 1. 1 Amazon Aurora
+  = 2. Writer Endpoint -> Shared Storage Volume
+
+- 3. Reader Endpoint (Read)
+  = 1. 2 Amazon Aurora
+    -> 1. Increase CPU Usage
+    -> 2. Set up replicas autoscaling
+    -> 3. Add obviously Amazon Aurora replicas
+       => 1. Automatically the reader endpoint - Endpoint Extended
+       => 2. Reads will be happening, bringing down the overall CPU usage
+
+  = 2. Many read requests on the reader point
+  = 3. Reader Endpoint -> Shared Storage Volume
+
+- 4. Shared Storage Volume
+
+Aurora - Custom Endpoints
+- 1. Client
+- 2. Writer Endpoint (Write)
+  = 1. 1 Amazon Aurora
+  = 2. Writer Endpoint -> Shared Storage Volume
+
+- 3. Reader Endpoint
+  = 1. 4 Amazon Aurora
+    -> 1. 2 Amazon Aurora with db.r3.large
+    -> 2. 2 Amazon Aurora with db.r5.2xlarge
+
+  = 2. Reader Endpoint -> Shared Storage Volume
+  = 3. Quries from Client
+
+- 4. Define a subset of Aurora Instances as a Custom Endpoint
+  = Custom Endpoint, 2 db.r5.2xlarge Amazon Aurora
+    -> 1. These instances are more powerful, and they're going to be better
+    -> 2. Analytical Queries from Client and run it
+
+- 5. Example: Run analytical queries on specific replicas
+- 6. The Reader Endpoint is generally not used after defining Custom Endpoints
+
+Aurora Serverless
+- 1. Automated DB instantiation and auto-scaling based on actual usage
+- 2. Good for infrquent, intermittent or unpredictable workloads
+- 3. No capacity planning needed
+- 4. Pay per second, can be more cost-effective
+- 5. Example
+  = 1. Client is going to talk to a proxy fleet (managed by Aurora)
+  = 2. Backend, many Aurora instances will be creatd based on your workload (Serverless Session)
+  = 3. You don't have to provision capacity at all in advance
+
+Aurora Multi-Master
+- 1. In case you want continuous write availability for the writer nodes
+  = 1. Amazon Aurora Cluster in Shared Storage Volume
+  = 2. Every Aurora instance is a writer node
+    -> 1. Every Aurora instance can take in writes
+    -> 2. This is different from a normal Aurora cluster
+  
+  = 3. While you have new master, and in case it fails
+    -> Multiple writer endpoints - then a new one is promoted as the new master
+
+- 2. Every node does R/W - vs promoting a Read Replica as the new master
+  = 1. Your clients can maintain multiple DB connections to multiple Aurora instances
+  = 2. Replicate between Amazon Aurora
+
+Global Aurora
+- 1. Aurora Cross Region Read Replicas:
+  = 1. Useful for disaster recovery
+  = 2. Simple to put in place
+
+- 2. Aurora Global Database (recommended):
+  = 1. I Primary Region (read / write)
+  = 2. Up to 5 secondary (read-only) regions, replication lag is less than 1 second
+  = 3. Up to 16 Read Replicas per secondary region
+  = 4. Helps for decreasing latency
+  = 5. Promoting another region (for disaster recovery) has an RTO of < 1 minute
+  = 6. Typical cross-region replication takes less than 1 second
+
+- 3. US-East 1 - Primary region & EU-West 1 - Secondary region
+  = 1. Applications do the read and writes (US-East 1)
+  = 2. Replicatin happening with a global DB of Aurora (EU-West 1)
+  = 3. Application Read Only
+
+Aurora Machine Learning
+- 1. Enables you to add ML-based predictions to your application via SQL
+- 2. Simple, optimized, and secure integration between Aurora and AWS ML services
+- 3. Supported services
+  = 1. Amazon SageMaker (use with any ML model)
+  = 2. Amazon Comprehend (for sentiment analysis)
+
+- 4. You don't need to have ML experience
+- 5. Use cases: fraud detection, ads targeting, sentiment analysis, product recommendations
+- 6. Example
+  = 1. Application
+    -> Can just run a very simple SQL query
+       => SQL Query (Recommended products?)
+
+  = 2. Amazon Aurora
+    -> 1. Connects to the ML services in AWS
+    -> 2. Send some data (user's profile, shopping history,...)
+    -> 3. Return the query results (red shirt, blue pants,...)
+
+  = 3. Architecture idea (ML service)
+    -> 1. Amazon SageMaker
+    -> 2. Amazon Comprehened
+    -> 3. Return prediction directly to Aurora (red shirt, blue pants,...)
+
