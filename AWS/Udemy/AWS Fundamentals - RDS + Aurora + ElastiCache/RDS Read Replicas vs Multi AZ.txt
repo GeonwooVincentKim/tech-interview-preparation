@@ -61,3 +61,13 @@ RDS Multi Az (Disaster Recovery)
 
 - 8. Note: The Read Replicas be setup as Multi AZ for Disaster Recovery (DR)
 
+RDS - From single AZ to Multi-AZ
+- 1. Zero downtime operation (no need to stop the DB)
+- 2. Just click on "modify" for the DB
+  = RDS DB instance (Master) to have a standby DB with synchronous replication
+
+- 3. The following happens internally:
+  = 1. A snapshot is taken (RDS DB Instance master -> DB snapshot)
+  = 2. A new DB is restored from the snapshot in a new AZ (DB snapshot -> Standby DB)
+  = 3. Synchronization is established between the two databases
+
