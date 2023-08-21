@@ -1,0 +1,77 @@
+Amazon Aurora - Hands On
+- 1. RDS - Create database
+- 2. Aurora (MySQL Compatible)
+
+<Just pass No.3 ~ No.5 if you want to set as Default version>
+- 3. Show versions that support the global database feature
+  = Show the list of Global Aurora DB
+
+- 4. Show versions that support the parallet query feature
+  = Show the list of Parellel query feature
+
+- 5. Show versions that support Serverless v2
+  = Show the list of Serverless v2
+
+- 6. Templates -> Production
+- 7. DB Cluster identifer -> database-v2
+- 8. Master username -> admin, Master password & Confirm password
+- 9. Instance configuration 
+  = 1. Burstable classes (includes t classes) - db.t3.small
+  = 2. Enable Include previous generation classes
+
+- 10. Availability & durability
+  = Create an Aurora Replica or Reader node in a different AZ
+
+- 11. Connectivity
+  = 1. Compute resource -> Don't connect to an EC2 compute resource
+  = 2. Public access -> Yes
+  = 3. VPC Security group (Firewall) -> Create new -> demo-database-aurora
+  = 4. DB Port -> 3306
+
+- 12. DB Authentication -> Password authentication
+- 13. Monitoring -> Disabled "Enable Enhanced monitoring" button
+- 14. Additional configuration
+  = 1. Initial database name -> mydb
+  = 2. Backup retenion period -> 1 day (Choose between 0 ~ 35 days)
+  = 3. Disabled "Enable Backtrack"
+  = 4. Disabled any selection of "Log exports"
+
+- 15. Click Create database button
+
+Amazon RDS Databases - Aurora (Optional, Make sure to click Cancel button)
+- 1. Check Regional cluster, Writer instance, and Reader instance
+- 2. Click database-2 and check Connectivity & security tab Endpoints
+  = 1. Reader instance
+  = 2. Writer instance
+
+- 3. Actions - Create cross-Region read replica (Optional)
+  = If you want to have a replica in another region
+
+- 4. Actions - Add replica auto scaling (From database-2)
+  = 1. Policy details
+    -> 1. Policy name - ReadReplicasScalingPolicy
+    -> 2. IAM role
+    -> 3. Target metric
+       => 1. Average CPU utilization of Aurora Replicas (Choose this)
+       => 2. Average connections of Aurora Replicas
+
+    -> 4. Target value - 60 %
+    -> 5. Enabled Scale in
+
+  = 2. Cluster capacity details
+    -> 1. Minimum capacity - 1 Aurora Replicas
+    -> 2. Maximum capacity - 15 Aurora Replicas
+
+- 5. Actions - Add AWS Region (From database-2)
+  = 1. If you chose a version of Aurora that was enabled with global database feature
+  = 2. You can't add an AWS Region to this DB cluster
+    -> 1. This will allow you to get a global Aurora
+    -> 2. It's impossible with this cluster because we need to have an instance
+       => With a compatible size to do this first
+
+    -> 3. Needs to change to a large type of instance
+
+Delete RDS (Aurora) instances
+- 1. Select Reader instance -> Actions - Delete, Then type delete me
+- 2. Select Writer instance -> Actions - Delete, Then type delete me
+- 3. Select database-2 instance -> Actions - Delete, Then type delete me
