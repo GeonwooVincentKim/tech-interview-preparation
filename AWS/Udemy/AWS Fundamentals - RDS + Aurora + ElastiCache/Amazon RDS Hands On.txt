@@ -1,0 +1,179 @@
+Amazon RDS Hands On
+- 1. Create database
+  = 1. Standard create
+  = 2. Easy create
+
+- 2. Engine options / Configuration
+  = 1. Aurora (MySQL Compatible)
+  = 2. Aurora (PostgreSQL Compatible)
+  = 3. MySQL
+    -> Choose this one to test how RDS DB works
+
+  = 4. MariaDB
+  = 5. PostgreSQL
+  = 6. Oracle
+  = 7. Microsoft SQL Server
+
+- 3. Templates
+  = 1. Production
+  = 2. Dev/Test
+  = 3. Free tier
+
+- 4. Avilability and durability
+  = 1. Single DB instance
+  = 2. Multi-AZ DB instance (Standby DB instance)
+  = 3. Multi-AZ DB Cluster - new (Standby DB instance)
+
+- 5. Settings
+  = 1. DB Cluster identifier -> database-1
+  = 2. Credentials Settings
+    -> 1. Master username = admin
+    -> 2. Master password & Confirm password
+
+  = 3. Instance configuration
+    -> 1. Standard classes (includes m classes)
+    -> 2. Memory optimized classes (includes r classes)
+    -> 3. Burstable classes (includes t classes -> Free tier classes)
+    -> 4. Include previous generation classes
+    -> 5. db.t2.micro (Free tier)
+
+- 6. Storage
+  = 1. Storage type -> General Purpose SSD (gp2)
+  = 2. Allocated storage -> 20
+  = 3. Enable storage autoscaling 
+    -> 1. Automatically increase the size of the EBS volume
+    -> 2. Starting to near a threshold
+
+  = 4. Maximum storage threshold -> 1000 GiB
+
+- 7. Connectivity
+  = 1. Don't connect to an EC2 compute resource
+    -> Choose this to test how RDS DB works
+
+  = 2. Connect to an EC2 compute resource
+    -> You don't have to handle security groups, for beginner
+
+  = 3. Virtual private cloud (VPC), DB subnet group -> Set as default one
+  = 4. Public access -> Yes, I want to access this DB from my own computer
+  = 5. VPC security group (firewall) -> Create new
+  = 6. New VPC security group name -> demo-database-mysql
+  = 7. Availability Zone -> No preference - no need
+  = 8. Database port -> 3306
+
+- 8. Database authentication
+  = 1. Password authentication -> Choose this to test how RDS DB works
+  = 2. Password and IAM DB authentication
+  = 3. Password and Kerberos authentication
+
+- 9. Monitoring
+  = Enable Enhanced monitoring (Disable now)
+    -> Gives you a 60 second granularity on your resources
+
+- 10. Additional configuration
+  = 1. Initial DB name -> mydb
+  = 2. Enable automated backups (Automated checked)
+  = 3. Backup retention period (0 ~ 35 days)
+    -> 0 = Disable
+
+  = 4. Backup window -> No preference
+  = 5. Log exports (Disable all)
+    -> 1. Audit log (long-term retention)
+    -> 2. Error log
+    -> 3. General log
+    -> 4. Slow query log
+
+  = 6. Enable auto minor version upgrade
+  = 7. Maintenance window
+  = 8. Deletion protection -> Enable deletion protection
+
+- 11. Click Create database button
+
+Amazon RDS SQL with SQL electrons (SQL Clients)
+- 1. Download sql electron
+  = Download GUI -> sqlectron-1.38.0-win.7z
+
+- 2. Check RDS SQL database-1
+  = 1. Connectivity & security
+    -> Check Endpoint and Port
+
+  = 2. VPC security groups
+    -> 1. Security Groups
+    -> 2. Inbound rules (Tab)
+
+  = 3. Edit inbound rules (Necessary to modify this security group)
+    -> Set as Anywhere-IPv4
+
+- 3. Connect Endpoint using SQL Electron
+  = 1. Add -> Server Information
+  = 2. Name -> RDSDemo, Database Type -> MySQL
+  = 3. Server Address -> Copy & past from Endpoint
+  = 4. User -> admin, Password (Input)
+  = 5. Initial Database / Keyspace -> mydb
+  = 6. Click Test button, check Connection Test (Successfully connected)
+    -> If is red
+       => 1. Have a look whether or not your DB was set to be a public DB
+       => 2. Have a look at your security group settings to make sure that your IP is allowed in
+
+  = 7. Click Save button and Connect it
+
+- 4. Test with query
+  = 1. CREATE TABLE mytable (name VARCHAR(20), first_name VARCHAR(29));
+    -> Then execute
+
+  = 2. SELECT * FROM 'mytable' LIMIT 1000 (Or SELECT * FROM 'mytable')
+    -> Then execute
+
+  = 3. INSERT INTO `mytable` (`name`, `first_name`) 
+       VALUES ("YourName", "YourFirstName");
+
+    -> Then execute
+
+  = 4. SELECT * FROM 'mytable' LIMIT 1000
+    -> Then execute
+
+Full picture of using SQL Electron (Optional - It's ok to cancel it)
+- 1. Check your Connetivity & security
+- 2. Actions -> Create read replica
+- 3. Create read replica
+  = 1. Settings
+    -> 1. Replica source
+    -> 2. DB instance identifier
+
+  = 2. Instance configuration
+    -> 1. DB instance class
+       => Burstable classes (includes t classes) - db.t2.micro
+
+    -> 2. Include previous generation classes
+
+  = 3. Availability -> Single DB instance
+
+Amazon RDS CloudWatch
+- 1. Click Monitoring tab
+- 2. CPUUtilization, DB Connections
+- 3. Take DB Snapshot (Optional - It's ok not to do this)
+  = 1. Actions -> Take snapshot
+  = 2. Take DB Snapshot
+
+- 4. Migrate a snapshot
+  = 1. Actions -> Migrate snapshot
+  = 2. Migrate database
+
+Delete RDS DB
+- 1. Check database-1
+- 2. Actions -> Delete
+- 3. Click Close button
+
+- 4. Modify -> Disable "Enable deletion protection"
+- 5. Press "Continue" button
+- 6. Schedule modifications -> Apply immediately
+- 7. Press "Modify DB instance" button
+
+- 8. Actions -> Delete
+- 9. Disable Create final snapshot and Retain automated backups
+- 10. Enable "I acknowledge that upon instance deletion, automated backups, including system..."'
+- 11. Click "Delete" button
+
+Delete SQLectron Server (RDSDemo)
+- 1. Click pencil button
+- 2. Click Remove button
+- 3. Click Yes button

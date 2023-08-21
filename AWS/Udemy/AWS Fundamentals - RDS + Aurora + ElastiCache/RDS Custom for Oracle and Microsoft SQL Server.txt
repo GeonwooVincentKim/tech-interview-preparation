@@ -1,0 +1,22 @@
+RDS Custom
+- 1. Managed Oracle and MS-SQL Server DB with OS and DB customization
+- 2. RDS: Automates setup, operation, and scaling of DB in AWS
+- 3. Custom: access to the underlying database and OS so you can
+  = 1. Configure settings
+  = 2. Install patches
+  = 3. Enable native features
+  = 4. Access the underlying EC2 Instance using SSH or SSM Session Manager
+    -> 1. User, using Amazon RDS Custom
+       => Apply customizations and SSH into it
+
+    -> 2. EC2 Instance, Amazon RDS, Automation Mode disabled
+       => 1. So that RDS does not perform any automation, or maintenance, or scaling, etc..
+       => 2. It's much better to take a DB snapshot
+       => 3. Otherwise you won't able to recover from your actions
+
+- 4. De-activate Automation Mode to perform your customization
+  = Better to take a DB snapshot before
+
+- 5. RDS vs RDS Custom
+  = 1. RDS: entire DB and the OS to be managed by AWS
+  = 2. RDS Custom: full admin access to the underlying OS and the DB
