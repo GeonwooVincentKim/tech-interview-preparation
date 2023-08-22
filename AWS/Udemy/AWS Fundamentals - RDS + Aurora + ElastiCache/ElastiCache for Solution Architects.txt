@@ -1,0 +1,58 @@
+ElastiCache - Cache Security
+- 1. ElastiCache supports IAM Authentication for Redis
+- 2. IAM policies on ElastiCache are only used for AWS API-level security
+- 3. Redis AUTH
+  = 1. You can set a "password/token" when you create a Redis cluster
+  = 2. This is an extra level of security for your cache (on top of security groups)
+  = 3. Support SSL in flight encryption
+
+- 4. Memcached
+  = Supports SASL-based authentication (advanced)
+
+- 5. EC2 Security Group (EC2 instance) in a client
+  = 1. Could use Redis AUTH to connect to Redis Cluster that's protected by Redis Security Group
+  = 2. We can have in-flight encryption
+    -> 1. SSL Encryption Redis AUTH
+    -> 2. Or alternatively, we could leverage IAM authentication for Redis
+
+Patterns for ElastiCache
+- 1. Lazy Loading: all the read data is cached, adta can become stale in cache
+- 2. Write Through: Adds or update data in the cache when written to a DB (no state data)
+- 3. Session Store: store temporary session data in a cache (using TTL features)
+- 4. Quote: There are only two hand things in Computer Science:
+  = Cache invalidation and naming things
+
+- 5. Example (Lazy Loading illustrated)
+  = 1. Application
+    -> 1. If it has a cache hit in ElastiCache data from the cache
+       => Cache hit (Application <-> Amazon ElastiCache)
+
+    -> 2. Otherwise there's a cache miss
+       => Cache miss (Application -> Amazon ElastiCache)
+
+    -> 3. Fetch the data from the DB
+       => Read from DB (Application <-> Amazon RDS)
+
+    -> 4. Other application or other instances where the same query will be made
+       => We can write the data back into the cache (Application <-> Amazon ElastiCache)
+
+  = 2. Amazon ElastiCache
+  = 3. Amazon RDS
+
+
+ElastiCache - Redis Use Case
+- 1. Gaming Leaderboards are computationally complex
+- 2. Redis Sorted sets guarantee both uniqueness and element ordering
+- 3. Each time a new element added, it's ranked in real time, then added in correct order
+- 4. Example
+  = 1. Client
+    -> When talking to your Amazon ElastiCache using Redis
+       => 1. They can have access to this realtime leaderboard
+       => 2. We don't need to program that feature application side
+       => 3. We can leverage Redis with the sorted sets to get access to your realtime leaderboard
+
+  = 2. ElastiCache for Redis
+    -> All the Redis cache will have at the same leaderboard available
+
+  = 3. Real-time Leaderboard
+    -> No.1 ~ 3 player in realtime

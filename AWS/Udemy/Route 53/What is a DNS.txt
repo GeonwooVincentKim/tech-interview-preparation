@@ -1,0 +1,47 @@
+What is DNS?
+- 1. Domain Name System which translates the human friendly hostnames into the machine IP address
+- 2. www.google.com => 172.217.18.36
+- 3. DNS is the backbone of the Internet
+- 4. DNS uses hierarchical naming structure
+  = 1. .com
+  = 2. example.com
+  = 3. www.example.com
+  = 4. api.example.com
+
+DNS Terminologies
+- 1. Domain Register - Amazon Route 52, GoDaddy,...
+- 2. DNS Records: A, AAAA, CNAME, NS,...
+- 3. Zone File: contains DNS records
+- 4. Name Server: resolves DNS queries (Authoritative or Non-Authoritative)
+- 5. Top Level Domain (TLD): .com, .us, .in, .gov, .org,...
+- 6. Second Level Domain (SLD): amazon.com, google.com,...
+
+= 1. URL -> https://api.www.example.com
+= 2. FQDN (Fully Qualified Domain Name) -> api.www.example.com
+= 3. Sub Domain -> www.example.com
+= 4. SLD -> example.com
+= 5. TLD -> .co
+= 6. Protocol -> http
+= 7. Root
+
+How DNS Works
+- 1. Web Browser - You want to access example.com
+  = 1. Send request to Local DNS Server "example.com?"
+  = 2. Get responds from Local DNS Server "9.10.11.12"
+
+- 2. Web Server (example.com) (IP: 9.10.11.12)
+- 3. Local DNS Server
+  = 1. Assigned and Managed by your company or assigned by your ISP dynamically
+  = 2. Send request to Root DNS Server "example.com?"
+    -> Get responds from Root DNS Server ".com NS 1.2.3.4"
+
+  = 3. Send request to TLD DNS Server (.com) "example.com?"
+    -> Get responds from TLD DNS Server "example.com NS 5.6.7.8"
+
+  = 4. Send request to SLD DNS Server (example.com) "example.com?"
+    -> Get responds from SLD DNS Server "example.com IP 9.10.11.12"
+
+- 4. Root DNS Server - Managed by ICANN
+- 5. TLD DNS Server (.com) - Managed by IANA (Branch of ICANN)
+- 6. SLD DNS Server (example.com) - Managed by Domain Register (e.g., Amazon Register, Inc.)
+ 
