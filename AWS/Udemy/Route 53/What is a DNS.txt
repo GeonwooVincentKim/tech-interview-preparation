@@ -2,7 +2,7 @@ What is DNS?
 - 1. Domain Name System which translates the human friendly hostnames into the machine IP address
 - 2. www.google.com => 172.217.18.36
 - 3. DNS is the backbone of the Internet
-- 4. DNS uses hierarchical naming structure
+- 4. DNS uses hierarchical naming structure (Hierachy of Domain names)
   = 1. .com
   = 2. example.com
   = 3. www.example.com
@@ -16,32 +16,49 @@ DNS Terminologies
 - 5. Top Level Domain (TLD): .com, .us, .in, .gov, .org,...
 - 6. Second Level Domain (SLD): amazon.com, google.com,...
 
-= 1. URL -> https://api.www.example.com
-= 2. FQDN (Fully Qualified Domain Name) -> api.www.example.com
-= 3. Sub Domain -> www.example.com
-= 4. SLD -> example.com
-= 5. TLD -> .co
-= 6. Protocol -> http
-= 7. Root
+= 1. URL -> https://api.www.example.com.
+= 2. Protocol -> http
+= 3. FQDN (Fully Qualified Domain Name) -> api.www.example.com.
+= 4. Sub Domain -> www.example.com.
+= 5. SLD -> .example.com.
+= 6. TLD -> .com.
+= 7. Root -> The last dot the end is called the root
 
 How DNS Works
 - 1. Web Browser - You want to access example.com
-  = 1. Send request to Local DNS Server "example.com?"
+  = 1. Send request to Local DNS Server "example.com?" (Asking)
   = 2. Get responds from Local DNS Server "9.10.11.12"
+    -> Send back the answer into your browser
 
 - 2. Web Server (example.com) (IP: 9.10.11.12)
-- 3. Local DNS Server
-  = 1. Assigned and Managed by your company or assigned by your ISP dynamically
-  = 2. Send request to Root DNS Server "example.com?"
-    -> Get responds from Root DNS Server ".com NS 1.2.3.4"
+  = Using the IP address, then is going to be able to access your web browser
 
-  = 3. Send request to TLD DNS Server (.com) "example.com?"
-    -> Get responds from TLD DNS Server "example.com NS 5.6.7.8"
+- 3. Local DNS Server
+  <.com = NS, NS Record Name Server>
+
+  = 1. Assigned and Managed by your company or assigned by  your ISP dynamically
+  = 2. Send request to Root DNS Server "example.com?" (Asking)
+    -> 1. Get responds from Root DNS Server ".com NS 1.2.3.4"
+    -> 2. Answering that I know '.com', but I've never seen it
+
+  = 3. Send request to TLD DNS Server (.com) "example.com?" (Asking)
+    -> 1. Get responds from TLD DNS Server "example.com NS 5.6.7.8" 
+    -> 2. Answering that I know 'example.com', but I don't know which record it is
 
   = 4. Send request to SLD DNS Server (example.com) "example.com?"
-    -> Get responds from SLD DNS Server "example.com IP 9.10.11.12"
+    -> 1. Get responds from SLD DNS Server "example.com IP 9.10.11.12" (Asking)
+    -> 2. Answering I know 'example.com', and it turns out that "example.com"
+       => 1. I know that it's an A record, and that the result of it's the IP 9.10.11.12
+       => 2. DNS server now knows the answer by recursively asking DNS servers
+       => 3. And finding the most specific one
+
+    -> 3. Local DNS Server cache that answer right away
+       => 1. Someone is asking me again for example.com
+       => 2. I want to get it right away, give them the answer
 
 - 4. Root DNS Server - Managed by ICANN
 - 5. TLD DNS Server (.com) - Managed by IANA (Branch of ICANN)
 - 6. SLD DNS Server (example.com) - Managed by Domain Register (e.g., Amazon Register, Inc.)
+  = Sub Level Domain Server
+
  
