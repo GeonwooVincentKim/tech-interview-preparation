@@ -1,10 +1,82 @@
 Amazon ElastiCache Overview
 - 1. The same way RDS is to get managed Relational DB..
-- 2. ElastiCache is to get managed Redis or Memcached
+- 2. ElastiCache is to get managed Redis or Memcached (Cache technologies)
 - 3. Caches are in-memory databases with really high performance, low latency
 - 4. Helps reduce load off of databases for read intensive workloads
 - 5. Helps make your application stateless
 - 6. AWS takes care of OS maintenance / patching, optimizations, setup
   = Configuration, monitoring, failure recovery and backups
 
-- 7. Using ElasticCache involes heavy application code changes
+- 7. Using ElastiCache involes heavy application code changes
+
+ElastiCache Solution Architecture - DB Cache
+- 1. Applications requires ElastiCache, if not available, get from RDS and store in ElastiCache
+- 2. Helps relieve load in RDS
+- 3. Cache must have an invalidation strategy to make sure only, most current data is used in there
+- 4. Example
+  = 1. Application
+    -> 1. If the queries are already being made, if it has already been made, stored in ElastiCache
+       => Cache hit (Application <-> Amazon ElastiCache)
+
+    -> 2. It just gets the answer strainght from Amazon ElastiCache
+       => 1. Saving a trip to the DB to do the query
+       => 2. Cache miss (Application -> Amazon ElastiCache)
+
+    -> 3. Fetch the data from the DB
+       => Read from DB (Application <-> Amazon RDS)
+
+    -> 4. Other application or other instances where the same query will be made
+       => We can write the data back into the cache (Application <-> Amazon ElastiCache)
+
+  = 2. Amazon ElastiCache
+  = 3. Amazon RDS
+
+ElasticCache Solution Architecture - User Session Store
+- 1. User logs into any of the application
+- 2. The application writes the session data into ElastiCache
+- 3. The user hits another instance of our application
+- 4. The instance retrieves the data and the user is already logged in
+- 5. Example
+  = 1. User
+    -> 1. User will do a login into any kind of your applications
+    -> 2. If your user is redirected to another instance of your application
+    -> 3. User is still logged in, doesn't need to login one more time
+
+  = 2. Application
+    -> 1. Application will write the session data into Amazon ElastiCache
+       => Application -> Amazon ElastiCache
+
+    -> 2. Application can retrieve the session cache
+       => Session directly from the Amazon ElastiCache (Amazon ElastiCache -> Application)
+
+    -> 3. Made your application stateless by writing the session data
+       => Of your user into Amazon ElastiCache (Amazon ElastiCache -> Application)
+
+  = 3. Amazon ElastiCache
+
+
+ElastiCache - Redis vs Memcached
+- 1. Redis
+  = 1. Multi AZ with Auto-Failover
+  = 2. Read Replicas to scale reads and have high availability
+  = 3. Data Durability using AOF persistence
+  = 4. Backup and restore features
+  = 5. Supports Sets and Sorted Sets
+     -> 1. Redis as a cache that gets replicated that is highly available and durable
+     -> 2. Redis -> Replication -> Redis
+
+- 2. Memcached
+  = 1. Multi-node for partitioning of data (sharding)
+  = 2. No high availability (replication)
+  = 3. Non persistent
+  = 4. No backup and restore
+  = 5. Multi-threaded architecture
+     -> 1. Multiple instances all together working in Memcached with some sharding
+     -> 2. (Memcached + Memcached) with sharding
+
+- 3. Conclusion
+  = 1. Redis really is here for high availability, backup, read replicas	
+  = 2. Memcached is a pure cache that's distributed where you can afford to lose
+    -> You lose your data, there's no high availability, backup and restores
+
+
