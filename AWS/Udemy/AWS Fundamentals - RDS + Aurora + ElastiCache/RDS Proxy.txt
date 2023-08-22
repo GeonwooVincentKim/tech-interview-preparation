@@ -1,0 +1,12 @@
+Amazon RDS Proxy
+- 1. Fully managed DB proxy for RDS
+- 2. Allows apps to pool and shard DB connections established with the DB
+- 3. Improving DB efficiency by reducing the stress on DB resources (e.g., CPU, RAM)
+  = Minimize open connections (and timeouts)
+
+- 4. Serverless, autoscaling, highly available (multi-AZ)
+- 5. Reduced RDS & Aurora failover time by up 66 %
+- 6. Supports RDS (MySQL, PostgreSQL, MariaDB, MS-SQL Server) and Aurora (MySQL, PostgreSQL)
+- 7. No code changes required for most apps
+- 8. Enforce IAM Authentication for DB, and securely store credentials in AWS Secrets Manager
+- 9. RDS Proxy is never publicly accessible (must be accessed from VPC)

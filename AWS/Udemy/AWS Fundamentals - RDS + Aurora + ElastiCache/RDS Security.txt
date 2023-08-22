@@ -1,0 +1,16 @@
+RDS & Aurora Security
+- 1. At-rest encryption:
+  = 1. DB master & replicas encryption using AWS KMS - must be defined as launch time
+  = 2. If the master is not encrypted, the read replicas cannot be encrypted
+  = 3. To encrypt an un-encrypted DB, go through a DB snapshot & restore as encrypted
+
+- 2. In-flight encryption: TLS-ready by default, use the AWS TLS root certificates client-side
+  = Provided on the AWS Website
+
+- 3. IAM Authentication: IAM roles to connect to your DB (instead of username / pw)
+  = 1. If you're EC2 instances had IAM roles, they can authenticate to your DB directly using that
+  = 2. Not a username and a password -> Helps you manage all the security within AWS and IAM
+
+- 4. Security Groups: Control Network access to your RDS / Aurora DB
+- 5. No SSH available except on RDS Custom
+- 6. Audit Logs can be enabled and sent to CloudWatch Logs for longer retention

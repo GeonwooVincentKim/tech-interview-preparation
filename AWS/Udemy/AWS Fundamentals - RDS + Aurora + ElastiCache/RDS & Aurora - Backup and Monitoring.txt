@@ -1,0 +1,50 @@
+RDS Backups
+- 1. Automated backups:
+  = 1. Daily full backup of the database (during the backup window)
+  = 2. Transaction logs are backed-up by RDS every 5 minutes
+  = 3. => ability to restore to any point in time (from oldest backup to 5 minutes ago)
+  = 4. 1 ~ 35 days of retention, set 0 to disable automated backups
+
+- 2. Manual DB Snapshots
+  = 1. Manually triggered by the user
+  = 2. Retention of backup for as long as you want
+
+- 3. Trick: in a stopped RDS DB, you will still pay for storage.
+  = If you plan to stopping it for a long time, you should snapshot & restore instead
+
+Aurora Backups
+- 1. Automated backups
+  = 1. 1 ~ 35 days (cannot be disabled)
+  = 2. Point-in-time recovery in that timeframe
+
+- 2. Manual DB Snapshots
+  = 1. Manually triggered by the user
+  = 2. Retention of backup for as long as you want
+
+RDS & Aurora Restore options
+- 1. Restoring a RDS / Aurora backup or a snapshot creates a new DB
+- 2. Restoring MySQL RDS DB from S3
+  = 1. Create a backup of your on-premises DB
+  = 2. Store it on Amazon S3 (Object Storage)
+  = 3. Restore the backup file onto a new RDS instance running MySQL
+
+- 3. Restoring MySQL Aurora cluster from S3
+  = 1. Create a backup of your on-premises DB using Percona XtraBackup
+  = 2. Store the backup file on Amazon S3
+  = 3. Restore the backup file onto a new Aurora cluster running MySQL
+
+Aurora Database Cloning
+- 1. Create a new Aurora DB Cluster from an existing one
+- 2. Faster than snapshot & restore
+  = Amazon Aurora (Production) -> clone -> Amazon Aurora (Staging)
+
+- 3. Uses copy-on-write protocol
+  = 1. Initially, the new DB cluster uses the same data volume as the origianl DB cluster
+    -> Fast and efficient - no copying is needed
+
+  = 2. When updates are made to the new DB cluster data
+    -> Additional storage is allocated and data is copied to be separated
+
+- 4. Very fast & cost-effective
+- 5. Useful to create a "staging" DB from a "production" DB without impacting the production DB
+
