@@ -1,0 +1,100 @@
+ElastiCache Hands On
+- 1. ElastiCache dashboard
+- 2. Create Redis cluster
+- 3. Cluster settings	
+  = 1. Choose a cluster creation method
+    -> 1. Easy create
+    -> 2. Configure and create a new cluster (Choose this)
+    -> 3. Restore from backups
+
+  = 2. Cluster mode
+    -> 1. Enabled - Multiple shards, Multiple replications happening
+    -> 2. Disabled - Single shard, one primary node and up to 5 read replica (Choose this)
+
+  = 3. Cluster info
+    -> 1. Name - demo-redis
+    -> 2. Description - optional
+
+  = 4. Location
+    -> 1. Location
+       => 1. AWS Cloud
+       => 2. On premises
+
+    -> 2. Multi-AZ
+       => 1. Provide you enhanced high availability through automatic failover to a read replica
+       => 2. Disable Multi-AZ (Make Enable not check)
+	  -- It could pay more otherwise if we check Enable
+
+    -> 3. Auto-failover - Keep Enable
+
+  = 5. Cluster settings
+    -> 1. Engine version = 7.0
+    -> 2. Port = 6379
+    -> 3. Parameter groups = default.redis7
+    -> 4. Node type -> cache.t2.micro
+    -> 5. Number of replicas
+       => 1. Between 0 and 5
+       => 2. If you have 2 replicas, it gonna be Multi-AZ settings
+       => 3. If you setup 0 with replicas, Multi-AZ cannot be enabled
+          -- Check your Multi-AZ and Auto-failover checkbox are disabled
+
+  = 6. Create a new subnet group
+    -> 1. Name - my-first-subnet-group
+       => Will tell the ElastiCache service to run the nodes within the subnet group
+
+    -> 2. VPC ID - Default VPC ID
+	
+  = 7. Selected subnets -> Already have 4 subnets created
+  = 8. AZ placements -> No preference
+  = 9. Click Next button
+
+- 4. Advanced settings
+  = 1. Security
+    -> 1. Encryption at rest (Set as Disabled)
+       => 1. If you check enable, encryption key menu visualize
+       => 2. Default Key, Customer managed CMK
+
+    -> 2. Encrpytion in transit (Set as Disabled)
+       => 1. If you check enable, You need to choose Access control menu
+       => 2. No access control, Redis AUTH default user access, User group access control list
+
+  = 2. Selected security groups
+  = 3. Backup
+    -> Disable "Enable automatic backups" checkbox
+
+  = 4. Maintenance
+    -> 1. Maintenance window - No preference
+    -> 2. Auto upgrade minor verions - Enable
+    -> 3. Topic for Amazon SNS notification - Disable notifications
+
+  = 5. Logs
+    -> 1. Slow logs -> Disabled
+    -> 2. Engine logs -> Disabled
+
+  = 6. Tags
+  = 7. Click Next button
+
+- 5. Review and Create
+  = 1. Cluster of 1 node right now
+  = 2. Click Create button
+
+Redis Auth default user access & User group access control list
+- 1. Redis Auth default user access
+  = Redis AUTH token -> Used to connect to the cluster
+
+- 2. User group access control list
+  = User group
+
+
+Demo-Redis
+- 1. If I had an application that I wrote with some code
+  = Use the Primary endpoints (Writer)
+
+- 2. If it was a read replica
+  = Use the Reader endpoints (Reader)
+
+Delete Demo-redis
+- 1. Create backup -> No
+- 2. Type demo-redis
+- 3. Click Delete button
+
