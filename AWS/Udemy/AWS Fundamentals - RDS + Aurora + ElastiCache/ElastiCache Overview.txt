@@ -1,0 +1,10 @@
+Amazon ElastiCache Overview
+- 1. The same way RDS is to get managed Relational DB..
+- 2. ElastiCache is to get managed Redis or Memcached
+- 3. Caches are in-memory databases with really high performance, low latency
+- 4. Helps reduce load off of databases for read intensive workloads
+- 5. Helps make your application stateless
+- 6. AWS takes care of OS maintenance / patching, optimizations, setup
+  = Configuration, monitoring, failure recovery and backups
+
+- 7. Using ElasticCache involes heavy application code changes

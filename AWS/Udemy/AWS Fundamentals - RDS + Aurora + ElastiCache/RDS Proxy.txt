@@ -1,12 +1,57 @@
 Amazon RDS Proxy
 - 1. Fully managed DB proxy for RDS
-- 2. Allows apps to pool and shard DB connections established with the DB
+
+<Advantage to using an RDS Proxy, Reason for using RDS Proxy - 1st>
+- 2. Allows apps to pool and share DB connections established with the DB
+  <Private Subnet>
+  = 1. Instead of having every single application connect to your RDS DB instance
+  = 2. They will be instead connecting to the proxy
+  = 3. RDS Proxy -> RDS DB instance
+    -> 1. If you have a lot of connections into your RDS DB instance
+    -> 2. This one is also the part of Reason for less connections to the RDS DB instance
+
+<Reason for less connections to the RDS DB instance>
 - 3. Improving DB efficiency by reducing the stress on DB resources (e.g., CPU, RAM)
   = Minimize open connections (and timeouts)
 
 - 4. Serverless, autoscaling, highly available (multi-AZ)
+
+<Advantage to using an RDS Proxy, Reason for using RDS Proxy - 2nd>
 - 5. Reduced RDS & Aurora failover time by up 66 %
+  = 1. Primary instance to the Standby instance
+  = 2. Instead of having all your applications connect to the main RDS DB instance
+    -> 1. Then, handle the fellter themselves, they will just connect to the RDS Proxy
+       => Doesn't know any failover
+
+    -> 2. RDS Proxy will itself, handle the failover of the RDS DB instance
+       => Therefore improving your failover time
+
 - 6. Supports RDS (MySQL, PostgreSQL, MariaDB, MS-SQL Server) and Aurora (MySQL, PostgreSQL)
 - 7. No code changes required for most apps
+
+<Advantage to using an RDS Proxy, Reason for using RDS Proxy - 3rd>
 - 8. Enforce IAM Authentication for DB, and securely store credentials in AWS Secrets Manager
+
 - 9. RDS Proxy is never publicly accessible (must be accessed from VPC)
+  <VPC - includes Private Subnet>
+  = 1. Lambda functions -> To be very helped bythe RDS Proxy
+  = 2. Lambda functions, they will execute pieces of code
+  = 3. Lambda functions, they can multiply many many times
+  = 4. Appear and disappear very very fast
+
+  <What happen there are 100 or 1,000 Lambda functions appearing and disappearing>
+  = 5. When opening up connections into your RDS DB instance, they will be a big problem
+  = 6. It will leave open connections and timeouts, and it will be a mass
+
+  <Use RDS Proxy>
+  = 7. Use RDS Proxy to pool connetions for your Lambda functions
+  = 8. Then, the Lambda functions will overload the RDS Proxy, but it's meant to be overloaded
+  = 9. RDS Proxy will pool these connections into less connections to the RDS DB instance
+
+<RDS Proxy is used to>
+- 10. RDS Proxy is used to minimize and pool connections on your RDS DB instance
+- 11. To minimize failover time and reduce it by up to 66 %
+- 12. It's used to enforce IAM authentication for your DB and to security store its credentials
+  = In the Secrets Manager Service -> In VPC Area
+
+
