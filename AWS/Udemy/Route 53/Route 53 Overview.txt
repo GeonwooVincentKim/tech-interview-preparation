@@ -1,0 +1,80 @@
+Amazon Route 53
+- 1. A highly available, scalable, fully managed and Authoritative DNS
+  = 1. Autoritative = the customer (you) can update the DNS records
+  = 2. Example
+    -> 1. Client
+       => 1. Asking for example.com (Client -> Amazon Route 53)
+       => 2. Connect directly into our EC2 Instance
+
+    -> 2. AWS Cloud with EC2 Instance Public IP 54.22.33.44
+    -> 3. Amazon Route 53
+       => Reply back to the Client that you are looking forward to the IP Address '54.22.33.44'
+
+- 2. Route 53 is also a Domain Register
+- 3. Ability to check the health of your resources
+- 4. The only AWS service which provides 100% availability SLA
+- 5. Why Route 53 -> 53 is a reference to the traditional DNS port
+  => Used by DNS Service, hence the name
+
+Route 53 - Records
+- 1. How you want to route traffic for a domain
+- 2. Each record contains:
+  = 1. Domain / subdomain Name - e.g., example.com
+  = 2. Record Type - e.g., A or AAAA
+  = 3. Value - e.g., 12.34.56.78
+  = 4. Routing Policy - how Route 53 responds to queries
+  = 5. TTL - amount of time the record cached at DNS Resolvers
+
+- 3. Route 53 supports the following DNS record types:
+  = 1. must know -> A / AAAA / CNAME / NS
+  = 2. advanced -> CAA / DS / MX / NAPTR / PTR / SOA / TXT / SPF / SRV
+
+Route 53 - Record Types
+- 1. A - maps a hostname to IPv4
+- 2. AAAA - maps a hostname to IPv6
+- 3. CNAME - maps a hostname to another hostname
+  = 1. The target is a domain name which must have an A or AAAA record
+  = 2. Can't create a CNAME record for the top node of a DNS namespace (Zone Apex)
+  = 3. Example: you can't create for example.com, but you can create for www.example.com
+
+- 4. NS - Name Servers for the Hosted Zone
+  = Control how traffic is routed for a domain
+
+Route 53 - Hosted Zones
+- 1. A container for records that define how to route traffic to a domain and its subdomains
+- 2. Public Hosted Zones - contains records that specify how to route traffic on the Internet
+  = public domain names -> application1.mypublicdomain.com
+
+- 3. Private Hosted Zones - contain records, how you route traffic within one or more VPCs
+  = private domain names -> application1.company.internal
+
+- 4. You pay $0.50 per month per hosted zone
+
+Route 53 - Public vs Private Hosted Zones
+- 1. Public Hosted Zone (Allows anyone from the internet to query your records)
+  = 1. Client
+    -> Send request example.com? exist
+
+  = 2. Public Hosted Zone
+    -> 1. S3 Bucket
+    -> 2. Amazon CloudFront
+    -> 3. VPC
+       => 1. EC2 Instance (Public IP)
+       => 2. Application Load Balancer
+
+- 2. Private Hosted Zone (Only queried from within your private resources, your VPC)
+  = 1. VPC (Private Hosted Zone)
+    -> 1. DB Instance (db.example.internal) (Private IP)
+    -> 2. EC2 Instance (webapp.example.internal) (Private IP)
+       => 1. Answer 10.0.0.10 to the EC2 Instance (wedapp.example.internal)
+       => 2. Answer 10.0.0.35 to the EC2 Instance (api.example.internal)
+
+    -> 3. EC2 Instance (api.example.internal) (Private IP)
+
+  = 2. EC2 Instance (webapp.example.internal) (Private IP)
+    -> 1. Request for api.example.internal to VPC (Private Hosted Zone)
+    -> 2. Connect to DB through EC2 Instance (api.example.internal)
+
+  = 3. EC2 Instance (api.example.internal) (Private IP)
+    -> 1. Request for db.example.interal? to VPC (Private Hosted Zone)
+    -> 2. Connect directly into the DB Instance

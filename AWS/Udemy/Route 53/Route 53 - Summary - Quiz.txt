@@ -1,0 +1,49 @@
+1.
+- 1. Purchased mycoolcompany.com on Amazon Route 53 Register
+- 2. Elastic Load Balancer my-elb-1234567890.us-west-2.elb.amazonaws.com
+- 3. Which Route 53 Record type must you use here?
+
+= Alias
+
+2.
+- 1. New Elastic Beanstalk environment, direct 5% production traffic to this new enviornment
+- 2. No bugs exist with your new environment, Which Route 53 Record type allows you to do so?
+
+= Weighed
+  -> 1. Weighted Routing Policy allows you to redirect part of the traffic based on weight
+  -> 2. e.g., percentage -> Common use case to sendpart of traffic to a new version of your app
+
+3.
+- 1. Updated a Route 53 Records myapp.mydomain.com value to point to a new Elastic Load Balancer
+- 2. Users are still redirected to the old ELB, Possble cause for this behavior?
+
+= Because of the TTL
+  -> 1. Each DNS records has a TTL (Time To Live) which orders clients for how long to cache these values and not overload the DNS Resolver with DNS requests
+
+  -> 2. TTL value should be set to strike a balance between how long the value should be cached
+     = Vs. how many requests should go to the DNS Resolver
+
+4.
+- 1. An Application that's hosted in two different AWS Regions us-west-1 and eu-west-2
+- 2. Best possible user experience, minimizing response time from application servers to your users
+- 3. Which Route S3 Routing Policy should you choose?
+
+= Latency
+
+5. 
+- 1. Requirement that people in any country, but France shouldn't be able to access your website
+- 2. Which Route 53 Routing Policy helps you in achieving this?
+
+= GeoLocation
+
+6. 
+- 1. Purchased a domain on GoDaddy and would like to use Route 53 as the DNS Service Provider
+- 2. What should you do to make this work?
+
+= Create a Public Hosted Zone and update the 3rd party Register NS records
+  -> 1. Public Hosted Zones are meant, used for people requesting your website through the Internet
+  -> 2. NS records must be updated on the 3rd party Register
+
+7. Which of the following are NOT valid Route 53 Health Checks?
+- Health Check that monitor SQS Queue
+ 
