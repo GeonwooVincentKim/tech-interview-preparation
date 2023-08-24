@@ -1,0 +1,46 @@
+1. 
+- 1. TriangleSunglasses.com, hosted on a fleet of EC2 instances managed by an ASG and fronted by ALB
+- 2. ASG, configured scale on-demand, traffic, website
+- 3. Reduce costs, ASG to scale based on the traffic going through the ALB
+- 4. Minimum capacity to 2, further reduce the costs while respecting the requirements?
+
+= Reserve two EC2 instances
+  -> This is the way to save further costs as we will run 2 EC2 instances no matter what
+
+2. Which of the following will NOT help us while designing a STATELESS application tier?
+- Store session data on EBS volumes
+  = EBS volumes are created in a specific AZ and can only be attached to one EC2 instance at a time
+
+3.
+- 1. Install SW updates on 100s of Linux EC2 instances that you manage
+- 2. Store these updates on shared storage, dynamically loaded on the EC2 instances
+- 3. Shouldn't require heavy operations. What do you suggest?
+
+= Store the SW updates on EFS and mount EFS as a network drive at startup
+  -> 1. EFS is a Network File System, allows mounting the same file system to 100s of EC2 instances
+  -> 2. Storing SW updates on an EFS allows each EC2 instance to access them
+
+4.
+- 1. Migrate a complex ERP SW suite to AWS Cloud, host SW on a set of Linux EC2 Instances, ASG
+- 2. Takes over an hour to set up on a Linux Machine, recommendation speed up installation process
+
+= Use a Golden AMI
+  -> 1. Golden AMI is an image, contains all your SW installed and configured
+  -> 2. Future EC2 instances can boot up quickly from that AMI
+
+5. 
+- 1. Developing an application and would like to deploy it to Elastic Beanstalk with minimal cost
+- 2. You should run it in .....
+
+= Single Instance Mode (SIM)
+  -> Still in development stage, reduce costs, SIM will create on EC2 instance and one Elastic IP
+
+6.
+- 1. Elastic Beanstalk environment, painfully slow, dependencies are resolved on each EC2 instance
+- 2. How can you speed up the deployment process with minimal impact?
+
+= Create a Golden AMI, contains the dependencies and use that image to launch the EC2 instances
+  -> 1. Golden AMI is an image, contains all your SW installed and configured
+  -> 2. Future EC2 instances can boot up quickly from that AMI
+
+

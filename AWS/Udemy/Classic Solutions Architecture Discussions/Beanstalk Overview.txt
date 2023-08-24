@@ -1,0 +1,106 @@
+Typical architecture: Web App 3-tier
+- 1. Route S3
+- 2. User
+- 3. Multi AZ (ELB) - Public Subnet
+  = Taking all the requests from our users
+
+- 4. Auto Scaling Group - Private Subnet
+  = Multiple Availability Zones
+    -> Each AZ there wil be some EC2 instances being deployed there
+
+- 5. Data Subnet (Backend)
+  = 1. ElastiCache - Store / retrieve session data + Cached data
+    -> Cache layer, need to look at Elastic Cache
+
+  = 2. Amazon RDS Read / write data
+
+Developer problems on AWS
+- 1. Managing infrastructure
+- 2. Deploying Code
+- 3. Configuring all the databases, load balancers, etc.
+- 4. Scaling concerns
+
+- 5. Most web apps have the same architecture (ALB + ASG)
+- 6. All the developers want is for their code to run!
+- 7. Possibly, consistently across different applications and environments
+
+
+Elastic Beanstalk - Overview
+- 1. Elastic Beanstalk is a developer centric view of deploying an application on AWS
+- 2. It uses all the component's we've seen before: EC2, ASG, ELB, RDS,...
+- 3. Managed service
+  = 1. Automatically handles capacity provisioning
+    -> load balancing, scaling, application health monitoring, instance configuration,...
+
+  = 2. Just the application code is the responsibility of the developer
+
+- 4. We still have full control over the configuration
+- 5. Beanstalk is free but you pay for the underlying instances
+
+Elastic Beanstalk - Components
+- 1. Application
+  = Collection of Elastic Beanstalk components (environments, versions, configurations,...)
+
+- 2. Application Version
+  = An iteration of your application code
+
+- 3. Environment
+  = 1. Collection of AWS resources running an application version
+    -> Only one application version at a time
+
+  = 2. Tiers
+    -> Web Server Environment Tier & Worker Environment Tier
+
+  = 3. You can create multiple environments (dev, test, prod,...)
+  = 4. Procedure of deploying Elastic Beanstalk
+    -> 1. Create Application
+    -> 2. Upload Version
+       => Deploy new version (Upload Version -> Manage Environment)
+
+    -> 3. Launch Environment
+    -> 4. Manage Environment
+       => Update version (Manage Environment -> Upload Version)
+
+Elastic Beanstalk - Supported Platforms
+- 1. Go, Ruby, Java SE, Packer Builder
+- 2. Java with Tomcat, Single Container Docker, .NET Core on Linux, Multi-container Docker
+- 3. .NET on Windows Server, Preconfigured Docker, Node.js, PHP, Python
+- 4. If not supported, you can write your custom platform (Advanced)
+
+Web Server Tier vs. Worker Tier
+- 1. Web Environment (myapp.us-east-1.elasticbeanstalk.com)
+  = 1. ELB
+  = 2. Avability Zone (1 & 2)
+  = 3. Auto Scaling Group
+    -> Several Security Group (This contains in not only AZ, but also ASG)
+       => 2 EC2 Instance (Web Server)
+
+- 2. Worker Environment
+  = 1. SQS Queue
+    -> Pull messages to ASG (EC2 Instance)
+       => SQS message
+
+  = 2. AZ (1 & 2)
+  = 3. ASG
+    -> 2 EC2 Instance (Worker) (This contains in not only AZ, but also ASG)
+
+  = 4. Scale based on the number of SQS messages
+  = 5. Can push messages to SQS queue from another Web Server Tier
+
+Elastic Beanstalk Deployment Modes
+- 1. Single Instance Great for dev
+  = AZ 1
+    -> 1. Elastic IP
+    -> 2. EC2 Instance
+    -> 3. RDS Master
+
+- 2. High Avability with Load Balancer Great for prod
+  = ALB
+    -> 1. AZ (1 & 2)
+       = 1. RDS Master (AZ 1)
+       = 2. RDS Standvy (AZ 2)
+
+    -> 2. ASG
+       = 2 EC2 Instance (This contains in not only AZ, but also ASG)
+
+
