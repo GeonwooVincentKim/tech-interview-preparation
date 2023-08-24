@@ -17,3 +17,11 @@ Instantiating Application quickly
 - 3. EBS Volumes:
   = Restore from a snapshot
     -> The disk will already be formatted and have data!
+
+- 4. When launching a full stack (EC2, EBS, RDS), it can take time to
+  = 1. Install applications
+  = 2. Insert initial (or recovery) data
+  = 3. Configure everything
+  = 4. Launch the application
+
+- 5. Wec can take advantage of the cloud to spend that up!
