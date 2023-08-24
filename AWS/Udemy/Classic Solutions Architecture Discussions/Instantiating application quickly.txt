@@ -1,0 +1,19 @@
+Instantiating Application quickly
+- 1. EC2 Instances
+  = 1. Use a Golden AMI
+    -> 1. Install your applications, OS dependencies etc..
+    -> 2. Beforehand and launch your EC2 instance from the Golden AMI
+
+  = 2. Boostrap using User Data
+    -> For dynamic configuration, use User Data scripts
+
+  = 3. Hybrid
+    -> Mix Golen AMI and User Data (Elastic Beanstalk)
+
+- 2. RDS Databases:
+  = Restore from a snapshot
+    -> The DB will have schemas and data ready!
+
+- 3. EBS Volumes:
+  = Restore from a snapshot
+    -> The disk will already be formatted and have data!
