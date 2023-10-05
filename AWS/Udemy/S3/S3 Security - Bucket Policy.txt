@@ -1,0 +1,62 @@
+Amazon S3 - Security
+- 1. User-Based
+  = IAM Policies - which API calls should be allowed for a specific user from IAM
+
+- 2. Resource-Based
+  = 1. Bucket Policies - bucket wide rules from the S3 console - allows cross account
+  = 2. Object Access Control List (ACL) - finer grain (can be disabled)
+  = 3. Bucket Access Control List (ACL) - less common (can be disabled)
+
+- 3. Note: an IAM principal can access an S3 object if
+  = 1. The user IAM permissions ALLOW it OR the resource policy ALLOWS it
+  = 2. AND there's no explicit DENY
+
+- 4. Encryption: encrypt objects in Amazon S3 using encryption keys
+
+S3 Bucket Policies
+- 1. JSON based policies
+  = 1. Resources: buckets and objects
+  = 2. Effect: Allow / Deny
+  = 3. Actions: Set of API to Allow or Deny
+  = 4. Principal: The account or user to apply the policy to
+
+- 2. Use S3 bucket for policy to:
+  = 1. Grant public access to the bucket
+  = 2. Force objects to be encrypted at upload
+  = 3. Grant access to another account (Cross Account)
+
+- 3. Example
+  {
+    "Version: "2012-10-17",
+    "Statement": [
+      {
+	"Sid": "PublicRead",
+	"Effect": "Allow",
+	"Principal": "*",
+	"Action": [
+	  "s3:GetObject"
+	],
+	"Resource": [
+	  "arn:aws:s3:::examplebucket/*"  --> /*: Allow objects
+	]
+      }
+    ]
+  }
+
+Example: Public Access - Use Bucket Policy
+- 1. Anonymous www website visitor
+  = Attach to S3 Bucket
+
+- 2. S3 Bucket Policy Allows Public Access
+- 3. S3 Bucket
+
+Example: User Access to S3 - IAM permissions
+- 1. IAM Policy
+- 2. IAM User
+  = 1. If the user wants to access to S3, assign IAM Permissions to that user through the IAM Policy
+  = 2. Policy allows access to S3 Bucket
+
+- 3. S3 Bucket
+
+
+
