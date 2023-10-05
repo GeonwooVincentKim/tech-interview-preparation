@@ -58,5 +58,29 @@ Example: User Access to S3 - IAM permissions
 
 - 3. S3 Bucket
 
+Example: EC2 instance access - Use IAM Roles
+- 1. EC2 Instance Role
+  = EC2 Instance Role with the correct IAM Permissions
 
+- 2. IAM Permissions
+- 3. EC2 Instance
+- 4. S3 Bucket
+
+Advanced: Cross-Account Access - Use Bucket Policy
+- 1. IAM User Other AWS account
+  = IAM User make API calls into our S3 Bucket
+
+- 2. S3 Bucket Policy Allows Cross-Account
+- 3. S3 Bucket
+
+Bucket settings for Block Public Access
+- 1. These settings were created to prevent company data leaks
+- 2. If you know your bucket should never be public, leave these on
+- 3. Can be set at the account level
+- 4. Level
+  = Block all public access
+    -> 1. Block public access to buckets and objects granted through new ACLs
+    -> 2. Block public access to buckets and objects granted through any ACLs
+    -> 3. Block public access buckets, objects granted through new public bucket, access point policy
+    -> 4. Block public & cross-account access to buckets & objects through any public bucket, access point policy
 
